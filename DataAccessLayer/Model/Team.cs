@@ -3,7 +3,6 @@
     public class Team
     {
         public Team() { }
-
         public Team(int id, string country, string alternateName, string fifaCode, int groupId, string groupLetter)
         {
             Id = id;
@@ -21,6 +20,8 @@
         public int GroupId { get; set; }
         public string GroupLetter { get; set; }
 
+        public override bool Equals(object obj) => obj is Team team ? Id == team.Id : false;
+        public override int GetHashCode() => Id;
         public override string ToString()
             => $"{Id} {Country} {AlternateName} {FifaCode} {GroupId} {GroupLetter}";
     }

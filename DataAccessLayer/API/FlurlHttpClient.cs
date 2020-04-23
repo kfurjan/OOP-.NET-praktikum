@@ -9,10 +9,10 @@ namespace DataAccessLayer.API
 {
     public static class FlurlHttpClient
     {
-        private const string WOMEN_API_URL = "https://worldcup.sfg.io/";
-        private const string MEN_API_URL = "https://world-cup-json-2018.herokuapp.com/";
-        private const string MATCHES_ENDPOINT = "matches/";
-        private const string TEAMS_ENDPOINT = "teams/";
+        private const string WOMEN_API_URL = @"https://worldcup.sfg.io/";
+        private const string MEN_API_URL = @"https://world-cup-json-2018.herokuapp.com/";
+        private const string MATCHES_ENDPOINT = @"matches/";
+        private const string TEAMS_ENDPOINT = @"teams/";
 
         private static async Task<IList<dynamic>> GetApiDataAsync(string endpoint) => await endpoint.GetJsonAsync<IList<dynamic>>();
 

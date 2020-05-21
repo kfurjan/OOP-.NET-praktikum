@@ -7,6 +7,6 @@
         PlayOffForThirdPlace,
         QuarterFinals,
         RoundOf16,
-        SemiFinals
+        SemiFinals,
     }
 }

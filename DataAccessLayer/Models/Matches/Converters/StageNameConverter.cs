@@ -21,13 +21,21 @@ namespace DataAccessLayer.Models.Matches.Converters
                     return StageName.Final;
                 case "First stage":
                     return StageName.FirstStage;
+                case "First Stage":
+                    return StageName.FirstStage;
                 case "Play-off for third place":
                     return StageName.PlayOffForThirdPlace;
+                case "Match for third place":
+                    return StageName.PlayOffForThirdPlace;
                 case "Quarter-finals":
+                    return StageName.QuarterFinals;
+                case "Quarter-final":
                     return StageName.QuarterFinals;
                 case "Round of 16":
                     return StageName.RoundOf16;
                 case "Semi-finals":
+                    return StageName.SemiFinals;
+                case "Semi-final":
                     return StageName.SemiFinals;
             }
             throw new Exception("Cannot un-marshal type StageName");

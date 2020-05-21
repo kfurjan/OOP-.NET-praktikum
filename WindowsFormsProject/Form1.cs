@@ -29,13 +29,13 @@ namespace WindowsFormsProject
 
         private async void GetMatchesDataAsync()
         {
-            IList<Match> apiData = await api.GetDataAsync<IList<Match>>(MEN_MATCHES);
+            IList<Match> apiData = await api.GetDataAsync<IList<Match>>(WOMEN_MATCHES);
             apiData.ToList().ForEach(match => cbMatches.Items.Add(match.ToString()));
         }
 
         private async void GetTeamsDataAsync()
         {
-            IList<Team> apiData = await api.GetDataAsync<IList<Team>>(WOMEN_TEAMS);
+            IList<Team> apiData = await api.GetDataAsync<IList<Team>>(MEN_TEAMS);
             apiData.ToList().ForEach(team => comboBox1.Items.Add(team.ToString()));
         }
     }

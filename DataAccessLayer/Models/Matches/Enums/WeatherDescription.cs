@@ -5,6 +5,7 @@
         ClearNight,
         Cloudy,
         PartlyCloudy,
+        CloudyNight,
         PartlyCloudyNight,
         Sunny
     }

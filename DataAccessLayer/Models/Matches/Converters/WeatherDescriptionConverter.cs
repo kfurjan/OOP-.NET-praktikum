@@ -23,6 +23,8 @@ namespace DataAccessLayer.Models.Matches.Converters
                     return WeatherDescription.Cloudy;
                 case "Partly Cloudy":
                     return WeatherDescription.PartlyCloudy;
+                case "Cloudy Night":
+                    return WeatherDescription.CloudyNight;
                 case "Partly Cloudy Night":
                     return WeatherDescription.PartlyCloudyNight;
                 case "Sunny":
@@ -49,6 +51,9 @@ namespace DataAccessLayer.Models.Matches.Converters
                     return;
                 case WeatherDescription.PartlyCloudy:
                     serializer.Serialize(writer, "Partly Cloudy");
+                    return;
+                case WeatherDescription.CloudyNight:
+                    serializer.Serialize(writer, "Cloudy Night");
                     return;
                 case WeatherDescription.PartlyCloudyNight:
                     serializer.Serialize(writer, "Partly Cloudy Night");

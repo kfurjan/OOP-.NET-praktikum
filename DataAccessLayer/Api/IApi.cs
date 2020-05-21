@@ -4,6 +4,6 @@ namespace DataAccessLayer.Api
 {
     public interface IApi
     {
-        public Task<T> GetData<T>(string endpoint);
+        public Task<T> GetDataAsync<T>(string endpoint);
     }
 }

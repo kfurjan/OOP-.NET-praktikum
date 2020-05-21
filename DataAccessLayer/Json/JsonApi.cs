@@ -7,11 +7,11 @@ namespace DataAccessLayer.Json
 {
     public class JsonApi : IApi
     {
-        public Task<T> GetData<T>(string endpoint)
+        public Task<T> GetDataAsync<T>(string endpoint)
         {
             return Task.Run(() =>
             {
-                IRestResponse<T> result = new RestClient(endpoint).Execute<T>(new RestRequest());
+                var result = new RestClient(endpoint).Execute<T>(new RestRequest());
                 return JsonConvert.DeserializeObject<T>(result.Content);
             });
         }

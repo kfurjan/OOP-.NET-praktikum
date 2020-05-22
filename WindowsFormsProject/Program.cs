@@ -1,5 +1,7 @@
-﻿using System;
+﻿using DataAccessLayer.Repository;
+using System;
 using System.Windows.Forms;
+using WindowsFormsProject.Forms;
 
 namespace WindowsFormsProject
 {
@@ -11,9 +13,12 @@ namespace WindowsFormsProject
         [STAThread]
         static void Main()
         {
+            IRepository repository = RepositoryFactory.GetRepository();
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+
+            Application.Run(repository.SettingsExists() ? new WorldCup() : new Settings() as Form);
         }
     }
 }

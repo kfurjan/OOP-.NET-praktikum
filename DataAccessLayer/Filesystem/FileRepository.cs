@@ -6,26 +6,26 @@ namespace DataAccessLayer.Filesystem
     class FileRepository : IRepository
 
     {
-        private const string PATH = @"../../../assets/";
-        private const string SETTINGS = "settings.txt";
+        private const string Path = @"../../../assets";
+        private const string Settings = @"settings.txt";
 
         public void SaveSettings(string tournamentType, string language)
         {
-            if (!Directory.Exists(PATH))
+            if (!Directory.Exists(Path))
             {
-                Directory.CreateDirectory(PATH);
+                Directory.CreateDirectory(Path);
             }
 
-            File.WriteAllText($"{PATH}{SETTINGS}", $"{tournamentType.ToLower()}|{language.ToLower()}");
+            File.WriteAllText($"{Path}/{Settings}", $"{tournamentType.ToLower()}|{language.ToLower()}");
         }
         public string LoadSettings()
         {
-            return File.ReadAllText($"{PATH}{SETTINGS}");
+            return File.ReadAllText($"{Path}/{Settings}");
         }
 
         public bool SettingsExists()
         {
-            return File.Exists($"{PATH}{SETTINGS}");
+            return File.Exists($"{Path}/{Settings}");
         }
     }
 }

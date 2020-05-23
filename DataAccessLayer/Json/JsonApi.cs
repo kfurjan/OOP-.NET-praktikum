@@ -10,10 +10,7 @@ namespace DataAccessLayer.Json
         public Task<T> GetDataAsync<T>(string endpoint)
         {
             return Task.Run(() =>
-            {
-                var result = new RestClient(endpoint).Execute<T>(new RestRequest());
-                return JsonConvert.DeserializeObject<T>(result.Content);
-            });
+                JsonConvert.DeserializeObject<T>(new RestClient(endpoint).Execute<T>(new RestRequest()).Content));
         }
     }
 }

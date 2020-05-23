@@ -47,7 +47,7 @@
             this.Controls.Add(this.cbTeams);
             this.Name = "WorldCup";
             this.Text = "WorldCup";
-            this.Load += new System.EventHandler(this.WorldCup_Load);
+            this.Activated += new System.EventHandler(this.WorldCup_Activated);
             this.ResumeLayout(false);
 
         }

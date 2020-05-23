@@ -1,5 +1,6 @@
 ﻿using DataAccessLayer.Repository;
 using System;
+using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -15,20 +16,22 @@ namespace WindowsFormsProject.Forms
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
-            var tournamentType = gbTournamentType.Controls.OfType<RadioButton>()
-                .FirstOrDefault(r => r.Checked)?.Text;
-
-            var language = gbLanguage.Controls.OfType<RadioButton>()
-                .FirstOrDefault(r => r.Checked)?.Text;
-
             try
             {
+                var tournamentType = gbTournamentType.Controls.OfType<RadioButton>()
+                .FirstOrDefault(r => r.Checked)?.Text;
+
+                var language = gbLanguage.Controls.OfType<RadioButton>()
+                    .FirstOrDefault(r => r.Checked)?.Text;
+
                 _repository.SaveSettings(tournamentType, language);
             }
-            catch (Exception)
+            catch (Exception ex) when (ex is ArgumentNullException || ex is IOException)
             {
                 MessageBox.Show("Unexpected error occured");
             }
+
+            if (Application.OpenForms.Count != 1) return;
 
             this.Hide();
             new WorldCup().ShowDialog();

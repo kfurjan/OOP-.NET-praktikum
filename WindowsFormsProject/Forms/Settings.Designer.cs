@@ -36,7 +36,6 @@
             this.rbCroatian = new System.Windows.Forms.RadioButton();
             this.rbEnglish = new System.Windows.Forms.RadioButton();
             this.btnSubmit = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
             this.gbTournamentType.SuspendLayout();
             this.gbLanguage.SuspendLayout();
             this.SuspendLayout();
@@ -94,16 +93,10 @@
             this.btnSubmit.UseVisualStyleBackColor = true;
             this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
             // 
-            // label1
-            // 
-            resources.ApplyResources(this.label1, "label1");
-            this.label1.Name = "label1";
-            // 
             // Settings
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.btnSubmit);
             this.Controls.Add(this.gbLanguage);
             this.Controls.Add(this.gbTournamentType);
@@ -113,7 +106,6 @@
             this.gbLanguage.ResumeLayout(false);
             this.gbLanguage.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -126,6 +118,5 @@
         private System.Windows.Forms.RadioButton rbCroatian;
         private System.Windows.Forms.RadioButton rbEnglish;
         private System.Windows.Forms.Button btnSubmit;
-        private System.Windows.Forms.Label label1;
     }
 }

@@ -117,8 +117,35 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="player_placeholder" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\player_placeholder.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="rankToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>56, 20</value>
+  </data>
+  <data name="rankToolStripMenuItem.Text" xml:space="preserve">
+    <value>Sortiraj</value>
+  </data>
+  <data name="rankByToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>219, 22</value>
+  </data>
+  <data name="rankByToolStripMenuItem.Text" xml:space="preserve">
+    <value>Po golovima</value>
+  </data>
+  <data name="rankByToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>219, 22</value>
+  </data>
+  <data name="rankByToolStripMenuItem1.Text" xml:space="preserve">
+    <value>Po žutim kartonima</value>
+  </data>
+  <data name="rankMatchesToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>224, 22</value>
+  </data>
+  <data name="rankMatchesToolStripMenuItem.Text" xml:space="preserve">
+    <value>Po broju posjetitelja</value>
+  </data>
+  <data name="settingsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>66, 20</value>
+  </data>
+  <data name="settingsToolStripMenuItem.Text" xml:space="preserve">
+    <value>Postavke</value>
   </data>
 </root>

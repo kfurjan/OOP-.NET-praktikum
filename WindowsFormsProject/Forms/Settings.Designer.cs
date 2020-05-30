@@ -46,13 +46,14 @@
             this.rbMale.Checked = true;
             this.rbMale.Name = "rbMale";
             this.rbMale.TabStop = true;
+            this.rbMale.Tag = "male";
             this.rbMale.UseVisualStyleBackColor = true;
             // 
             // gbTournamentType
             // 
+            resources.ApplyResources(this.gbTournamentType, "gbTournamentType");
             this.gbTournamentType.Controls.Add(this.rbFemale);
             this.gbTournamentType.Controls.Add(this.rbMale);
-            resources.ApplyResources(this.gbTournamentType, "gbTournamentType");
             this.gbTournamentType.Name = "gbTournamentType";
             this.gbTournamentType.TabStop = false;
             // 
@@ -60,13 +61,14 @@
             // 
             resources.ApplyResources(this.rbFemale, "rbFemale");
             this.rbFemale.Name = "rbFemale";
+            this.rbFemale.Tag = "female";
             this.rbFemale.UseVisualStyleBackColor = true;
             // 
             // gbLanguage
             // 
+            resources.ApplyResources(this.gbLanguage, "gbLanguage");
             this.gbLanguage.Controls.Add(this.rbCroatian);
             this.gbLanguage.Controls.Add(this.rbEnglish);
-            resources.ApplyResources(this.gbLanguage, "gbLanguage");
             this.gbLanguage.Name = "gbLanguage";
             this.gbLanguage.TabStop = false;
             // 
@@ -74,7 +76,7 @@
             // 
             resources.ApplyResources(this.rbCroatian, "rbCroatian");
             this.rbCroatian.Name = "rbCroatian";
-            this.rbCroatian.Tag = "Croatian";
+            this.rbCroatian.Tag = "HR";
             this.rbCroatian.UseVisualStyleBackColor = true;
             // 
             // rbEnglish
@@ -83,7 +85,7 @@
             this.rbEnglish.Checked = true;
             this.rbEnglish.Name = "rbEnglish";
             this.rbEnglish.TabStop = true;
-            this.rbEnglish.Tag = "English";
+            this.rbEnglish.Tag = "EN";
             this.rbEnglish.UseVisualStyleBackColor = true;
             // 
             // btnSubmit

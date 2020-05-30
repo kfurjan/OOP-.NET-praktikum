@@ -1,5 +1,6 @@
 ﻿using DataAccessLayer.Repository;
 using System;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
@@ -19,19 +20,25 @@ namespace WindowsFormsProject.Forms
             try
             {
                 var tournamentType = gbTournamentType.Controls.OfType<RadioButton>()
-                .FirstOrDefault(r => r.Checked)?.Text;
+                .FirstOrDefault(r => r.Checked)?.Tag.ToString();
 
                 var language = gbLanguage.Controls.OfType<RadioButton>()
-                    .FirstOrDefault(r => r.Checked)?.Text;
+                    .FirstOrDefault(r => r.Checked)?.Tag.ToString();
 
                 _repository.SaveSettings(tournamentType, language);
+
+                CultureSetter.SetFormCulture(language, GetType(), Controls);
             }
-            catch (Exception ex) when (ex is ArgumentNullException || ex is IOException)
+            catch (Exception ex) when (ex is ArgumentNullException || ex is IOException || ex is CultureNotFoundException)
             {
-                MessageBox.Show("Unexpected error occured");
+                MessageBox.Show(Resources.Resources.unexpectedErrorOccured);
             }
 
-            if (Application.OpenForms.Count != 1) return;
+            if (Application.OpenForms.Count > 1)
+            {
+                this.Close();
+                return;
+            }
 
             this.Hide();
             new WorldCup().ShowDialog();

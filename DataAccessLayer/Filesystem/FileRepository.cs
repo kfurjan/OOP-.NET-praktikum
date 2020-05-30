@@ -16,7 +16,7 @@ namespace DataAccessLayer.Filesystem
                 Directory.CreateDirectory(Path);
             }
 
-            File.WriteAllText($"{Path}/{Settings}", $"{tournamentType.ToLower()}|{language.ToLower()}");
+            File.WriteAllText($"{Path}/{Settings}", $"{tournamentType}|{language}");
         }
         public string LoadSettings()
         {

@@ -33,7 +33,7 @@ namespace DataAccessLayer.Models.Matches
         public long Attendance { get; set; }
 
         [JsonProperty("officials")]
-        public List<string> Officials { get; set; }
+        public IList<string> Officials { get; set; }
 
         [JsonProperty("stage_name")]
         [JsonConverter(typeof(StageNameConverter))]
@@ -61,10 +61,10 @@ namespace DataAccessLayer.Models.Matches
         public MatchTeam AwayMatchTeam { get; set; }
 
         [JsonProperty("home_team_events")]
-        public List<TeamEvent> HomeTeamEvents { get; set; }
+        public IList<TeamEvent> HomeTeamEvents { get; set; }
 
         [JsonProperty("away_team_events")]
-        public List<TeamEvent> AwayTeamEvents { get; set; }
+        public IList<TeamEvent> AwayTeamEvents { get; set; }
 
         [JsonProperty("home_team_statistics")]
         public TeamStatistics HomeTeamStatistics { get; set; }
@@ -80,7 +80,7 @@ namespace DataAccessLayer.Models.Matches
 
         public override string ToString()
         {
-            return $"{AwayMatchTeam} : {HomeMatchTeam} - {Venue} {Location}";
+            return $"{HomeMatchTeam} : {AwayMatchTeam} - {Venue} {Location}";
         }
     }
 }

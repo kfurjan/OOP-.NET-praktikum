@@ -14,9 +14,15 @@
                 _ => string.Empty
             };
         }
+
         public static string GetTeamsEndpoint(string gender)
         {
             return $@"{GetTeamGender(gender)}/teams";
+        }
+
+        public static string GetMatchesEndpoint(string gender)
+        {
+            return $@"{GetTeamGender(gender)}/matches";
         }
     }
 }

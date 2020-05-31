@@ -43,8 +43,8 @@
             // 
             // pbPlayer
             // 
-            resources.ApplyResources(this.pbPlayer, "pbPlayer");
             this.pbPlayer.BackgroundImage = global::WindowsFormsProject.Properties.Resources.player_placeholder;
+            resources.ApplyResources(this.pbPlayer, "pbPlayer");
             this.pbPlayer.Name = "pbPlayer";
             this.pbPlayer.TabStop = false;
             // 

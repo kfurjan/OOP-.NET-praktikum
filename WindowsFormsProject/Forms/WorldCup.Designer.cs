@@ -31,15 +31,18 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WorldCup));
             this.cbTeams = new System.Windows.Forms.ComboBox();
             this.menuStripWorldCup = new System.Windows.Forms.MenuStrip();
-            this.rankToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.rankByToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.rankByToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.rankMatchesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.printToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.flpAllPlayers = new System.Windows.Forms.FlowLayoutPanel();
+            this.tabControl = new System.Windows.Forms.TabControl();
+            this.tabPagePlayers = new System.Windows.Forms.TabPage();
             this.flpFavoritePlayers = new System.Windows.Forms.FlowLayoutPanel();
+            this.flpAllPlayers = new System.Windows.Forms.FlowLayoutPanel();
+            this.tabPageRankGoals = new System.Windows.Forms.TabPage();
+            this.tabPageRankCards = new System.Windows.Forms.TabPage();
+            this.tabPageRankAttendances = new System.Windows.Forms.TabPage();
             this.menuStripWorldCup.SuspendLayout();
+            this.tabControl.SuspendLayout();
+            this.tabPagePlayers.SuspendLayout();
             this.SuspendLayout();
             // 
             // cbTeams
@@ -52,35 +55,10 @@
             // menuStripWorldCup
             // 
             this.menuStripWorldCup.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.rankToolStripMenuItem,
             this.printToolStripMenuItem,
             this.settingsToolStripMenuItem});
             resources.ApplyResources(this.menuStripWorldCup, "menuStripWorldCup");
             this.menuStripWorldCup.Name = "menuStripWorldCup";
-            // 
-            // rankToolStripMenuItem
-            // 
-            this.rankToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.rankByToolStripMenuItem,
-            this.rankByToolStripMenuItem1,
-            this.rankMatchesToolStripMenuItem});
-            this.rankToolStripMenuItem.Name = "rankToolStripMenuItem";
-            resources.ApplyResources(this.rankToolStripMenuItem, "rankToolStripMenuItem");
-            // 
-            // rankByToolStripMenuItem
-            // 
-            this.rankByToolStripMenuItem.Name = "rankByToolStripMenuItem";
-            resources.ApplyResources(this.rankByToolStripMenuItem, "rankByToolStripMenuItem");
-            // 
-            // rankByToolStripMenuItem1
-            // 
-            this.rankByToolStripMenuItem1.Name = "rankByToolStripMenuItem1";
-            resources.ApplyResources(this.rankByToolStripMenuItem1, "rankByToolStripMenuItem1");
-            // 
-            // rankMatchesToolStripMenuItem
-            // 
-            this.rankMatchesToolStripMenuItem.Name = "rankMatchesToolStripMenuItem";
-            resources.ApplyResources(this.rankMatchesToolStripMenuItem, "rankMatchesToolStripMenuItem");
             // 
             // printToolStripMenuItem
             // 
@@ -93,22 +71,63 @@
             resources.ApplyResources(this.settingsToolStripMenuItem, "settingsToolStripMenuItem");
             this.settingsToolStripMenuItem.Click += new System.EventHandler(this.settingsToolStripMenuItem_Click);
             // 
-            // flpAllPlayers
+            // tabControl
             // 
-            resources.ApplyResources(this.flpAllPlayers, "flpAllPlayers");
-            this.flpAllPlayers.Name = "flpAllPlayers";
+            this.tabControl.Controls.Add(this.tabPagePlayers);
+            this.tabControl.Controls.Add(this.tabPageRankGoals);
+            this.tabControl.Controls.Add(this.tabPageRankCards);
+            this.tabControl.Controls.Add(this.tabPageRankAttendances);
+            resources.ApplyResources(this.tabControl, "tabControl");
+            this.tabControl.Name = "tabControl";
+            this.tabControl.SelectedIndex = 0;
+            this.tabControl.Tag = "rankCards";
+            // 
+            // tabPagePlayers
+            // 
+            this.tabPagePlayers.Controls.Add(this.flpFavoritePlayers);
+            this.tabPagePlayers.Controls.Add(this.flpAllPlayers);
+            resources.ApplyResources(this.tabPagePlayers, "tabPagePlayers");
+            this.tabPagePlayers.Name = "tabPagePlayers";
+            this.tabPagePlayers.Tag = "players";
+            this.tabPagePlayers.UseVisualStyleBackColor = true;
             // 
             // flpFavoritePlayers
             // 
             resources.ApplyResources(this.flpFavoritePlayers, "flpFavoritePlayers");
+            this.flpFavoritePlayers.BackColor = System.Drawing.Color.PaleTurquoise;
             this.flpFavoritePlayers.Name = "flpFavoritePlayers";
+            // 
+            // flpAllPlayers
+            // 
+            resources.ApplyResources(this.flpAllPlayers, "flpAllPlayers");
+            this.flpAllPlayers.BackColor = System.Drawing.Color.PaleTurquoise;
+            this.flpAllPlayers.Name = "flpAllPlayers";
+            // 
+            // tabPageRankGoals
+            // 
+            resources.ApplyResources(this.tabPageRankGoals, "tabPageRankGoals");
+            this.tabPageRankGoals.Name = "tabPageRankGoals";
+            this.tabPageRankGoals.Tag = "rankGoals";
+            this.tabPageRankGoals.UseVisualStyleBackColor = true;
+            // 
+            // tabPageRankCards
+            // 
+            resources.ApplyResources(this.tabPageRankCards, "tabPageRankCards");
+            this.tabPageRankCards.Name = "tabPageRankCards";
+            this.tabPageRankCards.UseVisualStyleBackColor = true;
+            // 
+            // tabPageRankAttendances
+            // 
+            resources.ApplyResources(this.tabPageRankAttendances, "tabPageRankAttendances");
+            this.tabPageRankAttendances.Name = "tabPageRankAttendances";
+            this.tabPageRankAttendances.Tag = "RankAttendances";
+            this.tabPageRankAttendances.UseVisualStyleBackColor = true;
             // 
             // WorldCup
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.flpFavoritePlayers);
-            this.Controls.Add(this.flpAllPlayers);
+            this.Controls.Add(this.tabControl);
             this.Controls.Add(this.cbTeams);
             this.Controls.Add(this.menuStripWorldCup);
             this.MainMenuStrip = this.menuStripWorldCup;
@@ -116,6 +135,8 @@
             this.Activated += new System.EventHandler(this.WorldCup_Activated);
             this.menuStripWorldCup.ResumeLayout(false);
             this.menuStripWorldCup.PerformLayout();
+            this.tabControl.ResumeLayout(false);
+            this.tabPagePlayers.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -125,13 +146,14 @@
 
         private System.Windows.Forms.ComboBox cbTeams;
         private System.Windows.Forms.MenuStrip menuStripWorldCup;
-        private System.Windows.Forms.ToolStripMenuItem rankToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem rankByToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem rankByToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem rankMatchesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem printToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem settingsToolStripMenuItem;
+        private System.Windows.Forms.TabControl tabControl;
+        private System.Windows.Forms.TabPage tabPagePlayers;
         private System.Windows.Forms.FlowLayoutPanel flpAllPlayers;
+        private System.Windows.Forms.TabPage tabPageRankGoals;
         private System.Windows.Forms.FlowLayoutPanel flpFavoritePlayers;
+        private System.Windows.Forms.TabPage tabPageRankCards;
+        private System.Windows.Forms.TabPage tabPageRankAttendances;
     }
 }

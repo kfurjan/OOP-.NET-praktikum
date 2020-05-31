@@ -119,7 +119,7 @@
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="cbTeams.Location" type="System.Drawing.Point, System.Drawing">
-    <value>231, 37</value>
+    <value>227, 27</value>
   </data>
   <data name="cbTeams.Size" type="System.Drawing.Size, System.Drawing">
     <value>289, 21</value>
@@ -138,33 +138,11 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;cbTeams.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>1</value>
   </data>
   <metadata name="menuStripWorldCup.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
-  <data name="rankToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>45, 20</value>
-  </data>
-  <data name="rankToolStripMenuItem.Text" xml:space="preserve">
-    <value>Rank</value>
-  </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="printToolStripMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
-    <value>Ctrl+P</value>
-  </data>
-  <data name="printToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>44, 20</value>
-  </data>
-  <data name="printToolStripMenuItem.Text" xml:space="preserve">
-    <value>Print</value>
-  </data>
-  <data name="settingsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>61, 20</value>
-  </data>
-  <data name="settingsToolStripMenuItem.Text" xml:space="preserve">
-    <value>Settings</value>
-  </data>
   <data name="menuStripWorldCup.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
@@ -187,64 +165,23 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;menuStripWorldCup.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>2</value>
   </data>
-  <data name="rankByToolStripMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
-    <value>Ctrl+R</value>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="printToolStripMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
+    <value>Ctrl+P</value>
   </data>
-  <data name="rankByToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>225, 22</value>
+  <data name="printToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>44, 20</value>
   </data>
-  <data name="rankByToolStripMenuItem.Text" xml:space="preserve">
-    <value>Rank by goals</value>
+  <data name="printToolStripMenuItem.Text" xml:space="preserve">
+    <value>Print</value>
   </data>
-  <data name="rankByToolStripMenuItem1.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
-    <value>Ctrl+Y</value>
+  <data name="settingsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>61, 20</value>
   </data>
-  <data name="rankByToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>225, 22</value>
-  </data>
-  <data name="rankByToolStripMenuItem1.Text" xml:space="preserve">
-    <value>Rank by yellow cards</value>
-  </data>
-  <data name="rankMatchesToolStripMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
-    <value>Ctrl+M</value>
-  </data>
-  <data name="rankMatchesToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>225, 22</value>
-  </data>
-  <data name="rankMatchesToolStripMenuItem.Text" xml:space="preserve">
-    <value>Rank matches</value>
-  </data>
-  <data name="flpAllPlayers.AutoScroll" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="flpAllPlayers.FlowDirection" type="System.Windows.Forms.FlowDirection, System.Windows.Forms">
-    <value>TopDown</value>
-  </data>
-  <data name="flpAllPlayers.Location" type="System.Drawing.Point, System.Drawing">
-    <value>13, 69</value>
-  </data>
-  <data name="flpAllPlayers.Size" type="System.Drawing.Size, System.Drawing">
-    <value>340, 480</value>
-  </data>
-  <data name="flpAllPlayers.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="flpAllPlayers.WrapContents" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;flpAllPlayers.Name" xml:space="preserve">
-    <value>flpAllPlayers</value>
-  </data>
-  <data name="&gt;&gt;flpAllPlayers.Type" xml:space="preserve">
-    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;flpAllPlayers.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;flpAllPlayers.ZOrder" xml:space="preserve">
-    <value>1</value>
+  <data name="settingsToolStripMenuItem.Text" xml:space="preserve">
+    <value>Settings</value>
   </data>
   <data name="flpFavoritePlayers.AutoScroll" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -253,13 +190,13 @@
     <value>TopDown</value>
   </data>
   <data name="flpFavoritePlayers.Location" type="System.Drawing.Point, System.Drawing">
-    <value>432, 69</value>
+    <value>406, 7</value>
   </data>
   <data name="flpFavoritePlayers.Size" type="System.Drawing.Size, System.Drawing">
-    <value>340, 480</value>
+    <value>340, 456</value>
   </data>
   <data name="flpFavoritePlayers.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
+    <value>1</value>
   </data>
   <data name="flpFavoritePlayers.WrapContents" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -271,9 +208,168 @@
     <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;flpFavoritePlayers.Parent" xml:space="preserve">
-    <value>$this</value>
+    <value>tabPagePlayers</value>
   </data>
   <data name="&gt;&gt;flpFavoritePlayers.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="flpAllPlayers.AutoScroll" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="flpAllPlayers.FlowDirection" type="System.Windows.Forms.FlowDirection, System.Windows.Forms">
+    <value>TopDown</value>
+  </data>
+  <data name="flpAllPlayers.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 7</value>
+  </data>
+  <data name="flpAllPlayers.Size" type="System.Drawing.Size, System.Drawing">
+    <value>340, 456</value>
+  </data>
+  <data name="flpAllPlayers.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="flpAllPlayers.WrapContents" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;flpAllPlayers.Name" xml:space="preserve">
+    <value>flpAllPlayers</value>
+  </data>
+  <data name="&gt;&gt;flpAllPlayers.Type" xml:space="preserve">
+    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;flpAllPlayers.Parent" xml:space="preserve">
+    <value>tabPagePlayers</value>
+  </data>
+  <data name="&gt;&gt;flpAllPlayers.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="tabPagePlayers.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="tabPagePlayers.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="tabPagePlayers.Size" type="System.Drawing.Size, System.Drawing">
+    <value>752, 469</value>
+  </data>
+  <data name="tabPagePlayers.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="tabPagePlayers.Text" xml:space="preserve">
+    <value>Players</value>
+  </data>
+  <data name="&gt;&gt;tabPagePlayers.Name" xml:space="preserve">
+    <value>tabPagePlayers</value>
+  </data>
+  <data name="&gt;&gt;tabPagePlayers.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabPagePlayers.Parent" xml:space="preserve">
+    <value>tabControl</value>
+  </data>
+  <data name="&gt;&gt;tabPagePlayers.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="tabPageRankGoals.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="tabPageRankGoals.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="tabPageRankGoals.Size" type="System.Drawing.Size, System.Drawing">
+    <value>752, 469</value>
+  </data>
+  <data name="tabPageRankGoals.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="tabPageRankGoals.Text" xml:space="preserve">
+    <value>Rank by goals</value>
+  </data>
+  <data name="&gt;&gt;tabPageRankGoals.Name" xml:space="preserve">
+    <value>tabPageRankGoals</value>
+  </data>
+  <data name="&gt;&gt;tabPageRankGoals.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabPageRankGoals.Parent" xml:space="preserve">
+    <value>tabControl</value>
+  </data>
+  <data name="&gt;&gt;tabPageRankGoals.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="tabPageRankCards.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="tabPageRankCards.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="tabPageRankCards.Size" type="System.Drawing.Size, System.Drawing">
+    <value>752, 469</value>
+  </data>
+  <data name="tabPageRankCards.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="tabPageRankCards.Text" xml:space="preserve">
+    <value>Rank by yellow cards</value>
+  </data>
+  <data name="&gt;&gt;tabPageRankCards.Name" xml:space="preserve">
+    <value>tabPageRankCards</value>
+  </data>
+  <data name="&gt;&gt;tabPageRankCards.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabPageRankCards.Parent" xml:space="preserve">
+    <value>tabControl</value>
+  </data>
+  <data name="&gt;&gt;tabPageRankCards.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="tabPageRankAttendances.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="tabPageRankAttendances.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="tabPageRankAttendances.Size" type="System.Drawing.Size, System.Drawing">
+    <value>752, 469</value>
+  </data>
+  <data name="tabPageRankAttendances.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="tabPageRankAttendances.Text" xml:space="preserve">
+    <value>Rank by attendances</value>
+  </data>
+  <data name="&gt;&gt;tabPageRankAttendances.Name" xml:space="preserve">
+    <value>tabPageRankAttendances</value>
+  </data>
+  <data name="&gt;&gt;tabPageRankAttendances.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabPageRankAttendances.Parent" xml:space="preserve">
+    <value>tabControl</value>
+  </data>
+  <data name="&gt;&gt;tabPageRankAttendances.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="tabControl.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 54</value>
+  </data>
+  <data name="tabControl.Size" type="System.Drawing.Size, System.Drawing">
+    <value>760, 495</value>
+  </data>
+  <data name="tabControl.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;tabControl.Name" xml:space="preserve">
+    <value>tabControl</value>
+  </data>
+  <data name="&gt;&gt;tabControl.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabControl.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;tabControl.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
@@ -287,30 +383,6 @@
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>WorldCup</value>
-  </data>
-  <data name="&gt;&gt;rankToolStripMenuItem.Name" xml:space="preserve">
-    <value>rankToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;rankToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;rankByToolStripMenuItem.Name" xml:space="preserve">
-    <value>rankByToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;rankByToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;rankByToolStripMenuItem1.Name" xml:space="preserve">
-    <value>rankByToolStripMenuItem1</value>
-  </data>
-  <data name="&gt;&gt;rankByToolStripMenuItem1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;rankMatchesToolStripMenuItem.Name" xml:space="preserve">
-    <value>rankMatchesToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;rankMatchesToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;printToolStripMenuItem.Name" xml:space="preserve">
     <value>printToolStripMenuItem</value>

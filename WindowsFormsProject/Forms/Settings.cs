@@ -17,10 +17,13 @@ namespace WindowsFormsProject.Forms
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
+            var confirmResult = MessageBox.Show(Resources.Resources.settingsMsgBoxBody, Resources.Resources.settingsMsgBoxTitle, MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            if (confirmResult != DialogResult.OK) return;
+
             try
             {
                 var tournamentType = gbTournamentType.Controls.OfType<RadioButton>()
-                .FirstOrDefault(r => r.Checked)?.Tag.ToString();
+                    .FirstOrDefault(r => r.Checked)?.Tag.ToString();
 
                 var language = gbLanguage.Controls.OfType<RadioButton>()
                     .FirstOrDefault(r => r.Checked)?.Tag.ToString();
@@ -36,13 +39,13 @@ namespace WindowsFormsProject.Forms
 
             if (Application.OpenForms.Count > 1)
             {
-                this.Close();
+                Close();
                 return;
             }
 
-            this.Hide();
+            Hide();
             new WorldCup().ShowDialog();
-            this.Close();
+            Close();
         }
     }
 }

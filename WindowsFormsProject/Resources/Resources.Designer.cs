@@ -61,6 +61,15 @@ namespace WindowsFormsProject.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Loading....
+        /// </summary>
+        internal static string cbTeamsLoading {
+            get {
+                return ResourceManager.GetString("cbTeamsLoading", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Could not retrive data. Please try again!.
         /// </summary>
         internal static string couldNotRetrieveData {
@@ -79,11 +88,47 @@ namespace WindowsFormsProject.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to close application?.
+        /// </summary>
+        internal static string formClosingBody {
+            get {
+                return ResourceManager.GetString("formClosingBody", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Close application.
+        /// </summary>
+        internal static string formColsingTitle {
+            get {
+                return ResourceManager.GetString("formColsingTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to No.
         /// </summary>
         internal static string no {
             get {
                 return ResourceManager.GetString("no", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Change language and tournament type?.
+        /// </summary>
+        internal static string settingsMsgBoxBody {
+            get {
+                return ResourceManager.GetString("settingsMsgBoxBody", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Settings.
+        /// </summary>
+        internal static string settingsMsgBoxTitle {
+            get {
+                return ResourceManager.GetString("settingsMsgBoxTitle", resourceCulture);
             }
         }
         

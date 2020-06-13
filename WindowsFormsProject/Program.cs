@@ -13,7 +13,7 @@ namespace WindowsFormsProject
         [STAThread]
         static void Main()
         {
-            IRepository repository = RepositoryFactory.GetRepository();
+            var repository = RepositoryFactory.GetRepository();
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

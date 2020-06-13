@@ -8,7 +8,7 @@ namespace WindowsFormsProject.UserControls
     {
         #region Properties
 
-        private string _playerName;
+        private readonly string _playerName;
         [Category("PlayerUserControl")]
         public string PlayerName
         {
@@ -16,7 +16,7 @@ namespace WindowsFormsProject.UserControls
             set => lblName.Text = value;
         }
 
-        private string _playerNumber;
+        private readonly string _playerNumber;
         [Category("PlayerUserControl")]
         public string PlayerNumber
         {
@@ -24,7 +24,7 @@ namespace WindowsFormsProject.UserControls
             set => lblNumber.Text = value;
         }
 
-        private string _playerPosition;
+        private readonly string _playerPosition;
         [Category("PlayerUserControl")]
         public string PlayerPosition
         {
@@ -32,7 +32,7 @@ namespace WindowsFormsProject.UserControls
             set => lblPosition.Text = value;
         }
 
-        private string _captain;
+        private readonly string _captain;
         [Category("PlayerUserControl")]
         public string Captain
         {
@@ -40,7 +40,7 @@ namespace WindowsFormsProject.UserControls
             set => lblCaptain.Text = value;
         }
 
-        private Image _image;
+        private readonly Image _image;
         [Category("PlayerUserControl")]
         public Image Image
         {

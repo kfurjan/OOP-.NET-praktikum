@@ -54,6 +54,7 @@
             // 
             // menuStripWorldCup
             // 
+            this.menuStripWorldCup.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStripWorldCup.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.printToolStripMenuItem,
             this.settingsToolStripMenuItem});
@@ -133,6 +134,7 @@
             this.MainMenuStrip = this.menuStripWorldCup;
             this.Name = "WorldCup";
             this.Activated += new System.EventHandler(this.WorldCup_Activated);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.WorldCup_FormClosing);
             this.menuStripWorldCup.ResumeLayout(false);
             this.menuStripWorldCup.PerformLayout();
             this.tabControl.ResumeLayout(false);

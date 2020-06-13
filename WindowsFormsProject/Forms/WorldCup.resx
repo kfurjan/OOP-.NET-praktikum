@@ -119,10 +119,14 @@
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="cbTeams.Location" type="System.Drawing.Point, System.Drawing">
-    <value>227, 27</value>
+    <value>303, 33</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="cbTeams.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
   </data>
   <data name="cbTeams.Size" type="System.Drawing.Size, System.Drawing">
-    <value>289, 21</value>
+    <value>384, 24</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="cbTeams.TabIndex" type="System.Int32, mscorlib">
@@ -143,11 +147,26 @@
   <metadata name="menuStripWorldCup.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
+  <data name="printToolStripMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
+    <value>Ctrl+P</value>
+  </data>
+  <data name="printToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>53, 24</value>
+  </data>
+  <data name="printToolStripMenuItem.Text" xml:space="preserve">
+    <value>Print</value>
+  </data>
+  <data name="settingsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>76, 24</value>
+  </data>
+  <data name="settingsToolStripMenuItem.Text" xml:space="preserve">
+    <value>Settings</value>
+  </data>
   <data name="menuStripWorldCup.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
   <data name="menuStripWorldCup.Size" type="System.Drawing.Size, System.Drawing">
-    <value>784, 24</value>
+    <value>1045, 28</value>
   </data>
   <data name="menuStripWorldCup.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -167,22 +186,6 @@
   <data name="&gt;&gt;menuStripWorldCup.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="printToolStripMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
-    <value>Ctrl+P</value>
-  </data>
-  <data name="printToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>44, 20</value>
-  </data>
-  <data name="printToolStripMenuItem.Text" xml:space="preserve">
-    <value>Print</value>
-  </data>
-  <data name="settingsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>61, 20</value>
-  </data>
-  <data name="settingsToolStripMenuItem.Text" xml:space="preserve">
-    <value>Settings</value>
-  </data>
   <data name="flpFavoritePlayers.AutoScroll" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -190,10 +193,13 @@
     <value>TopDown</value>
   </data>
   <data name="flpFavoritePlayers.Location" type="System.Drawing.Point, System.Drawing">
-    <value>406, 7</value>
+    <value>541, 9</value>
+  </data>
+  <data name="flpFavoritePlayers.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
   </data>
   <data name="flpFavoritePlayers.Size" type="System.Drawing.Size, System.Drawing">
-    <value>340, 456</value>
+    <value>453, 561</value>
   </data>
   <data name="flpFavoritePlayers.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -220,10 +226,13 @@
     <value>TopDown</value>
   </data>
   <data name="flpAllPlayers.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 7</value>
+    <value>9, 9</value>
+  </data>
+  <data name="flpAllPlayers.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
   </data>
   <data name="flpAllPlayers.Size" type="System.Drawing.Size, System.Drawing">
-    <value>340, 456</value>
+    <value>453, 561</value>
   </data>
   <data name="flpAllPlayers.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -244,13 +253,16 @@
     <value>1</value>
   </data>
   <data name="tabPagePlayers.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
+    <value>4, 25</value>
+  </data>
+  <data name="tabPagePlayers.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
   </data>
   <data name="tabPagePlayers.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
+    <value>4, 4, 4, 4</value>
   </data>
   <data name="tabPagePlayers.Size" type="System.Drawing.Size, System.Drawing">
-    <value>752, 469</value>
+    <value>1005, 580</value>
   </data>
   <data name="tabPagePlayers.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -271,13 +283,16 @@
     <value>0</value>
   </data>
   <data name="tabPageRankGoals.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
+    <value>4, 25</value>
+  </data>
+  <data name="tabPageRankGoals.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
   </data>
   <data name="tabPageRankGoals.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
+    <value>4, 4, 4, 4</value>
   </data>
   <data name="tabPageRankGoals.Size" type="System.Drawing.Size, System.Drawing">
-    <value>752, 469</value>
+    <value>1005, 580</value>
   </data>
   <data name="tabPageRankGoals.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -298,13 +313,16 @@
     <value>1</value>
   </data>
   <data name="tabPageRankCards.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
+    <value>4, 25</value>
+  </data>
+  <data name="tabPageRankCards.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
   </data>
   <data name="tabPageRankCards.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
+    <value>4, 4, 4, 4</value>
   </data>
   <data name="tabPageRankCards.Size" type="System.Drawing.Size, System.Drawing">
-    <value>752, 469</value>
+    <value>1005, 580</value>
   </data>
   <data name="tabPageRankCards.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -325,13 +343,16 @@
     <value>2</value>
   </data>
   <data name="tabPageRankAttendances.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
+    <value>4, 25</value>
+  </data>
+  <data name="tabPageRankAttendances.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
   </data>
   <data name="tabPageRankAttendances.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
+    <value>4, 4, 4, 4</value>
   </data>
   <data name="tabPageRankAttendances.Size" type="System.Drawing.Size, System.Drawing">
-    <value>752, 469</value>
+    <value>1005, 580</value>
   </data>
   <data name="tabPageRankAttendances.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -352,10 +373,13 @@
     <value>3</value>
   </data>
   <data name="tabControl.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 54</value>
+    <value>16, 66</value>
+  </data>
+  <data name="tabControl.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
   </data>
   <data name="tabControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>760, 495</value>
+    <value>1013, 609</value>
   </data>
   <data name="tabControl.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -376,10 +400,13 @@
     <value>True</value>
   </metadata>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>6, 13</value>
+    <value>8, 16</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>784, 561</value>
+    <value>1045, 690</value>
+  </data>
+  <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>WorldCup</value>

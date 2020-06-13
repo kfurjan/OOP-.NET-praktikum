@@ -117,14 +117,29 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="cbTeamsLoading" xml:space="preserve">
+    <value>Učitavanje...</value>
+  </data>
   <data name="couldNotRetrieveData" xml:space="preserve">
     <value>Neuspješno dohvaćanje podataka. Molimo pokušajte ponovo!</value>
   </data>
   <data name="dataNotLoaded" xml:space="preserve">
     <value>Podaci se nisu uspjeli učitati</value>
   </data>
+  <data name="formClosingBody" xml:space="preserve">
+    <value>Jeste li sigurni da želite ugasiti aplikaciju?</value>
+  </data>
+  <data name="formColsingTitle" xml:space="preserve">
+    <value>Gašenje aplikacije</value>
+  </data>
   <data name="no" xml:space="preserve">
     <value>Ne</value>
+  </data>
+  <data name="settingsMsgBoxBody" xml:space="preserve">
+    <value>Želite promijeniti jezik i vrstu prvenstva?</value>
+  </data>
+  <data name="settingsMsgBoxTitle" xml:space="preserve">
+    <value>Postavke</value>
   </data>
   <data name="unexpectedErrorOccured" xml:space="preserve">
     <value>Dogodila se neočekivana iznimka!</value>

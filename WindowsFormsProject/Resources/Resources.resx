@@ -136,7 +136,7 @@
     <value>No</value>
   </data>
   <data name="settingsMsgBoxBody" xml:space="preserve">
-    <value>Change language and tournament type?</value>
+    <value>Confirm selected language and tournament type</value>
   </data>
   <data name="settingsMsgBoxTitle" xml:space="preserve">
     <value>Settings</value>

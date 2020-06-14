@@ -115,7 +115,7 @@ namespace WindowsFormsProject.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Change language and tournament type?.
+        ///   Looks up a localized string similar to Confirm selected language and tournament type.
         /// </summary>
         internal static string settingsMsgBoxBody {
             get {

@@ -16,18 +16,68 @@ namespace WindowsFormsProject.Forms
 {
     public partial class WorldCup : Form
     {
+        private bool _formFirstTimeShown = true;
+
         private readonly IApi _api = ApiFactory.GetApi();
         private readonly IRepository _repository = RepositoryFactory.GetRepository();
 
         public WorldCup()
         {
+            SetCulture();
             InitializeComponent();
+        }
+
+        private void settingsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new Settings().ShowDialog();
         }
 
         private void WorldCup_Activated(object sender, EventArgs e)
         {
+            // try loading last selected team saved in settings
+            try
+            {
+                if (_formFirstTimeShown)
+                {
+                    LoadPanelWithPlayersAsync(_repository.GetSelectedTeam());
+                    _formFirstTimeShown = false;
+                }
+            }
+            catch { /* pass */ }
+
             LoadComboBoxWithTeamsAsync();
             SetCulture();
+        }
+
+        private void cbTeams_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            try
+            {
+                var selectedTeam = (sender as ComboBox)?.SelectedItem as Team;
+                flpAllPlayers.Controls.Clear();
+
+                LoadPanelWithPlayersAsync(selectedTeam);
+                _repository.AddSelectedTeamToSettings(selectedTeam?.Country);
+            }
+            catch (Exception ex) when (ex is IOException || ex is ArgumentNullException)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        private void WorldCup_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            var result = MessageBox.Show(
+                Resources.Resources.formClosingBody,
+                Resources.Resources.formColsingTitle,
+                MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+
+            e.Cancel = result == DialogResult.Cancel;
+        }
+
+        private void SetCulture()
+        {
+            var language = _repository.GetSelectedLanguage();
+            CultureSetter.SetFormCulture(language, GetType(), Controls);
         }
 
         private async void LoadComboBoxWithTeamsAsync()
@@ -37,7 +87,7 @@ namespace WindowsFormsProject.Forms
             {
                 cbTeams.Text = Resources.Resources.cbTeamsLoading;
 
-                var teamGender = _repository.LoadSettings().Split('|')[0];
+                var teamGender = _repository.GetTeamGender();
                 var endpoint = EndpointBuilder.GetTeamsEndpoint(teamGender);
 
                 var teams = await _api.GetDataAsync<IList<Team>>(endpoint);
@@ -45,27 +95,34 @@ namespace WindowsFormsProject.Forms
 
                 cbTeams.Text = string.Empty;
             }
-            catch (Exception ex) when (ex is IOException || ex is JsonSerializationException || ex is JsonReaderException)
+            catch (Exception ex) when (ex is IOException
+                                       || ex is JsonReaderException
+                                       || ex is ArgumentNullException)
             {
-                MessageBox.Show(Resources.Resources.couldNotRetrieveData);
+                MessageBox.Show(Resources.Resources.couldNotRetrieveData, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-        private async void LoadPanelWithPlayersAsync(Team team)
+        private async void LoadPanelWithPlayersAsync(dynamic team)
         {
             try
             {
+                var country = team is Team t ? t.Country : team as string;
+
+                // loading animations
                 var busyIndicator = new BusyIndicator();
                 busyIndicator.Show(flpAllPlayers);
 
-                var teamGender = _repository.LoadSettings().Split('|')[0];
+                // get API data
+                var teamGender = _repository.GetTeamGender();
                 var endpoint = EndpointBuilder.GetMatchesEndpoint(teamGender);
-
                 var matches = await _api.GetDataAsync<IList<Match>>(endpoint);
-                var match = matches?.FirstOrDefault(m => m.HomeTeamCountry == team?.Country);
 
+                // find all players for selected team
+                var match = matches?.FirstOrDefault(m => m.HomeTeamCountry == country);
                 var players = match?.HomeTeamStatistics.StartingEleven.Union(match.HomeTeamStatistics.Substitutes).ToList();
 
+                // load all players to Flow Layout Panel
                 players?.ForEach(p =>
                 {
                     flpAllPlayers.Controls.Add(new PlayerUserControl
@@ -79,37 +136,12 @@ namespace WindowsFormsProject.Forms
 
                 busyIndicator.Hide();
             }
-            catch (Exception ex) when (ex is IOException || ex is ArgumentException || ex is JsonReaderException)
+            catch (Exception ex) when (ex is IOException
+                                       || ex is ArgumentNullException
+                                       || ex is JsonReaderException)
             {
-                MessageBox.Show(Resources.Resources.dataNotLoaded);
+                MessageBox.Show(Resources.Resources.dataNotLoaded, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
-
-        private void SetCulture()
-        {
-            var language = _repository.LoadSettings().Split('|')[1];
-            CultureSetter.SetFormCulture(language, GetType(), Controls);
-        }
-
-        private void settingsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            new Settings().ShowDialog();
-        }
-
-        private void cbTeams_SelectionChangeCommitted(object sender, EventArgs e)
-        {
-            flpAllPlayers.Controls.Clear();
-            LoadPanelWithPlayersAsync((sender as ComboBox)?.SelectedItem as Team);
-        }
-
-        private void WorldCup_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            var result = MessageBox.Show(
-                Resources.Resources.formClosingBody,
-                Resources.Resources.formColsingTitle,
-                MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-
-            e.Cancel = result == DialogResult.Cancel;
         }
     }
 }

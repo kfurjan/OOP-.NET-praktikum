@@ -103,6 +103,7 @@
             this.Controls.Add(this.lblNameText);
             this.Controls.Add(this.pbPlayer);
             this.Name = "PlayerUserControl";
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PlayerUserControl_MouseDown);
             ((System.ComponentModel.ISupportInitialize)(this.pbPlayer)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -25,6 +25,13 @@ namespace WindowsFormsProject.Forms
         {
             SetCulture();
             InitializeComponent();
+            InitializeDragAndDrop();
+        }
+
+        private void InitializeDragAndDrop()
+        {
+            flpAllPlayers.AllowDrop = true;
+            flpFavoritePlayers.AllowDrop = true;
         }
 
         private void settingsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -130,7 +137,8 @@ namespace WindowsFormsProject.Forms
                         PlayerName = p.Name,
                         PlayerNumber = p.ShirtNumber.ToString(),
                         PlayerPosition = p.Position.ToString(),
-                        Captain = p.Captain ? Resources.Resources.yes : Resources.Resources.no
+                        Captain = p.Captain ? Resources.Resources.yes : Resources.Resources.no,
+                        Name = $"{p.Name} {p.ShirtNumber.ToString()}"
                     });
                 });
 
@@ -141,6 +149,29 @@ namespace WindowsFormsProject.Forms
                                        || ex is JsonReaderException)
             {
                 MessageBox.Show(Resources.Resources.dataNotLoaded, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void flpFavoritePlayers_DragDrop(object sender, DragEventArgs e)
+        {
+            var controlName = e.Data.GetData(typeof(string)) as string;
+            var userControl = Controls.Find(controlName, true).FirstOrDefault();
+            if (userControl != null && ((PlayerUserControl)userControl).IsSelected)
+            {
+                userControl.Parent.Controls.Remove(userControl);
+                ((FlowLayoutPanel)sender).Controls.Add(userControl);
+                ((PlayerUserControl)userControl).IsSelected = false;
+            }
+            cbTeams.Text = flpAllPlayers.Controls.OfType<PlayerUserControl>().Count(c => c.IsSelected).ToString();
+        }
+
+        private void flpFavoritePlayers_DragEnter(object sender, DragEventArgs e)
+        {
+            var controlName = e.Data.GetData(typeof(string)) as string;
+            var userControl = Controls.Find(controlName, true).FirstOrDefault();
+            if (userControl != null && ((PlayerUserControl)userControl).IsSelected)
+            {
+                e.Effect = DragDropEffects.Move;
             }
         }
     }

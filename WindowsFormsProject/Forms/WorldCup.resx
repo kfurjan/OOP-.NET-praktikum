@@ -166,7 +166,7 @@
     <value>0, 0</value>
   </data>
   <data name="menuStripWorldCup.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1045, 28</value>
+    <value>1045, 30</value>
   </data>
   <data name="menuStripWorldCup.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>

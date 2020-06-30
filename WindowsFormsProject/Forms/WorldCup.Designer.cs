@@ -97,6 +97,8 @@
             resources.ApplyResources(this.flpFavoritePlayers, "flpFavoritePlayers");
             this.flpFavoritePlayers.BackColor = System.Drawing.Color.PaleTurquoise;
             this.flpFavoritePlayers.Name = "flpFavoritePlayers";
+            this.flpFavoritePlayers.DragDrop += new System.Windows.Forms.DragEventHandler(this.flpFavoritePlayers_DragDrop);
+            this.flpFavoritePlayers.DragEnter += new System.Windows.Forms.DragEventHandler(this.flpFavoritePlayers_DragEnter);
             // 
             // flpAllPlayers
             // 

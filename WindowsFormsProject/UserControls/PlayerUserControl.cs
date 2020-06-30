@@ -48,10 +48,29 @@ namespace WindowsFormsProject.UserControls
             set => pbPlayer.Image = value;
         }
 
+        private bool _isSelected;
+        [Category("PlayerUserControl")]
+        public bool IsSelected
+        {
+            get => _isSelected;
+            set
+            {
+                _isSelected = value;
+                BackColor = IsSelected ? Color.Blue : Color.Gainsboro;
+            }
+        }
+
         #endregion
         public PlayerUserControl()
         {
             InitializeComponent();
+        }
+
+        private void PlayerUserControl_MouseDown(object sender, MouseEventArgs e)
+        {
+            IsSelected = true;
+            var control = sender as Control;
+            DoDragDrop(control?.Name, DragDropEffects.Move);
         }
     }
 }

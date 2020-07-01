@@ -38,11 +38,15 @@
             this.flpFavoritePlayers = new System.Windows.Forms.FlowLayoutPanel();
             this.flpAllPlayers = new System.Windows.Forms.FlowLayoutPanel();
             this.tabPageRankGoals = new System.Windows.Forms.TabPage();
+            this.flpRankedByGoals = new System.Windows.Forms.FlowLayoutPanel();
             this.tabPageRankCards = new System.Windows.Forms.TabPage();
+            this.flpRankByYellowCards = new System.Windows.Forms.FlowLayoutPanel();
             this.tabPageRankAttendances = new System.Windows.Forms.TabPage();
             this.menuStripWorldCup.SuspendLayout();
             this.tabControl.SuspendLayout();
             this.tabPagePlayers.SuspendLayout();
+            this.tabPageRankGoals.SuspendLayout();
+            this.tabPageRankCards.SuspendLayout();
             this.SuspendLayout();
             // 
             // cbTeams
@@ -82,6 +86,7 @@
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
             this.tabControl.Tag = "rankCards";
+            this.tabControl.Selected += new System.Windows.Forms.TabControlEventHandler(this.tabControl_Selected);
             // 
             // tabPagePlayers
             // 
@@ -108,16 +113,31 @@
             // 
             // tabPageRankGoals
             // 
+            this.tabPageRankGoals.Controls.Add(this.flpRankedByGoals);
             resources.ApplyResources(this.tabPageRankGoals, "tabPageRankGoals");
             this.tabPageRankGoals.Name = "tabPageRankGoals";
             this.tabPageRankGoals.Tag = "rankGoals";
             this.tabPageRankGoals.UseVisualStyleBackColor = true;
             // 
+            // flpRankedByGoals
+            // 
+            resources.ApplyResources(this.flpRankedByGoals, "flpRankedByGoals");
+            this.flpRankedByGoals.BackColor = System.Drawing.Color.PaleTurquoise;
+            this.flpRankedByGoals.Name = "flpRankedByGoals";
+            // 
             // tabPageRankCards
             // 
+            this.tabPageRankCards.Controls.Add(this.flpRankByYellowCards);
             resources.ApplyResources(this.tabPageRankCards, "tabPageRankCards");
             this.tabPageRankCards.Name = "tabPageRankCards";
+            this.tabPageRankCards.Tag = "rankCards";
             this.tabPageRankCards.UseVisualStyleBackColor = true;
+            // 
+            // flpRankByYellowCards
+            // 
+            resources.ApplyResources(this.flpRankByYellowCards, "flpRankByYellowCards");
+            this.flpRankByYellowCards.BackColor = System.Drawing.Color.PaleTurquoise;
+            this.flpRankByYellowCards.Name = "flpRankByYellowCards";
             // 
             // tabPageRankAttendances
             // 
@@ -141,6 +161,8 @@
             this.menuStripWorldCup.PerformLayout();
             this.tabControl.ResumeLayout(false);
             this.tabPagePlayers.ResumeLayout(false);
+            this.tabPageRankGoals.ResumeLayout(false);
+            this.tabPageRankCards.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -159,5 +181,7 @@
         private System.Windows.Forms.FlowLayoutPanel flpFavoritePlayers;
         private System.Windows.Forms.TabPage tabPageRankCards;
         private System.Windows.Forms.TabPage tabPageRankAttendances;
+        private System.Windows.Forms.FlowLayoutPanel flpRankedByGoals;
+        private System.Windows.Forms.FlowLayoutPanel flpRankByYellowCards;
     }
 }

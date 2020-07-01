@@ -119,6 +119,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\PlayerUserControl.hr-HR.resx">
+      <DependentUpon>PlayerUserControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\PlayerUserControl.hr.resx">
       <DependentUpon>PlayerUserControl.cs</DependentUpon>
     </EmbeddedResource>

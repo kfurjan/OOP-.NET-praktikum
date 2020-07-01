@@ -118,30 +118,6 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="lblNameText.Size" type="System.Drawing.Size, System.Drawing">
-    <value>27, 13</value>
-  </data>
-  <data name="lblNameText.Text" xml:space="preserve">
-    <value>Ime:</value>
-  </data>
-  <data name="lblNumberText.Size" type="System.Drawing.Size, System.Drawing">
-    <value>28, 13</value>
-  </data>
-  <data name="lblNumberText.Text" xml:space="preserve">
-    <value>Broj:</value>
-  </data>
-  <data name="lblPositionText.Size" type="System.Drawing.Size, System.Drawing">
-    <value>46, 13</value>
-  </data>
-  <data name="lblPositionText.Text" xml:space="preserve">
-    <value>Pozicija:</value>
-  </data>
-  <data name="lblCaptainText.Size" type="System.Drawing.Size, System.Drawing">
-    <value>50, 13</value>
-  </data>
-  <data name="lblCaptainText.Text" xml:space="preserve">
-    <value>Kapetan:</value>
-  </data>
   <data name="loadImagesToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>180, 22</value>
   </data>

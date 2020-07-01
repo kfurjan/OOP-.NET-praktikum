@@ -1,6 +1,7 @@
 ﻿using DataAccessLayer.Api;
 using DataAccessLayer.Models;
 using DataAccessLayer.Models.Matches;
+using DataAccessLayer.Models.Matches.Enums;
 using DataAccessLayer.Repository;
 using DataAccessLayer.Utils;
 using Newtonsoft.Json;
@@ -20,6 +21,9 @@ namespace WindowsFormsProject.Forms
 
         private readonly IApi _api = ApiFactory.GetApi();
         private readonly IRepository _repository = RepositoryFactory.GetRepository();
+
+        private readonly IDictionary<string, int> _goals = new Dictionary<string, int>();
+        private readonly IDictionary<string, int> _yellowCards = new Dictionary<string, int>();
 
         public WorldCup()
         {
@@ -102,9 +106,7 @@ namespace WindowsFormsProject.Forms
 
                 cbTeams.Text = string.Empty;
             }
-            catch (Exception ex) when (ex is IOException
-                                       || ex is JsonReaderException
-                                       || ex is ArgumentNullException)
+            catch (Exception ex) when (ex is IOException || ex is JsonReaderException || ex is ArgumentNullException)
             {
                 MessageBox.Show(Resources.Resources.couldNotRetrieveData, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -114,6 +116,9 @@ namespace WindowsFormsProject.Forms
         {
             try
             {
+                _goals.Clear();
+                _yellowCards.Clear();
+
                 var country = team is Team t ? t.Country : team as string;
 
                 // loading animations
@@ -129,7 +134,7 @@ namespace WindowsFormsProject.Forms
                 var match = matches?.FirstOrDefault(m => m.HomeTeamCountry == country);
                 var players = match?.HomeTeamStatistics.StartingEleven.Union(match.HomeTeamStatistics.Substitutes).ToList();
 
-                // load all players to Flow Layout Panel
+                // load all players to FlowLayoutPanel
                 players?.ForEach(p =>
                 {
                     flpAllPlayers.Controls.Add(new PlayerUserControl
@@ -140,13 +145,32 @@ namespace WindowsFormsProject.Forms
                         Captain = p.Captain ? Resources.Resources.yes : Resources.Resources.no,
                         Name = $"{p.Name} {p.ShirtNumber.ToString()}"
                     });
+                    _goals.Add(p.Name, 0);
+                    _yellowCards.Add(p.Name, 0);
                 });
 
                 busyIndicator.Hide();
+
+                foreach (var m in matches.Where(m => m.HomeTeamCountry == match?.HomeTeamCountry))
+                {
+                    foreach (var teamEvent in m.HomeTeamEvents)
+                    {
+                        switch (teamEvent.TypeOfEvent)
+                        {
+                            case TypeOfEvent.Goal:
+                                _goals[teamEvent.Player] += 1;
+                                break;
+                            case TypeOfEvent.YellowCard:
+                                _yellowCards[teamEvent.Player] += 1;
+                                break;
+                            case TypeOfEvent.YellowCardSecond:
+                                _yellowCards[teamEvent.Player] += 1;
+                                break;
+                        }
+                    }
+                }
             }
-            catch (Exception ex) when (ex is IOException
-                                       || ex is ArgumentNullException
-                                       || ex is JsonReaderException)
+            catch (Exception ex) when (ex is IOException || ex is ArgumentNullException || ex is JsonReaderException)
             {
                 MessageBox.Show(Resources.Resources.dataNotLoaded, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -172,6 +196,33 @@ namespace WindowsFormsProject.Forms
             if (userControl != null && ((PlayerUserControl)userControl).IsSelected)
             {
                 e.Effect = DragDropEffects.Move;
+            }
+        }
+
+        private void tabControl_Deselecting(object sender, TabControlCancelEventArgs e)
+        {
+            flpRankedByGoals.Controls.Clear();
+            flpRankByYellowCards.Controls.Clear();
+        }
+
+        private void tabControl_Selected(object sender, TabControlEventArgs e)
+        {
+            foreach (var keyValuePair in _yellowCards.OrderByDescending(kvp => kvp.Value))
+            {
+                flpRankedByGoals.Controls.Add(new PlayerUserControl()
+                {
+                    PlayerName = keyValuePair.Key,
+                    PlayerNumber = keyValuePair.Value.ToString()
+                });
+            }
+
+            foreach (var keyValuePair in _goals.OrderByDescending(kvp => kvp.Value))
+            {
+                flpRankedByGoals.Controls.Add(new PlayerUserControl()
+                {
+                    PlayerName = keyValuePair.Key,
+                    PlayerNumber = keyValuePair.Value.ToString()
+                });
             }
         }
     }

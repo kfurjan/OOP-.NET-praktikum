@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PlayerUserControl));
             this.pbPlayer = new System.Windows.Forms.PictureBox();
             this.lblNameText = new System.Windows.Forms.Label();
@@ -38,13 +39,17 @@
             this.lblNumber = new System.Windows.Forms.Label();
             this.lblPosition = new System.Windows.Forms.Label();
             this.lblCaptain = new System.Windows.Forms.Label();
+            this.contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.loadImagesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.favoritePlyaerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.pbPlayer)).BeginInit();
+            this.contextMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // pbPlayer
             // 
-            this.pbPlayer.BackgroundImage = global::WindowsFormsProject.Properties.Resources.player_placeholder;
             resources.ApplyResources(this.pbPlayer, "pbPlayer");
+            this.pbPlayer.BackgroundImage = global::WindowsFormsProject.Properties.Resources.player_placeholder;
             this.pbPlayer.Name = "pbPlayer";
             this.pbPlayer.TabStop = false;
             // 
@@ -88,6 +93,25 @@
             resources.ApplyResources(this.lblCaptain, "lblCaptain");
             this.lblCaptain.Name = "lblCaptain";
             // 
+            // contextMenuStrip
+            // 
+            resources.ApplyResources(this.contextMenuStrip, "contextMenuStrip");
+            this.contextMenuStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.contextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.loadImagesToolStripMenuItem,
+            this.favoritePlyaerToolStripMenuItem});
+            this.contextMenuStrip.Name = "contextMenuStrip";
+            // 
+            // loadImagesToolStripMenuItem
+            // 
+            resources.ApplyResources(this.loadImagesToolStripMenuItem, "loadImagesToolStripMenuItem");
+            this.loadImagesToolStripMenuItem.Name = "loadImagesToolStripMenuItem";
+            // 
+            // favoritePlyaerToolStripMenuItem
+            // 
+            resources.ApplyResources(this.favoritePlyaerToolStripMenuItem, "favoritePlyaerToolStripMenuItem");
+            this.favoritePlyaerToolStripMenuItem.Name = "favoritePlyaerToolStripMenuItem";
+            // 
             // PlayerUserControl
             // 
             resources.ApplyResources(this, "$this");
@@ -105,6 +129,7 @@
             this.Name = "PlayerUserControl";
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PlayerUserControl_MouseDown);
             ((System.ComponentModel.ISupportInitialize)(this.pbPlayer)).EndInit();
+            this.contextMenuStrip.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -121,5 +146,8 @@
         private System.Windows.Forms.Label lblNumber;
         private System.Windows.Forms.Label lblPosition;
         private System.Windows.Forms.Label lblCaptain;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip;
+        private System.Windows.Forms.ToolStripMenuItem loadImagesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem favoritePlyaerToolStripMenuItem;
     }
 }

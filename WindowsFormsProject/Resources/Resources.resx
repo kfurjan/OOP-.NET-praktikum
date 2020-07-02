@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="cards" xml:space="preserve">
+    <value>Cards:</value>
+  </data>
   <data name="cbTeamsLoading" xml:space="preserve">
     <value>Loading...</value>
   </data>
@@ -131,6 +134,9 @@
   </data>
   <data name="formColsingTitle" xml:space="preserve">
     <value>Close application</value>
+  </data>
+  <data name="goals" xml:space="preserve">
+    <value>Goals:</value>
   </data>
   <data name="no" xml:space="preserve">
     <value>No</value>

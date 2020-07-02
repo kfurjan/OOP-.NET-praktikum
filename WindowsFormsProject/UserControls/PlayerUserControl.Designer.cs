@@ -48,8 +48,8 @@
             // 
             // pbPlayer
             // 
-            resources.ApplyResources(this.pbPlayer, "pbPlayer");
             this.pbPlayer.BackgroundImage = global::WindowsFormsProject.Properties.Resources.player_placeholder;
+            resources.ApplyResources(this.pbPlayer, "pbPlayer");
             this.pbPlayer.Name = "pbPlayer";
             this.pbPlayer.TabStop = false;
             // 
@@ -95,22 +95,22 @@
             // 
             // contextMenuStrip
             // 
-            resources.ApplyResources(this.contextMenuStrip, "contextMenuStrip");
             this.contextMenuStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.contextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.loadImagesToolStripMenuItem,
             this.favoritePlyaerToolStripMenuItem});
             this.contextMenuStrip.Name = "contextMenuStrip";
+            resources.ApplyResources(this.contextMenuStrip, "contextMenuStrip");
             // 
             // loadImagesToolStripMenuItem
             // 
-            resources.ApplyResources(this.loadImagesToolStripMenuItem, "loadImagesToolStripMenuItem");
             this.loadImagesToolStripMenuItem.Name = "loadImagesToolStripMenuItem";
+            resources.ApplyResources(this.loadImagesToolStripMenuItem, "loadImagesToolStripMenuItem");
             // 
             // favoritePlyaerToolStripMenuItem
             // 
-            resources.ApplyResources(this.favoritePlyaerToolStripMenuItem, "favoritePlyaerToolStripMenuItem");
             this.favoritePlyaerToolStripMenuItem.Name = "favoritePlyaerToolStripMenuItem";
+            resources.ApplyResources(this.favoritePlyaerToolStripMenuItem, "favoritePlyaerToolStripMenuItem");
             // 
             // PlayerUserControl
             // 

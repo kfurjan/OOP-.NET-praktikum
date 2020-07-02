@@ -1,5 +1,4 @@
-﻿using System;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -58,6 +57,42 @@ namespace WindowsFormsProject.UserControls
             {
                 _isSelected = value;
                 BackColor = IsSelected ? Color.Blue : Color.Gainsboro;
+            }
+        }
+
+        private bool _positionVisible;
+        [Category("PlayerUserControl")]
+        public bool PositionVisible
+        {
+            get => _positionVisible;
+            set
+            {
+                _positionVisible = value;
+                lblPositionText.Visible = PositionVisible;
+            }
+        }
+
+        private bool _captainVisible;
+        [Category("PlayerUserControl")]
+        public bool CaptainVisible
+        {
+            get => _captainVisible;
+            set
+            {
+                _captainVisible = value;
+                lblCaptainText.Visible = CaptainVisible;
+            }
+        }
+
+        private string _customText;
+        [Category("PlayerUserControl")]
+        public string CustomText
+        {
+            get => _customText;
+            set
+            {
+                _customText = value;
+                lblNumberText.Text = CustomText;
             }
         }
 

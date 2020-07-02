@@ -117,40 +117,41 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="cards" xml:space="preserve">
-    <value>Kartoni:</value>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="lblLocationText.Size" type="System.Drawing.Size, System.Drawing">
+    <value>64, 17</value>
   </data>
-  <data name="cbTeamsLoading" xml:space="preserve">
-    <value>Učitavanje...</value>
+  <data name="lblLocationText.Text" xml:space="preserve">
+    <value>Lokacija:</value>
   </data>
-  <data name="couldNotRetrieveData" xml:space="preserve">
-    <value>Neuspješno dohvaćanje podataka. Molimo pokušajte ponovo!</value>
+  <data name="lblAttendancesText.Size" type="System.Drawing.Size, System.Drawing">
+    <value>94, 21</value>
   </data>
-  <data name="dataNotLoaded" xml:space="preserve">
-    <value>Podaci se nisu uspjeli učitati</value>
+  <data name="lblAttendancesText.Text" xml:space="preserve">
+    <value>Posjetitelji:</value>
   </data>
-  <data name="formClosingBody" xml:space="preserve">
-    <value>Jeste li sigurni da želite ugasiti aplikaciju?</value>
+  <data name="lblHomeTeamText.Size" type="System.Drawing.Size, System.Drawing">
+    <value>84, 21</value>
   </data>
-  <data name="formColsingTitle" xml:space="preserve">
-    <value>Gašenje aplikacije</value>
+  <data name="lblHomeTeamText.Text" xml:space="preserve">
+    <value>Domaćin:</value>
   </data>
-  <data name="goals" xml:space="preserve">
-    <value>Golovi:</value>
+  <data name="lblAwayTeamText.Size" type="System.Drawing.Size, System.Drawing">
+    <value>53, 21</value>
   </data>
-  <data name="no" xml:space="preserve">
-    <value>Ne</value>
+  <data name="lblAwayTeamText.Text" xml:space="preserve">
+    <value>Gost:</value>
   </data>
-  <data name="settingsMsgBoxBody" xml:space="preserve">
-    <value>Želite promijeniti jezik i vrstu prvenstva?</value>
+  <data name="lblLocation.Size" type="System.Drawing.Size, System.Drawing">
+    <value>0, 17</value>
   </data>
-  <data name="settingsMsgBoxTitle" xml:space="preserve">
-    <value>Postavke</value>
+  <data name="lblAttendances.Size" type="System.Drawing.Size, System.Drawing">
+    <value>0, 17</value>
   </data>
-  <data name="unexpectedErrorOccured" xml:space="preserve">
-    <value>Dogodila se neočekivana iznimka!</value>
+  <data name="lblHomeTeam.Size" type="System.Drawing.Size, System.Drawing">
+    <value>0, 17</value>
   </data>
-  <data name="yes" xml:space="preserve">
-    <value>Da</value>
+  <data name="lblAwayTeam.Size" type="System.Drawing.Size, System.Drawing">
+    <value>0, 17</value>
   </data>
 </root>

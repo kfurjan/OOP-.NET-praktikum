@@ -42,11 +42,13 @@
             this.tabPageRankCards = new System.Windows.Forms.TabPage();
             this.flpRankByYellowCards = new System.Windows.Forms.FlowLayoutPanel();
             this.tabPageRankAttendances = new System.Windows.Forms.TabPage();
+            this.flpRankByAttendances = new System.Windows.Forms.FlowLayoutPanel();
             this.menuStripWorldCup.SuspendLayout();
             this.tabControl.SuspendLayout();
             this.tabPagePlayers.SuspendLayout();
             this.tabPageRankGoals.SuspendLayout();
             this.tabPageRankCards.SuspendLayout();
+            this.tabPageRankAttendances.SuspendLayout();
             this.SuspendLayout();
             // 
             // cbTeams
@@ -87,6 +89,7 @@
             this.tabControl.SelectedIndex = 0;
             this.tabControl.Tag = "rankCards";
             this.tabControl.Selected += new System.Windows.Forms.TabControlEventHandler(this.tabControl_Selected);
+            this.tabControl.Deselecting += new System.Windows.Forms.TabControlCancelEventHandler(this.tabControl_Deselecting);
             // 
             // tabPagePlayers
             // 
@@ -141,10 +144,17 @@
             // 
             // tabPageRankAttendances
             // 
+            this.tabPageRankAttendances.Controls.Add(this.flpRankByAttendances);
             resources.ApplyResources(this.tabPageRankAttendances, "tabPageRankAttendances");
             this.tabPageRankAttendances.Name = "tabPageRankAttendances";
             this.tabPageRankAttendances.Tag = "RankAttendances";
             this.tabPageRankAttendances.UseVisualStyleBackColor = true;
+            // 
+            // flpRankByAttendances
+            // 
+            resources.ApplyResources(this.flpRankByAttendances, "flpRankByAttendances");
+            this.flpRankByAttendances.BackColor = System.Drawing.Color.PaleTurquoise;
+            this.flpRankByAttendances.Name = "flpRankByAttendances";
             // 
             // WorldCup
             // 
@@ -163,6 +173,7 @@
             this.tabPagePlayers.ResumeLayout(false);
             this.tabPageRankGoals.ResumeLayout(false);
             this.tabPageRankCards.ResumeLayout(false);
+            this.tabPageRankAttendances.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -183,5 +194,6 @@
         private System.Windows.Forms.TabPage tabPageRankAttendances;
         private System.Windows.Forms.FlowLayoutPanel flpRankedByGoals;
         private System.Windows.Forms.FlowLayoutPanel flpRankByYellowCards;
+        private System.Windows.Forms.FlowLayoutPanel flpRankByAttendances;
     }
 }

@@ -61,6 +61,15 @@ namespace WindowsFormsProject.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cards:.
+        /// </summary>
+        internal static string cards {
+            get {
+                return ResourceManager.GetString("cards", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Loading....
         /// </summary>
         internal static string cbTeamsLoading {
@@ -102,6 +111,15 @@ namespace WindowsFormsProject.Resources {
         internal static string formColsingTitle {
             get {
                 return ResourceManager.GetString("formColsingTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Goals:.
+        /// </summary>
+        internal static string goals {
+            get {
+                return ResourceManager.GetString("goals", resourceCulture);
             }
         }
         

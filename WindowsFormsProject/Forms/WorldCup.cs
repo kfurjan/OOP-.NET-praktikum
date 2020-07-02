@@ -118,10 +118,11 @@ namespace WindowsFormsProject.Forms
             {
                 _goals.Clear();
                 _yellowCards.Clear();
+                flpRankByAttendances.Controls.Clear();
 
                 var country = team is Team t ? t.Country : team as string;
 
-                // loading animations
+                // show loading animation
                 var busyIndicator = new BusyIndicator();
                 busyIndicator.Show(flpAllPlayers);
 
@@ -149,26 +150,46 @@ namespace WindowsFormsProject.Forms
                     _yellowCards.Add(p.Name, 0);
                 });
 
-                busyIndicator.Hide();
-
-                foreach (var m in matches.Where(m => m.HomeTeamCountry == match?.HomeTeamCountry))
-                {
-                    foreach (var teamEvent in m.HomeTeamEvents)
+                // Get goals and yellow cards per each player
+                matches?
+                    .Where(m => m.HomeTeamCountry == match?.HomeTeamCountry)
+                    .ToList()
+                    .ForEach(m =>
                     {
-                        switch (teamEvent.TypeOfEvent)
+                        m.HomeTeamEvents.ToList().ForEach(te =>
                         {
-                            case TypeOfEvent.Goal:
-                                _goals[teamEvent.Player] += 1;
-                                break;
-                            case TypeOfEvent.YellowCard:
-                                _yellowCards[teamEvent.Player] += 1;
-                                break;
-                            case TypeOfEvent.YellowCardSecond:
-                                _yellowCards[teamEvent.Player] += 1;
-                                break;
-                        }
-                    }
-                }
+                            switch (te.TypeOfEvent)
+                            {
+                                case TypeOfEvent.Goal:
+                                    _goals[te.Player] += 1;
+                                    break;
+                                case TypeOfEvent.YellowCard:
+                                    _yellowCards[te.Player] += 1;
+                                    break;
+                                case TypeOfEvent.YellowCardSecond:
+                                    _yellowCards[te.Player] += 1;
+                                    break;
+                            }
+                        });
+                    });
+
+                // Get all matches for selected country ordered by attendance
+                matches?
+                    .Where(m => m.HomeTeamCountry == match?.HomeTeamCountry || m.AwayTeamCountry == match?.HomeTeamCountry)
+                    .OrderByDescending(m => m.Attendance)
+                    .ToList()
+                    .ForEach(m =>
+                    {
+                        flpRankByAttendances.Controls.Add(new MatchUserControl
+                        {
+                            Location = m.Location,
+                            Attendances = m.Attendance.ToString(),
+                            HomeTeam = m.HomeTeamCountry,
+                            AwayTeam = m.AwayTeamCountry
+                        });
+                    });
+
+                busyIndicator.Hide();
             }
             catch (Exception ex) when (ex is IOException || ex is ArgumentNullException || ex is JsonReaderException)
             {
@@ -207,23 +228,29 @@ namespace WindowsFormsProject.Forms
 
         private void tabControl_Selected(object sender, TabControlEventArgs e)
         {
-            foreach (var keyValuePair in _yellowCards.OrderByDescending(kvp => kvp.Value))
+            _goals.OrderByDescending(kvp => kvp.Value).ToList().ForEach(kvp =>
             {
-                flpRankedByGoals.Controls.Add(new PlayerUserControl()
+                flpRankedByGoals.Controls.Add(new PlayerUserControl
                 {
-                    PlayerName = keyValuePair.Key,
-                    PlayerNumber = keyValuePair.Value.ToString()
+                    PlayerName = kvp.Key,
+                    PlayerNumber = kvp.Value.ToString(),
+                    PositionVisible = false,
+                    CaptainVisible = false,
+                    CustomText = Resources.Resources.goals
                 });
-            }
+            });
 
-            foreach (var keyValuePair in _goals.OrderByDescending(kvp => kvp.Value))
+            _yellowCards.OrderByDescending(kvp => kvp.Value).ToList().ForEach(kvp =>
             {
-                flpRankedByGoals.Controls.Add(new PlayerUserControl()
+                flpRankByYellowCards.Controls.Add(new PlayerUserControl
                 {
-                    PlayerName = keyValuePair.Key,
-                    PlayerNumber = keyValuePair.Value.ToString()
+                    PlayerName = kvp.Key,
+                    PlayerNumber = kvp.Value.ToString(),
+                    PositionVisible = false,
+                    CaptainVisible = false,
+                    CustomText = Resources.Resources.cards
                 });
-            }
+            });
         }
     }
 }

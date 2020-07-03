@@ -123,13 +123,10 @@
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="pbPlayer.Location" type="System.Drawing.Point, System.Drawing">
-    <value>5, 5</value>
-  </data>
-  <data name="pbPlayer.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
+    <value>4, 4</value>
   </data>
   <data name="pbPlayer.Size" type="System.Drawing.Size, System.Drawing">
-    <value>149, 139</value>
+    <value>112, 113</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="pbPlayer.TabIndex" type="System.Int32, mscorlib">
@@ -145,19 +142,16 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;pbPlayer.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>8</value>
   </data>
   <data name="lblNameText.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="lblNameText.Location" type="System.Drawing.Point, System.Drawing">
-    <value>164, 21</value>
-  </data>
-  <data name="lblNameText.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 0, 4, 0</value>
+    <value>123, 17</value>
   </data>
   <data name="lblNameText.Size" type="System.Drawing.Size, System.Drawing">
-    <value>49, 17</value>
+    <value>38, 13</value>
   </data>
   <data name="lblNameText.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -175,19 +169,16 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;lblNameText.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>7</value>
   </data>
   <data name="lblNumberText.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="lblNumberText.Location" type="System.Drawing.Point, System.Drawing">
-    <value>164, 53</value>
-  </data>
-  <data name="lblNumberText.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 0, 4, 0</value>
+    <value>123, 43</value>
   </data>
   <data name="lblNumberText.Size" type="System.Drawing.Size, System.Drawing">
-    <value>62, 17</value>
+    <value>47, 13</value>
   </data>
   <data name="lblNumberText.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -205,19 +196,16 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;lblNumberText.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>6</value>
   </data>
   <data name="lblPositionText.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="lblPositionText.Location" type="System.Drawing.Point, System.Drawing">
-    <value>164, 85</value>
-  </data>
-  <data name="lblPositionText.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 0, 4, 0</value>
+    <value>123, 69</value>
   </data>
   <data name="lblPositionText.Size" type="System.Drawing.Size, System.Drawing">
-    <value>62, 17</value>
+    <value>47, 13</value>
   </data>
   <data name="lblPositionText.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -235,19 +223,16 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;lblPositionText.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>5</value>
   </data>
   <data name="lblCaptainText.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="lblCaptainText.Location" type="System.Drawing.Point, System.Drawing">
-    <value>163, 117</value>
-  </data>
-  <data name="lblCaptainText.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 0, 4, 0</value>
+    <value>122, 95</value>
   </data>
   <data name="lblCaptainText.Size" type="System.Drawing.Size, System.Drawing">
-    <value>60, 17</value>
+    <value>46, 13</value>
   </data>
   <data name="lblCaptainText.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -265,19 +250,16 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;lblCaptainText.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>4</value>
   </data>
   <data name="lblName.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="lblName.Location" type="System.Drawing.Point, System.Drawing">
-    <value>237, 21</value>
-  </data>
-  <data name="lblName.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 0, 4, 0</value>
+    <value>178, 17</value>
   </data>
   <data name="lblName.Size" type="System.Drawing.Size, System.Drawing">
-    <value>0, 17</value>
+    <value>0, 13</value>
   </data>
   <data name="lblName.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -292,19 +274,16 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;lblName.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>3</value>
   </data>
   <data name="lblNumber.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="lblNumber.Location" type="System.Drawing.Point, System.Drawing">
-    <value>237, 53</value>
-  </data>
-  <data name="lblNumber.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 0, 4, 0</value>
+    <value>178, 43</value>
   </data>
   <data name="lblNumber.Size" type="System.Drawing.Size, System.Drawing">
-    <value>0, 17</value>
+    <value>0, 13</value>
   </data>
   <data name="lblNumber.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -319,19 +298,16 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;lblNumber.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>2</value>
   </data>
   <data name="lblPosition.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="lblPosition.Location" type="System.Drawing.Point, System.Drawing">
-    <value>237, 85</value>
-  </data>
-  <data name="lblPosition.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 0, 4, 0</value>
+    <value>178, 69</value>
   </data>
   <data name="lblPosition.Size" type="System.Drawing.Size, System.Drawing">
-    <value>0, 17</value>
+    <value>0, 13</value>
   </data>
   <data name="lblPosition.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
@@ -346,19 +322,16 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;lblPosition.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>1</value>
   </data>
   <data name="lblCaptain.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="lblCaptain.Location" type="System.Drawing.Point, System.Drawing">
-    <value>237, 117</value>
-  </data>
-  <data name="lblCaptain.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 0, 4, 0</value>
+    <value>178, 95</value>
   </data>
   <data name="lblCaptain.Size" type="System.Drawing.Size, System.Drawing">
-    <value>0, 17</value>
+    <value>0, 13</value>
   </data>
   <data name="lblCaptain.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
@@ -373,55 +346,16 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;lblCaptain.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <metadata name="contextMenuStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
-  <data name="contextMenuStrip.Size" type="System.Drawing.Size, System.Drawing">
-    <value>176, 52</value>
-  </data>
-  <data name="&gt;&gt;contextMenuStrip.Name" xml:space="preserve">
-    <value>contextMenuStrip</value>
-  </data>
-  <data name="&gt;&gt;contextMenuStrip.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="loadImagesToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>175, 24</value>
-  </data>
-  <data name="loadImagesToolStripMenuItem.Text" xml:space="preserve">
-    <value>Load image</value>
-  </data>
-  <data name="favoritePlyaerToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>175, 24</value>
-  </data>
-  <data name="favoritePlyaerToolStripMenuItem.Text" xml:space="preserve">
-    <value>Favorite player</value>
+    <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>8, 16</value>
-  </data>
-  <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
+    <value>6, 13</value>
   </data>
   <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
-    <value>413, 148</value>
-  </data>
-  <data name="&gt;&gt;loadImagesToolStripMenuItem.Name" xml:space="preserve">
-    <value>loadImagesToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;loadImagesToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;favoritePlyaerToolStripMenuItem.Name" xml:space="preserve">
-    <value>favoritePlyaerToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;favoritePlyaerToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>310, 120</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>PlayerUserControl</value>

@@ -123,10 +123,14 @@
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="lblLocationText.Location" type="System.Drawing.Point, System.Drawing">
-    <value>81, 14</value>
+    <value>61, 11</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="lblLocationText.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
   </data>
   <data name="lblLocationText.Size" type="System.Drawing.Size, System.Drawing">
-    <value>66, 17</value>
+    <value>51, 13</value>
   </data>
   <data name="lblLocationText.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -150,10 +154,13 @@
     <value>True</value>
   </data>
   <data name="lblAttendancesText.Location" type="System.Drawing.Point, System.Drawing">
-    <value>81, 46</value>
+    <value>61, 37</value>
+  </data>
+  <data name="lblAttendancesText.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
   </data>
   <data name="lblAttendancesText.Size" type="System.Drawing.Size, System.Drawing">
-    <value>91, 17</value>
+    <value>70, 13</value>
   </data>
   <data name="lblAttendancesText.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -177,10 +184,13 @@
     <value>True</value>
   </data>
   <data name="lblHomeTeamText.Location" type="System.Drawing.Point, System.Drawing">
-    <value>81, 79</value>
+    <value>61, 64</value>
+  </data>
+  <data name="lblHomeTeamText.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
   </data>
   <data name="lblHomeTeamText.Size" type="System.Drawing.Size, System.Drawing">
-    <value>84, 17</value>
+    <value>64, 13</value>
   </data>
   <data name="lblHomeTeamText.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -204,10 +214,13 @@
     <value>True</value>
   </data>
   <data name="lblAwayTeamText.Location" type="System.Drawing.Point, System.Drawing">
-    <value>81, 112</value>
+    <value>61, 91</value>
+  </data>
+  <data name="lblAwayTeamText.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
   </data>
   <data name="lblAwayTeamText.Size" type="System.Drawing.Size, System.Drawing">
-    <value>80, 17</value>
+    <value>62, 13</value>
   </data>
   <data name="lblAwayTeamText.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -231,10 +244,13 @@
     <value>True</value>
   </data>
   <data name="lblLocation.Location" type="System.Drawing.Point, System.Drawing">
-    <value>213, 18</value>
+    <value>160, 11</value>
+  </data>
+  <data name="lblLocation.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
   </data>
   <data name="lblLocation.Size" type="System.Drawing.Size, System.Drawing">
-    <value>0, 17</value>
+    <value>0, 13</value>
   </data>
   <data name="lblLocation.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -255,10 +271,13 @@
     <value>True</value>
   </data>
   <data name="lblAttendances.Location" type="System.Drawing.Point, System.Drawing">
-    <value>213, 46</value>
+    <value>160, 37</value>
+  </data>
+  <data name="lblAttendances.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
   </data>
   <data name="lblAttendances.Size" type="System.Drawing.Size, System.Drawing">
-    <value>0, 17</value>
+    <value>0, 13</value>
   </data>
   <data name="lblAttendances.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -279,10 +298,13 @@
     <value>True</value>
   </data>
   <data name="lblHomeTeam.Location" type="System.Drawing.Point, System.Drawing">
-    <value>213, 79</value>
+    <value>160, 64</value>
+  </data>
+  <data name="lblHomeTeam.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
   </data>
   <data name="lblHomeTeam.Size" type="System.Drawing.Size, System.Drawing">
-    <value>0, 17</value>
+    <value>0, 13</value>
   </data>
   <data name="lblHomeTeam.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -303,10 +325,13 @@
     <value>True</value>
   </data>
   <data name="lblAwayTeam.Location" type="System.Drawing.Point, System.Drawing">
-    <value>213, 112</value>
+    <value>160, 91</value>
+  </data>
+  <data name="lblAwayTeam.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
   </data>
   <data name="lblAwayTeam.Size" type="System.Drawing.Size, System.Drawing">
-    <value>0, 17</value>
+    <value>0, 13</value>
   </data>
   <data name="lblAwayTeam.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
@@ -327,10 +352,13 @@
     <value>True</value>
   </metadata>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>8, 16</value>
+    <value>6, 13</value>
+  </data>
+  <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
-    <value>413, 148</value>
+    <value>310, 120</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>MatchUserControl</value>

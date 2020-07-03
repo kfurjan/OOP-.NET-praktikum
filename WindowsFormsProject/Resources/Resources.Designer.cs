@@ -97,6 +97,15 @@ namespace WindowsFormsProject.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Favorite player.
+        /// </summary>
+        internal static string favoritePlayerItem {
+            get {
+                return ResourceManager.GetString("favoritePlayerItem", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to close application?.
         /// </summary>
         internal static string formClosingBody {
@@ -120,6 +129,24 @@ namespace WindowsFormsProject.Resources {
         internal static string goals {
             get {
                 return ResourceManager.GetString("goals", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Load image.
+        /// </summary>
+        internal static string loadImageItem {
+            get {
+                return ResourceManager.GetString("loadImageItem", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Load picture.
+        /// </summary>
+        internal static string loadPicture {
+            get {
+                return ResourceManager.GetString("loadPicture", resourceCulture);
             }
         }
         

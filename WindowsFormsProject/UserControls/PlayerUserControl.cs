@@ -45,7 +45,11 @@ namespace WindowsFormsProject.UserControls
         public Image Image
         {
             get => _image;
-            set => pbPlayer.Image = value;
+            set
+            {
+                pbPlayer.Image = value;
+                pbPlayer.SizeMode = PictureBoxSizeMode.StretchImage;
+            }
         }
 
         private bool _isSelected;
@@ -97,29 +101,10 @@ namespace WindowsFormsProject.UserControls
         }
 
         #endregion
+
         public PlayerUserControl()
         {
             InitializeComponent();
-        }
-
-        private void PlayerUserControl_MouseDown(object sender, MouseEventArgs e)
-        {
-            switch (e.Button)
-            {
-                case MouseButtons.Left:
-                    IsSelected = true;
-                    var control = sender as Control;
-                    DoDragDrop(control?.Name, DragDropEffects.Move);
-                    break;
-                case MouseButtons.Middle:
-                    IsSelected = false;
-                    break;
-                case MouseButtons.Right:
-                    contextMenuStrip.Show(this, new Point(e.X, e.Y));
-                    break;
-                default:
-                    break;
-            }
         }
     }
 }

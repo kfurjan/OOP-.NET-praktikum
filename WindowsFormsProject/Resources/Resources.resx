@@ -129,6 +129,9 @@
   <data name="dataNotLoaded" xml:space="preserve">
     <value>Not all data has been loaded</value>
   </data>
+  <data name="favoritePlayerItem" xml:space="preserve">
+    <value>Favorite player</value>
+  </data>
   <data name="formClosingBody" xml:space="preserve">
     <value>Are you sure you want to close application?</value>
   </data>
@@ -137,6 +140,12 @@
   </data>
   <data name="goals" xml:space="preserve">
     <value>Goals:</value>
+  </data>
+  <data name="loadImageItem" xml:space="preserve">
+    <value>Load image</value>
+  </data>
+  <data name="loadPicture" xml:space="preserve">
+    <value>Load picture</value>
   </data>
   <data name="no" xml:space="preserve">
     <value>No</value>

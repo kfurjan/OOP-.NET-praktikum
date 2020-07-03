@@ -129,6 +129,9 @@
   <data name="dataNotLoaded" xml:space="preserve">
     <value>Podaci se nisu uspjeli učitati</value>
   </data>
+  <data name="favoritePlayerItem" xml:space="preserve">
+    <value>Omiljeni igrač</value>
+  </data>
   <data name="formClosingBody" xml:space="preserve">
     <value>Jeste li sigurni da želite ugasiti aplikaciju?</value>
   </data>
@@ -137,6 +140,12 @@
   </data>
   <data name="goals" xml:space="preserve">
     <value>Golovi:</value>
+  </data>
+  <data name="loadImageItem" xml:space="preserve">
+    <value>Učitaj sliku</value>
+  </data>
+  <data name="loadPicture" xml:space="preserve">
+    <value>Učitaj sliku</value>
   </data>
   <data name="no" xml:space="preserve">
     <value>Ne</value>

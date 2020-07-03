@@ -8,6 +8,7 @@ using Newtonsoft.Json;
 using Syncfusion.WinForms.Core.Utils;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
@@ -17,19 +18,34 @@ namespace WindowsFormsProject.Forms
 {
     public partial class WorldCup : Form
     {
+        /// <summary>
+        /// Variable declaration
+        /// </summary>
         private bool _formFirstTimeShown = true;
 
-        private readonly IApi _api = ApiFactory.GetApi();
-        private readonly IRepository _repository = RepositoryFactory.GetRepository();
+        private readonly OpenFileDialog _openFileDialog = new OpenFileDialog();
 
         private readonly IDictionary<string, int> _goals = new Dictionary<string, int>();
         private readonly IDictionary<string, int> _yellowCards = new Dictionary<string, int>();
 
+        private readonly IApi _api = ApiFactory.GetApi();
+        private readonly IRepository _repository = RepositoryFactory.GetRepository();
+
         public WorldCup()
         {
-            SetCulture();
+            InitializeCulture();
             InitializeComponent();
             InitializeDragAndDrop();
+            InitializeOpenFileDialog();
+        }
+
+        /// <summary>
+        /// Initialize functions
+        /// </summary>
+        private void InitializeCulture()
+        {
+            var language = _repository.GetSelectedLanguage();
+            CultureSetter.SetFormCulture(language, GetType(), Controls);
         }
 
         private void InitializeDragAndDrop()
@@ -38,6 +54,18 @@ namespace WindowsFormsProject.Forms
             flpFavoritePlayers.AllowDrop = true;
         }
 
+        private void InitializeOpenFileDialog()
+        {
+            _openFileDialog.Filter = @"Pictures|*.jpeg;*.jpg;*.png;|All files|*.*";
+            _openFileDialog.Multiselect = false;
+            _openFileDialog.Title = Resources.Resources.loadPicture;
+        }
+
+        /// <summary>
+        /// System event handlers
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void settingsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             new Settings().ShowDialog();
@@ -57,7 +85,7 @@ namespace WindowsFormsProject.Forms
             catch { /* pass */ }
 
             LoadComboBoxWithTeamsAsync();
-            SetCulture();
+            InitializeCulture();
         }
 
         private void cbTeams_SelectionChangeCommitted(object sender, EventArgs e)
@@ -83,12 +111,6 @@ namespace WindowsFormsProject.Forms
                 MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
 
             e.Cancel = result == DialogResult.Cancel;
-        }
-
-        private void SetCulture()
-        {
-            var language = _repository.GetSelectedLanguage();
-            CultureSetter.SetFormCulture(language, GetType(), Controls);
         }
 
         private async void LoadComboBoxWithTeamsAsync()
@@ -138,14 +160,19 @@ namespace WindowsFormsProject.Forms
                 // load all players to FlowLayoutPanel
                 players?.ForEach(p =>
                 {
-                    flpAllPlayers.Controls.Add(new PlayerUserControl
+                    var playerUserControl = new PlayerUserControl
                     {
                         PlayerName = p.Name,
                         PlayerNumber = p.ShirtNumber.ToString(),
                         PlayerPosition = p.Position.ToString(),
                         Captain = p.Captain ? Resources.Resources.yes : Resources.Resources.no,
-                        Name = $"{p.Name} {p.ShirtNumber.ToString()}"
-                    });
+                        Name = $"{p.Name}"
+                    };
+                    LoadPictureIfPreviouslySelected(playerUserControl);
+
+                    flpAllPlayers.Controls.Add(playerUserControl);
+                    playerUserControl.MouseDown += PlayerUserControl_MouseDown;
+
                     _goals.Add(p.Name, 0);
                     _yellowCards.Add(p.Name, 0);
                 });
@@ -207,7 +234,6 @@ namespace WindowsFormsProject.Forms
                 ((FlowLayoutPanel)sender).Controls.Add(userControl);
                 ((PlayerUserControl)userControl).IsSelected = false;
             }
-            cbTeams.Text = flpAllPlayers.Controls.OfType<PlayerUserControl>().Count(c => c.IsSelected).ToString();
         }
 
         private void flpFavoritePlayers_DragEnter(object sender, DragEventArgs e)
@@ -230,27 +256,92 @@ namespace WindowsFormsProject.Forms
         {
             _goals.OrderByDescending(kvp => kvp.Value).ToList().ForEach(kvp =>
             {
-                flpRankedByGoals.Controls.Add(new PlayerUserControl
+                var playerUserControl = new PlayerUserControl
                 {
                     PlayerName = kvp.Key,
                     PlayerNumber = kvp.Value.ToString(),
                     PositionVisible = false,
                     CaptainVisible = false,
-                    CustomText = Resources.Resources.goals
-                });
+                    CustomText = Resources.Resources.goals,
+                    Name = $@"{kvp.Key}"
+                };
+                flpRankedByGoals.Controls.Add(playerUserControl);
+                LoadPictureIfPreviouslySelected(playerUserControl);
             });
 
             _yellowCards.OrderByDescending(kvp => kvp.Value).ToList().ForEach(kvp =>
             {
-                flpRankByYellowCards.Controls.Add(new PlayerUserControl
+                var playerUserControl = new PlayerUserControl
                 {
                     PlayerName = kvp.Key,
                     PlayerNumber = kvp.Value.ToString(),
                     PositionVisible = false,
                     CaptainVisible = false,
-                    CustomText = Resources.Resources.cards
-                });
+                    CustomText = Resources.Resources.cards,
+                    Name = $@"{kvp.Key}"
+                };
+                flpRankByYellowCards.Controls.Add(playerUserControl);
+                LoadPictureIfPreviouslySelected(playerUserControl);
             });
+        }
+
+        /// <summary>
+        /// Custom event handlers
+        /// </summary>
+        private void PlayerUserControl_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (sender as Control is PlayerUserControl puc)
+            {
+                switch (e.Button)
+                {
+                    case MouseButtons.Left:
+                        puc.IsSelected = true;
+                        var control = sender as Control;
+                        DoDragDrop(control.Name, DragDropEffects.Move);
+                        break;
+                    case MouseButtons.Middle:
+                        puc.IsSelected = false;
+                        break;
+                    case MouseButtons.Right:
+                        PrepareContextMenu(puc);
+                        contextMenuStrip.Show(puc, new Point(e.X, e.Y));
+                        break;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Helper functions
+        /// </summary>
+        private void PrepareContextMenu(PlayerUserControl puc)
+        {
+            contextMenuStrip.Items.Clear();
+
+            var loadImageItem = new ToolStripMenuItem { Text = Resources.Resources.loadPicture, Name = "loadImageItem" };
+            loadImageItem.Click += (s, e) => LoadPicture(puc);
+            contextMenuStrip.Items.Add(loadImageItem);
+
+            var favoritePlayerItem = new ToolStripMenuItem { Text = Resources.Resources.favoritePlayerItem, Name = "favoritePlayerItem" };
+            // favoritePlayerItem += (s, e) => TODO;
+            contextMenuStrip.Items.Add(favoritePlayerItem);
+        }
+
+        private void LoadPicture(PlayerUserControl playerUserControl)
+        {
+            if (_openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                var filePath = _openFileDialog.FileName;
+                _repository.SaveLoadedPicturePath(playerUserControl.Name.Trim(), filePath.Trim());
+                playerUserControl.Image = Image.FromFile(filePath);
+            }
+        }
+
+        private void LoadPictureIfPreviouslySelected(PlayerUserControl control)
+        {
+            if (_repository.PictureExists(control.Name))
+            {
+                control.Image = Image.FromFile(_repository.GetPictureLocation(control.Name));
+            }
         }
     }
 }

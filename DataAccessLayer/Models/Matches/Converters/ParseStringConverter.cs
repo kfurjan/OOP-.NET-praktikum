@@ -31,7 +31,6 @@ namespace DataAccessLayer.Models.Matches.Converters
             }
             var value = (long)untypedValue;
             serializer.Serialize(writer, value.ToString());
-            return;
         }
 
         public static readonly ParseStringConverter Singleton = new ParseStringConverter();

@@ -25,6 +25,8 @@ namespace WindowsFormsProject.Forms
 
         private readonly OpenFileDialog _openFileDialog = new OpenFileDialog();
 
+        private readonly IList<Control> _draggables = new List<Control>();
+
         private readonly IDictionary<string, int> _goals = new Dictionary<string, int>();
         private readonly IDictionary<string, int> _yellowCards = new Dictionary<string, int>();
 
@@ -64,12 +66,7 @@ namespace WindowsFormsProject.Forms
         /// <summary>
         /// System event handlers
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void settingsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            new Settings().ShowDialog();
-        }
+        private void settingsToolStripMenuItem_Click(object sender, EventArgs e) { new Settings().ShowDialog(); }
 
         private void WorldCup_Activated(object sender, EventArgs e)
         {
@@ -94,6 +91,7 @@ namespace WindowsFormsProject.Forms
             {
                 var selectedTeam = (sender as ComboBox)?.SelectedItem as Team;
                 flpAllPlayers.Controls.Clear();
+                flpFavoritePlayers.Controls.Clear();
 
                 LoadPanelWithPlayersAsync(selectedTeam);
                 _repository.AddSelectedTeamToSettings(selectedTeam?.Country);
@@ -292,15 +290,18 @@ namespace WindowsFormsProject.Forms
         {
             if (sender as Control is PlayerUserControl puc)
             {
+                var control = (Control)sender;
+
                 switch (e.Button)
                 {
                     case MouseButtons.Left:
                         puc.IsSelected = true;
-                        var control = sender as Control;
-                        DoDragDrop(control.Name, DragDropEffects.Move);
+                        _draggables.Add(control);
+                        MakeControlsDraggable(_draggables);
                         break;
                     case MouseButtons.Middle:
                         puc.IsSelected = false;
+                        _draggables.Remove(control);
                         break;
                     case MouseButtons.Right:
                         PrepareContextMenu(puc);
@@ -322,7 +323,7 @@ namespace WindowsFormsProject.Forms
             contextMenuStrip.Items.Add(loadImageItem);
 
             var favoritePlayerItem = new ToolStripMenuItem { Text = Resources.Resources.favoritePlayerItem, Name = "favoritePlayerItem" };
-            // favoritePlayerItem += (s, e) => TODO;
+            favoritePlayerItem.Click += (s, e) => flpFavoritePlayers.Controls.Add(puc);
             contextMenuStrip.Items.Add(favoritePlayerItem);
         }
 
@@ -342,6 +343,11 @@ namespace WindowsFormsProject.Forms
             {
                 control.Image = Image.FromFile(_repository.GetPictureLocation(control.Name));
             }
+        }
+
+        private static void MakeControlsDraggable(IEnumerable<Control> controls)
+        {
+            controls.ToList().ForEach(c => c.DoDragDrop(c.Name, DragDropEffects.Move));
         }
     }
 }

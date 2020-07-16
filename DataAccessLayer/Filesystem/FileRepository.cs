@@ -41,16 +41,19 @@ namespace DataAccessLayer.Filesystem
 
         public string LoadAllSettings() => File.ReadAllText(SettingsPath);
 
-        public bool PictureExists(string controlName) => File.ReadAllLines(PicturesPath).Any(line => line.Split('|')[0].ToString() == controlName);
+        public bool PictureExists(string controlName)
+        {
+            if (!File.Exists(PicturesPath)) { File.Create(PicturesPath); }
+
+            return File.ReadAllLines(PicturesPath)
+                .Any(line => line.Split('|')[0].ToString() == controlName);
+        }
 
         public string GetPictureLocation(string controlName)
         {
             foreach (var line in File.ReadAllLines(PicturesPath))
             {
-                if (line.Split('|')[0] == controlName)
-                {
-                    return line.Split('|')[1];
-                }
+                if (line.Split('|')[0] == controlName) { return line.Split('|')[1]; }
             }
 
             return string.Empty;

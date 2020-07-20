@@ -150,6 +150,9 @@
   <data name="no" xml:space="preserve">
     <value>No</value>
   </data>
+  <data name="removeFavoritePlayer" xml:space="preserve">
+    <value>Remove player</value>
+  </data>
   <data name="settingsMsgBoxBody" xml:space="preserve">
     <value>Confirm selected language and tournament type</value>
   </data>

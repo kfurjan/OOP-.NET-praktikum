@@ -160,6 +160,15 @@ namespace WindowsFormsProject.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Remove player.
+        /// </summary>
+        internal static string removeFavoritePlayer {
+            get {
+                return ResourceManager.GetString("removeFavoritePlayer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Confirm selected language and tournament type.
         /// </summary>
         internal static string settingsMsgBoxBody {

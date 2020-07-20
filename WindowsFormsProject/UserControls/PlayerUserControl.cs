@@ -100,6 +100,30 @@ namespace WindowsFormsProject.UserControls
             }
         }
 
+        private bool _starVisible;
+
+        [Category("PlayerUserControl")]
+        public bool StarVisible
+        {
+            get => _starVisible;
+            set
+            {
+                _starVisible = value;
+
+                if (_starVisible)
+                {
+                    lblStar.Visible = true;
+                    lblStar.Text = @"★";
+                    lblStar.ForeColor = Color.Yellow;
+                    lblStar.Font = new Font("Arial", 30);
+                    return;
+                }
+
+                lblStar.Visible = false;
+            }
+        }
+
+
         #endregion
 
         public PlayerUserControl()

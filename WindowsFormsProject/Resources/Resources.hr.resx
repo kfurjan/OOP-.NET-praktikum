@@ -150,6 +150,9 @@
   <data name="no" xml:space="preserve">
     <value>Ne</value>
   </data>
+  <data name="removeFavoritePlayer" xml:space="preserve">
+    <value>Ukloni igrača</value>
+  </data>
   <data name="settingsMsgBoxBody" xml:space="preserve">
     <value>Želite promijeniti jezik i vrstu prvenstva?</value>
   </data>

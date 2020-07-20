@@ -18,9 +18,8 @@ namespace WindowsFormsProject.Forms
 {
     public partial class WorldCup : Form
     {
-        /// <summary>
-        /// Variable declaration
-        /// </summary>
+        #region Variable declaration
+
         private bool _formFirstTimeShown = true;
 
         private readonly OpenFileDialog _openFileDialog = new OpenFileDialog();
@@ -33,17 +32,10 @@ namespace WindowsFormsProject.Forms
         private readonly IApi _api = ApiFactory.GetApi();
         private readonly IRepository _repository = RepositoryFactory.GetRepository();
 
-        public WorldCup()
-        {
-            InitializeCulture();
-            InitializeComponent();
-            InitializeDragAndDrop();
-            InitializeOpenFileDialog();
-        }
+        #endregion
 
-        /// <summary>
-        /// Initialize functions
-        /// </summary>
+        #region Form initialization 
+
         private void InitializeCulture()
         {
             var language = _repository.GetSelectedLanguage();
@@ -63,10 +55,19 @@ namespace WindowsFormsProject.Forms
             _openFileDialog.Title = Resources.Resources.loadPicture;
         }
 
-        /// <summary>
-        /// System event handlers
-        /// </summary>
-        private void settingsToolStripMenuItem_Click(object sender, EventArgs e) { new Settings().ShowDialog(); }
+        public WorldCup()
+        {
+            InitializeCulture();
+            InitializeComponent();
+            InitializeDragAndDrop();
+            InitializeOpenFileDialog();
+        }
+
+        #endregion
+
+        #region Event handlers
+
+        private void settingsToolStripMenuItem_Click(object sender, EventArgs e) => new Settings().ShowDialog();
 
         private void WorldCup_Activated(object sender, EventArgs e)
         {
@@ -231,6 +232,7 @@ namespace WindowsFormsProject.Forms
                 userControl.Parent.Controls.Remove(userControl);
                 ((FlowLayoutPanel)sender).Controls.Add(userControl);
                 ((PlayerUserControl)userControl).IsSelected = false;
+                ((PlayerUserControl)userControl).StarVisible = true;
             }
         }
 
@@ -283,9 +285,10 @@ namespace WindowsFormsProject.Forms
             });
         }
 
-        /// <summary>
-        /// Custom event handlers
-        /// </summary>
+        #endregion
+
+        #region Custom event handlers
+
         private void PlayerUserControl_MouseDown(object sender, MouseEventArgs e)
         {
             if (sender as Control is PlayerUserControl puc)
@@ -304,17 +307,19 @@ namespace WindowsFormsProject.Forms
                         _draggables.Remove(control);
                         break;
                     case MouseButtons.Right:
-                        PrepareContextMenu(puc);
+                        if (((Control)sender).Parent.Name == "flpAllPlayers") { FlpAllPlayersContextMenu(puc); }
+                        else { FlpFavoritePlayersContextMenu(puc); }
                         contextMenuStrip.Show(puc, new Point(e.X, e.Y));
                         break;
                 }
             }
         }
 
-        /// <summary>
-        /// Helper functions
-        /// </summary>
-        private void PrepareContextMenu(PlayerUserControl puc)
+        #endregion
+
+        #region Helper functions
+
+        private void FlpAllPlayersContextMenu(PlayerUserControl puc)
         {
             contextMenuStrip.Items.Clear();
 
@@ -324,6 +329,19 @@ namespace WindowsFormsProject.Forms
 
             var favoritePlayerItem = new ToolStripMenuItem { Text = Resources.Resources.favoritePlayerItem, Name = "favoritePlayerItem" };
             favoritePlayerItem.Click += (s, e) => flpFavoritePlayers.Controls.Add(puc);
+            contextMenuStrip.Items.Add(favoritePlayerItem);
+        }
+
+        private void FlpFavoritePlayersContextMenu(PlayerUserControl puc)
+        {
+            contextMenuStrip.Items.Clear();
+
+            var favoritePlayerItem = new ToolStripMenuItem { Text = Resources.Resources.removeFavoritePlayer, Name = "removeFavoritePlayer" };
+            favoritePlayerItem.Click += (s, e) =>
+            {
+                puc.StarVisible = false;
+                flpAllPlayers.Controls.Add(puc);
+            };
             contextMenuStrip.Items.Add(favoritePlayerItem);
         }
 
@@ -349,5 +367,7 @@ namespace WindowsFormsProject.Forms
         {
             controls.ToList().ForEach(c => c.DoDragDrop(c.Name, DragDropEffects.Move));
         }
+
+        #endregion
     }
 }

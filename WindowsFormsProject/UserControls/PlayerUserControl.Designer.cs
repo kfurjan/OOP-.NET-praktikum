@@ -38,6 +38,7 @@
             this.lblNumber = new System.Windows.Forms.Label();
             this.lblPosition = new System.Windows.Forms.Label();
             this.lblCaptain = new System.Windows.Forms.Label();
+            this.lblStar = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pbPlayer)).BeginInit();
             this.SuspendLayout();
             // 
@@ -88,11 +89,17 @@
             resources.ApplyResources(this.lblCaptain, "lblCaptain");
             this.lblCaptain.Name = "lblCaptain";
             // 
+            // lblStar
+            // 
+            resources.ApplyResources(this.lblStar, "lblStar");
+            this.lblStar.Name = "lblStar";
+            // 
             // PlayerUserControl
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gainsboro;
+            this.Controls.Add(this.lblStar);
             this.Controls.Add(this.lblCaptain);
             this.Controls.Add(this.lblPosition);
             this.Controls.Add(this.lblNumber);
@@ -120,5 +127,6 @@
         private System.Windows.Forms.Label lblNumber;
         private System.Windows.Forms.Label lblPosition;
         private System.Windows.Forms.Label lblCaptain;
+        private System.Windows.Forms.Label lblStar;
     }
 }

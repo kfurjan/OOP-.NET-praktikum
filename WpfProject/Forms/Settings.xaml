@@ -1,0 +1,112 @@
+﻿<Window x:Class="WpfProject.Forms.Settings"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfProject.Forms"
+        xmlns:properties="clr-namespace:WpfProject.Properties"
+        mc:Ignorable="d"
+        Title="{x:Static properties:Resources.settingsTitle}" Height="450" Width="800">
+    <Grid>
+        <!--Columns and rows definition-->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+
+        <!--Tournament type group box-->
+        <GroupBox
+            Grid.Column="0" 
+            Grid.Row="0" 
+            x:Name="GbTournamentType"
+            Header="{x:Static properties:Resources.tournamentType}"
+            Margin="10">
+            <GroupBox.Content>
+                <StackPanel
+                    x:Name="PnlTournamentType"
+                    Margin="0 15 0 0">
+                    <RadioButton 
+                        GroupName="tournamentType"
+                        Margin="5"
+                        Tag="male"
+                        Content="{x:Static properties:Resources.male}"/>
+                    <RadioButton 
+                        GroupName="tournamentType"
+                        Margin="5"
+                        Tag="female"
+                        Content="{x:Static properties:Resources.female}"/>
+                </StackPanel>
+            </GroupBox.Content>
+        </GroupBox>
+
+        <!--App language group box-->
+        <GroupBox 
+            Grid.Column="1" 
+            Grid.Row="0"
+            x:Name="GbLanguage"
+            Header="{x:Static properties:Resources.language}"
+            Margin="10">
+            <GroupBox.Content>
+                <StackPanel 
+                    x:Name="PnlLanguage"
+                    Margin="0 15 0 0">
+                    <RadioButton 
+                        GroupName="language"
+                        Margin="5"
+                        Tag="EN"
+                        Content="{x:Static properties:Resources.english}" />
+                    <RadioButton 
+                        GroupName="language"
+                        Margin="5"
+                        Tag="HR"
+                        Content="{x:Static properties:Resources.croatian}"/>
+                </StackPanel>
+            </GroupBox.Content>
+        </GroupBox>
+
+        <!--App size group box-->
+        <GroupBox 
+            Grid.Column="2" 
+            Grid.Row="0"
+            x:Name="GbAppSize"
+            Header="{x:Static properties:Resources.appSize}"
+            Margin="10">
+            <GroupBox.Content>
+                <StackPanel 
+                    x:Name="PnlAppSize"
+                    Margin="0 15 0 0">
+                    <RadioButton 
+                        GroupName="appSize"
+                        Margin="5"
+                        Tag="small"
+                        Content="{x:Static properties:Resources.small}"/>
+                    <RadioButton 
+                        GroupName="appSize"
+                        Margin="5"
+                        Tag="medium"
+                        Content="{x:Static properties:Resources.medium}"/>
+                    <RadioButton 
+                        GroupName="appSize"
+                        Margin="5"
+                        Tag="fullscreen"
+                        Content="{x:Static properties:Resources.fullScreen}"/>
+                </StackPanel>
+            </GroupBox.Content>
+        </GroupBox>
+
+        <!--Submit button-->
+        <Button 
+            x:Name="BtnSettingsSave"
+            Grid.Column="1"
+            Grid.Row="2" 
+            Margin="20 0 20 40"
+            Click="BtnSettingsSave_OnClick"
+            Content="{x:Static properties:Resources.btnSettingsSave}"/>
+    </Grid>
+</Window>

@@ -118,42 +118,42 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="appSize" xml:space="preserve">
-    <value>Application size</value>
+    <value>Veličina aplikacije</value>
   </data>
   <data name="btnSettingsSave" xml:space="preserve">
-    <value>Submit</value>
+    <value>Potvrdi</value>
   </data>
   <data name="croatian" xml:space="preserve">
-    <value>Croatian</value>
+    <value>Hrvatski</value>
   </data>
   <data name="english" xml:space="preserve">
-    <value>English</value>
+    <value>Engleski</value>
   </data>
   <data name="female" xml:space="preserve">
-    <value>Female</value>
+    <value>Žensko</value>
   </data>
   <data name="fullScreen" xml:space="preserve">
-    <value>Fullscreen</value>
+    <value>Cijeli ekran</value>
   </data>
   <data name="language" xml:space="preserve">
-    <value>Language</value>
+    <value>Jezik</value>
   </data>
   <data name="male" xml:space="preserve">
-    <value>Male</value>
+    <value>Muško</value>
   </data>
   <data name="medium" xml:space="preserve">
-    <value>Medium</value>
+    <value>Srednja velićina</value>
   </data>
   <data name="settingsTitle" xml:space="preserve">
-    <value>Settings</value>
+    <value>Postavke</value>
   </data>
   <data name="small" xml:space="preserve">
-    <value>Small</value>
+    <value>Mala veličina</value>
   </data>
   <data name="tournamentType" xml:space="preserve">
-    <value>Tournament type</value>
+    <value>Vrsta prvenstva</value>
   </data>
   <data name="worldCupTitle" xml:space="preserve">
-    <value>World cup</value>
+    <value>Svjetsko prvenstvo</value>
   </data>
 </root>

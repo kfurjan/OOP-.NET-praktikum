@@ -9,46 +9,15 @@ using System.Windows.Controls;
 
 namespace WpfProject.Forms
 {
-    /// <summary>
-    /// Interaction logic for Settings.xaml
-    /// </summary>
     public partial class Settings : Window
     {
+        #region Variable declaration
+
         private readonly IRepository _repository = RepositoryFactory.GetRepository();
 
-        public Settings()
-        {
-            SetCulture();
-            InitializeComponent();
-        }
+        #endregion
 
-        private void BtnSettingsSave_OnClick(object sender, RoutedEventArgs e)
-        {
-            var confirmResult = MessageBox.Show("Confirm selected language and tournament type", "Settings", MessageBoxButton.OKCancel, MessageBoxImage.Question);
-            if (confirmResult != MessageBoxResult.OK) return;
-
-            try
-            {
-                var tournamentType = PnlTournamentType.Children.OfType<RadioButton>()
-                        .FirstOrDefault(r => (bool)r.IsChecked)?.Tag.ToString();
-
-                var language = PnlLanguage.Children.OfType<RadioButton>()
-                    .FirstOrDefault(r => (bool)r.IsChecked)?.Tag.ToString();
-
-                var appSize = PnlAppSize.Children.OfType<RadioButton>()
-                    .FirstOrDefault(r => (bool)r.IsChecked)?.Tag.ToString();
-
-                _repository.SaveSettings(tournamentType, language);
-            }
-            catch (Exception ex) when (ex is ArgumentNullException || ex is IOException || ex is CultureNotFoundException)
-            {
-                MessageBox.Show("Unexpected error occured", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-
-            Hide();
-            new WorldCup().ShowDialog();
-            Close();
-        }
+        #region Form initialization
 
         private void SetCulture()
         {
@@ -60,5 +29,45 @@ namespace WpfProject.Forms
             }
             catch { /* on first load there won't be any language selected and in that case default is english */ }
         }
+        public Settings()
+        {
+            SetCulture();
+            InitializeComponent();
+        }
+
+        #endregion
+
+        #region Event handlers
+
+        private void BtnSettingsSave_OnClick(object sender, RoutedEventArgs e)
+        {
+            var confirmResult = MessageBox.Show("Confirm selected language and tournament type", "Settings", MessageBoxButton.OKCancel, MessageBoxImage.Question);
+            if (confirmResult != MessageBoxResult.OK) return;
+
+            try
+            {
+                var tournamentType = PnlTournamentType.Children.OfType<RadioButton>()
+                    .FirstOrDefault(r => r.IsChecked != null && (bool)r.IsChecked)?.Tag.ToString();
+
+                var language = PnlLanguage.Children.OfType<RadioButton>()
+                    .FirstOrDefault(r => r.IsChecked != null && (bool)r.IsChecked)?.Tag.ToString();
+
+                var appSize = PnlAppSize.Children.OfType<RadioButton>()
+                    .FirstOrDefault(r => r.IsChecked != null && (bool)r.IsChecked)?.Tag.ToString();
+
+                _repository.SaveSettings(tournamentType, language);
+                _repository.SaveAppSizeSetting(appSize);
+            }
+            catch (Exception ex) when (ex is ArgumentNullException || ex is IOException || ex is CultureNotFoundException)
+            {
+                MessageBox.Show("Unexpected error occured", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+
+            Hide();
+            new WorldCup().ShowDialog();
+            Close();
+        }
+
+        #endregion
     }
 }

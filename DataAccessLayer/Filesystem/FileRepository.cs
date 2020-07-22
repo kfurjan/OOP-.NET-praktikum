@@ -11,15 +11,24 @@ namespace DataAccessLayer.Filesystem
         private const string Folder = @"../../../assets";
         private const string Settings = @"settings.txt";
         private const string Pictures = @"pictures.txt";
+        private const string WpfAppSize = @"wpf_app_size.txt";
 
         private static readonly string SettingsPath = $@"{Folder}/{Settings}";
         private static readonly string PicturesPath = $@"{Folder}/{Pictures}";
+        private static readonly string WpfAppSizePath = $@"{Folder}/{WpfAppSize}";
 
         public void SaveSettings(string tournamentType, string language)
         {
             if (!Directory.Exists(Folder)) { Directory.CreateDirectory(Folder); }
 
             File.WriteAllText(SettingsPath, $"{tournamentType}|{language}");
+        }
+
+        public void SaveAppSizeSetting(string appSize)
+        {
+            if (!Directory.Exists(Folder)) { Directory.CreateDirectory(Folder); }
+
+            File.WriteAllText(WpfAppSizePath, $"{appSize}");
         }
 
         public void SaveLoadedPicturePath(string playerName, string picturePath)
@@ -41,14 +50,6 @@ namespace DataAccessLayer.Filesystem
 
         public string LoadAllSettings() => File.ReadAllText(SettingsPath);
 
-        public bool PictureExists(string controlName)
-        {
-            if (!File.Exists(PicturesPath)) { File.Create(PicturesPath); }
-
-            return File.ReadAllLines(PicturesPath)
-                .Any(line => line.Split('|')[0].ToString() == controlName);
-        }
-
         public string GetPictureLocation(string controlName)
         {
             foreach (var line in File.ReadAllLines(PicturesPath))
@@ -58,10 +59,18 @@ namespace DataAccessLayer.Filesystem
 
             return string.Empty;
         }
-
         public string GetTeamGender() => LoadAllSettings().Split('|')[0].Trim();
         public string GetSelectedLanguage() => LoadAllSettings().Split('|')[1].Trim();
         public string GetSelectedTeam() => LoadAllSettings().Split('|')[2].Trim();
+        public string GetAppSizeSelected() => File.ReadAllText(WpfAppSizePath);
+
+        public bool PictureExists(string controlName)
+        {
+            if (!File.Exists(PicturesPath)) { File.Create(PicturesPath); }
+
+            return File.ReadAllLines(PicturesPath)
+                .Any(line => line.Split('|')[0].ToString() == controlName);
+        }
         public bool SettingsExists() => File.Exists(SettingsPath);
     }
 }

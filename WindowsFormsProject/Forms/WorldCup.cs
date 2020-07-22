@@ -112,117 +112,6 @@ namespace WindowsFormsProject.Forms
             e.Cancel = result == DialogResult.Cancel;
         }
 
-        private async void LoadComboBoxWithTeamsAsync()
-        {
-            cbTeams.Items.Clear();
-            try
-            {
-                cbTeams.Text = Resources.Resources.cbTeamsLoading;
-
-                var teamGender = _repository.GetTeamGender();
-                var endpoint = EndpointBuilder.GetTeamsEndpoint(teamGender);
-
-                var teams = await _api.GetDataAsync<IList<Team>>(endpoint);
-                teams.ToList().ForEach(t => cbTeams.Items.Add(t));
-
-                cbTeams.Text = string.Empty;
-            }
-            catch (Exception ex) when (ex is IOException || ex is JsonReaderException || ex is ArgumentNullException)
-            {
-                MessageBox.Show(Resources.Resources.couldNotRetrieveData, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private async void LoadPanelWithPlayersAsync(dynamic team)
-        {
-            try
-            {
-                _goals.Clear();
-                _yellowCards.Clear();
-                flpRankByAttendances.Controls.Clear();
-
-                var country = team is Team t ? t.Country : team as string;
-
-                // show loading animation
-                var busyIndicator = new BusyIndicator();
-                busyIndicator.Show(flpAllPlayers);
-
-                // get API data
-                var teamGender = _repository.GetTeamGender();
-                var endpoint = EndpointBuilder.GetMatchesEndpoint(teamGender);
-                var matches = await _api.GetDataAsync<IList<Match>>(endpoint);
-
-                // find all players for selected team
-                var match = matches?.FirstOrDefault(m => m.HomeTeamCountry == country);
-                var players = match?.HomeTeamStatistics.StartingEleven.Union(match.HomeTeamStatistics.Substitutes).ToList();
-
-                // load all players to FlowLayoutPanel
-                players?.ForEach(p =>
-                {
-                    var playerUserControl = new PlayerUserControl
-                    {
-                        PlayerName = p.Name,
-                        PlayerNumber = p.ShirtNumber.ToString(),
-                        PlayerPosition = p.Position.ToString(),
-                        Captain = p.Captain ? Resources.Resources.yes : Resources.Resources.no,
-                        Name = $"{p.Name}"
-                    };
-                    LoadPictureIfPreviouslySelected(playerUserControl);
-
-                    flpAllPlayers.Controls.Add(playerUserControl);
-                    playerUserControl.MouseDown += PlayerUserControl_MouseDown;
-
-                    _goals.Add(p.Name, 0);
-                    _yellowCards.Add(p.Name, 0);
-                });
-
-                // Get goals and yellow cards per each player
-                matches?
-                    .Where(m => m.HomeTeamCountry == match?.HomeTeamCountry)
-                    .ToList()
-                    .ForEach(m =>
-                    {
-                        m.HomeTeamEvents.ToList().ForEach(te =>
-                        {
-                            switch (te.TypeOfEvent)
-                            {
-                                case TypeOfEvent.Goal:
-                                    _goals[te.Player] += 1;
-                                    break;
-                                case TypeOfEvent.YellowCard:
-                                    _yellowCards[te.Player] += 1;
-                                    break;
-                                case TypeOfEvent.YellowCardSecond:
-                                    _yellowCards[te.Player] += 1;
-                                    break;
-                            }
-                        });
-                    });
-
-                // Get all matches for selected country ordered by attendance
-                matches?
-                    .Where(m => m.HomeTeamCountry == match?.HomeTeamCountry || m.AwayTeamCountry == match?.HomeTeamCountry)
-                    .OrderByDescending(m => m.Attendance)
-                    .ToList()
-                    .ForEach(m =>
-                    {
-                        flpRankByAttendances.Controls.Add(new MatchUserControl
-                        {
-                            Location = m.Location,
-                            Attendances = m.Attendance.ToString(),
-                            HomeTeam = m.HomeTeamCountry,
-                            AwayTeam = m.AwayTeamCountry
-                        });
-                    });
-
-                busyIndicator.Hide();
-            }
-            catch (Exception ex) when (ex is IOException || ex is ArgumentNullException || ex is JsonReaderException)
-            {
-                MessageBox.Show(Resources.Resources.dataNotLoaded, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
         private void flpFavoritePlayers_DragDrop(object sender, DragEventArgs e)
         {
             var controlName = e.Data.GetData(typeof(string)) as string;
@@ -366,6 +255,117 @@ namespace WindowsFormsProject.Forms
         private static void MakeControlsDraggable(IEnumerable<Control> controls)
         {
             controls.ToList().ForEach(c => c.DoDragDrop(c.Name, DragDropEffects.Move));
+        }
+
+        private async void LoadComboBoxWithTeamsAsync()
+        {
+            cbTeams.Items.Clear();
+            try
+            {
+                cbTeams.Text = Resources.Resources.cbTeamsLoading;
+
+                var teamGender = _repository.GetTeamGender();
+                var endpoint = EndpointBuilder.GetTeamsEndpoint(teamGender);
+
+                var teams = await _api.GetDataAsync<IList<Team>>(endpoint);
+                teams.ToList().ForEach(t => cbTeams.Items.Add(t));
+
+                cbTeams.Text = string.Empty;
+            }
+            catch (Exception ex) when (ex is IOException || ex is JsonReaderException || ex is ArgumentNullException)
+            {
+                MessageBox.Show(Resources.Resources.couldNotRetrieveData, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private async void LoadPanelWithPlayersAsync(dynamic team)
+        {
+            try
+            {
+                _goals.Clear();
+                _yellowCards.Clear();
+                flpRankByAttendances.Controls.Clear();
+
+                var country = team is Team t ? t.Country : team as string;
+
+                // show loading animation
+                var busyIndicator = new BusyIndicator();
+                busyIndicator.Show(flpAllPlayers);
+
+                // get API data
+                var teamGender = _repository.GetTeamGender();
+                var endpoint = EndpointBuilder.GetMatchesEndpoint(teamGender);
+                var matches = await _api.GetDataAsync<IList<Match>>(endpoint);
+
+                // find all players for selected team
+                var match = matches?.FirstOrDefault(m => m.HomeTeamCountry == country);
+                var players = match?.HomeTeamStatistics.StartingEleven.Union(match.HomeTeamStatistics.Substitutes).ToList();
+
+                // load all players to FlowLayoutPanel
+                players?.ForEach(p =>
+                {
+                    var playerUserControl = new PlayerUserControl
+                    {
+                        PlayerName = p.Name,
+                        PlayerNumber = p.ShirtNumber.ToString(),
+                        PlayerPosition = p.Position.ToString(),
+                        Captain = p.Captain ? Resources.Resources.yes : Resources.Resources.no,
+                        Name = $"{p.Name}"
+                    };
+                    LoadPictureIfPreviouslySelected(playerUserControl);
+
+                    flpAllPlayers.Controls.Add(playerUserControl);
+                    playerUserControl.MouseDown += PlayerUserControl_MouseDown;
+
+                    _goals.Add(p.Name, 0);
+                    _yellowCards.Add(p.Name, 0);
+                });
+
+                // Get goals and yellow cards per each player
+                matches?
+                    .Where(m => m.HomeTeamCountry == match?.HomeTeamCountry)
+                    .ToList()
+                    .ForEach(m =>
+                    {
+                        m.HomeTeamEvents.ToList().ForEach(te =>
+                        {
+                            switch (te.TypeOfEvent)
+                            {
+                                case TypeOfEvent.Goal:
+                                    _goals[te.Player] += 1;
+                                    break;
+                                case TypeOfEvent.YellowCard:
+                                    _yellowCards[te.Player] += 1;
+                                    break;
+                                case TypeOfEvent.YellowCardSecond:
+                                    _yellowCards[te.Player] += 1;
+                                    break;
+                            }
+                        });
+                    });
+
+                // Get all matches for selected country ordered by attendance
+                matches?
+                    .Where(m => m.HomeTeamCountry == match?.HomeTeamCountry || m.AwayTeamCountry == match?.HomeTeamCountry)
+                    .OrderByDescending(m => m.Attendance)
+                    .ToList()
+                    .ForEach(m =>
+                    {
+                        flpRankByAttendances.Controls.Add(new MatchUserControl
+                        {
+                            Location = m.Location,
+                            Attendances = m.Attendance.ToString(),
+                            HomeTeam = m.HomeTeamCountry,
+                            AwayTeam = m.AwayTeamCountry
+                        });
+                    });
+
+                busyIndicator.Hide();
+            }
+            catch (Exception ex) when (ex is IOException || ex is ArgumentNullException || ex is JsonReaderException)
+            {
+                MessageBox.Show(Resources.Resources.dataNotLoaded, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         #endregion

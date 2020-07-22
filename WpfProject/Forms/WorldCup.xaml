@@ -4,9 +4,40 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfProject.Forms"
+        xmlns:properties="clr-namespace:WpfProject.Properties"
         mc:Ignorable="d"
-        Title="WorldCup" Height="450" Width="800">
-    <Grid Row="2">
-        
+        Activated="WorldCup_OnActivated"
+        Title="{x:Static properties:Resources.worldCupTitle}" Height="450" Width="800">
+    <Grid>
+        <!--Columns and rows definition-->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="3*"/>
+        </Grid.RowDefinitions>
+
+        <!--Home team ComboBox-->
+        <StackPanel 
+            Grid.Row="0"
+            Grid.Column="0"
+            Margin="20 0"
+            VerticalAlignment="Center">
+            <ComboBox 
+                x:Name="CbHomeTeam"
+                SelectionChanged="CbHomeTeam_OnSelectionChanged"/>
+        </StackPanel>
+
+        <!--Away team ComboBox-->
+        <StackPanel 
+            Grid.Row="0"
+            Grid.Column="1"
+            Margin="20 0"
+            VerticalAlignment="Center">
+            <ComboBox x:Name="CbAwayTeam"
+                      SelectionChanged="CbAwayTeam_OnSelectionChanged"/>
+        </StackPanel>
     </Grid>
 </Window>

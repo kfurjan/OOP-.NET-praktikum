@@ -7,7 +7,19 @@
         xmlns:properties="clr-namespace:WpfProject.Properties"
         mc:Ignorable="d"
         Activated="WorldCup_OnActivated"
-        Title="{x:Static properties:Resources.worldCupTitle}" Height="450" Width="800">
+        Title="{x:Static properties:Resources.worldCupTitle}"
+        Height="600" Width="800">
+    <Window.Resources>
+        <Style TargetType="{x:Type WrapPanel}">
+            <Setter Property="Orientation" Value="Vertical" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+        </Style>
+        <Style x:Key="ComboBoxStyle" TargetType="{x:Type Panel}">
+            <Setter Property="Margin" Value="20 0 20 0" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+        </Style>
+    </Window.Resources>
+
     <Grid>
         <!--Columns and rows definition-->
         <Grid.ColumnDefinitions>
@@ -22,7 +34,7 @@
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*" />
-            <RowDefinition Height="3*" />
+            <RowDefinition Height="5*" />
         </Grid.RowDefinitions>
 
         <!--Home team ComboBox-->
@@ -30,8 +42,7 @@
             Grid.Row="0"
             Grid.Column="0"
             Grid.ColumnSpan="4"
-            Margin="20 0"
-            VerticalAlignment="Center">
+            Style="{StaticResource ResourceKey=ComboBoxStyle}">
             <ComboBox 
                 x:Name="CbHomeTeam"
                 SelectionChanged="CbHomeTeam_OnSelectionChanged"/>
@@ -42,8 +53,7 @@
             Grid.Row="0"
             Grid.Column="4"
             Grid.ColumnSpan="4"
-            Margin="20 0"
-            VerticalAlignment="Center">
+            Style="{StaticResource ResourceKey=ComboBoxStyle}">
             <ComboBox x:Name="CbAwayTeam"
                       SelectionChanged="CbAwayTeam_OnSelectionChanged"/>
         </StackPanel>
@@ -61,39 +71,37 @@
         </StackPanel>
 
         <!--=========== HOME TEAM STARTING ELEVEN =========== -->
-        <StackPanel
+        <WrapPanel
             x:Name="PnlHomeTeamGoalie"
             Grid.Row="1"
-            Grid.Column="0"
-            VerticalAlignment="Center"/>
-        <StackPanel
+            Grid.Column="0"/>
+        <WrapPanel
             x:Name="PnlHomeTeamDefender"
             Grid.Row="1"
             Grid.Column="1"/>
-        <StackPanel
+        <WrapPanel
             x:Name="PnlHomeTeamMidfield"
             Grid.Row="1"
             Grid.Column="2"/>
-        <StackPanel
+        <WrapPanel
             x:Name="PnlHomeTeamForward"
             Grid.Row="1"
             Grid.Column="3"/>
 
         <!--=========== AWAY TEAM STARTING ELEVEN =========== -->
-        <StackPanel
+        <WrapPanel
             x:Name="PnlAwayTeamGoalie"
             Grid.Row="1"
-            Grid.Column="7"
-            VerticalAlignment="Center"/>
-        <StackPanel
+            Grid.Column="7"/>
+        <WrapPanel
             x:Name="PnlAwayTeamDefender"
             Grid.Row="1"
             Grid.Column="6"/>
-        <StackPanel
+        <WrapPanel
             x:Name="PnlAwayTeamMidfield"
             Grid.Row="1"
             Grid.Column="5"/>
-        <StackPanel
+        <WrapPanel
             x:Name="PnlAwayTeamForward"
             Grid.Row="1"
             Grid.Column="4"/>

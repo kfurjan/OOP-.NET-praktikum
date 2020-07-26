@@ -52,12 +52,16 @@ namespace DataAccessLayer.Filesystem
 
         public string GetPictureLocation(string controlName)
         {
-            foreach (var line in File.ReadAllLines(PicturesPath))
+            try
             {
-                if (line.Split('|')[0] == controlName) { return line.Split('|')[1]; }
-            }
+                foreach (var line in File.ReadAllLines(PicturesPath))
+                {
+                    if (line.Split('|')[0] == controlName) { return line.Split('|')[1]; }
+                }
 
-            return string.Empty;
+                return string.Empty;
+            }
+            catch { return string.Empty; }
         }
         public string GetTeamGender() => LoadAllSettings().Split('|')[0].Trim();
         public string GetSelectedLanguage() => LoadAllSettings().Split('|')[1].Trim();
@@ -66,10 +70,14 @@ namespace DataAccessLayer.Filesystem
 
         public bool PictureExists(string controlName)
         {
-            if (!File.Exists(PicturesPath)) { File.Create(PicturesPath); }
+            try
+            {
+                if (!File.Exists(PicturesPath)) { File.Create(PicturesPath); }
 
-            return File.ReadAllLines(PicturesPath)
-                .Any(line => line.Split('|')[0].ToString() == controlName);
+                return File.ReadAllLines(PicturesPath)
+                    .Any(line => line.Split('|')[0].ToString() == controlName);
+            }
+            catch { return false; }
         }
         public bool SettingsExists() => File.Exists(SettingsPath);
     }

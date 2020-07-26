@@ -160,16 +160,6 @@ namespace WpfProject.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        public static System.Drawing.Bitmap teren {
-            get {
-                object obj = ResourceManager.GetObject("teren", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Tournament type.
         /// </summary>
         public static string tournamentType {

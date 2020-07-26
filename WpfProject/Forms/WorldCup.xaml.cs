@@ -1,5 +1,7 @@
 ﻿using DataAccessLayer.Api;
 using DataAccessLayer.Models;
+using DataAccessLayer.Models.Matches;
+using DataAccessLayer.Models.Matches.Enums;
 using DataAccessLayer.Repository;
 using DataAccessLayer.Utils;
 using Newtonsoft.Json;
@@ -11,6 +13,7 @@ using System.Linq;
 using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
+using WpfProject.UserControls;
 
 namespace WpfProject.Forms
 {
@@ -27,6 +30,7 @@ namespace WpfProject.Forms
         #endregion
 
         #region Form initialization
+
         private void SetCulture()
         {
             try
@@ -35,7 +39,10 @@ namespace WpfProject.Forms
                 Thread.CurrentThread.CurrentUICulture = new CultureInfo(language);
                 Thread.CurrentThread.CurrentCulture = new CultureInfo(language);
             }
-            catch { /* if exception happens for whatever reason, default language is english */ }
+            catch
+            {
+                /* if exception happens for whatever reason, default language is english */
+            }
         }
 
         public WorldCup()
@@ -58,8 +65,12 @@ namespace WpfProject.Forms
         private void CbHomeTeam_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             HomeTeam = (sender as ComboBox)?.SelectedItem as Team;
-            var textBLock = new TextBlock { Text = HomeTeam?.ToString() };
-            PnlHomeTeamDefender.Children.Add(textBLock);
+            LoadPanelWithPlayersAsync(HomeTeam);
+
+            PnlHomeTeamGoalie.Children.Clear();
+            PnlHomeTeamDefender.Children.Clear();
+            PnlHomeTeamMidfield.Children.Clear();
+            PnlHomeTeamForward.Children.Clear();
         }
 
         private void CbAwayTeam_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -81,6 +92,54 @@ namespace WpfProject.Forms
 
                 var teams = await _api.GetDataAsync<IList<Team>>(endpoint);
                 teams.ToList().ForEach(t => comboBox.Items.Add(t));
+            }
+            catch (Exception ex) when (ex is IOException || ex is JsonReaderException || ex is ArgumentNullException)
+            {
+                MessageBox.Show("Could not retrieve data", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private async void LoadPanelWithPlayersAsync(dynamic team)
+        {
+            try
+            {
+                var country = team is Team t ? t.Country : team as string;
+
+                // get API data
+                var teamGender = _repository.GetTeamGender();
+                var endpoint = EndpointBuilder.GetMatchesEndpoint(teamGender);
+                var matches = await _api.GetDataAsync<IList<Match>>(endpoint);
+
+                // find all players for selected team
+                var match = matches?.FirstOrDefault(m => m.HomeTeamCountry == country);
+                var players = match?.HomeTeamStatistics.StartingEleven.ToList();
+
+                // load all players to FlowLayoutPanel
+                players?.ForEach(p =>
+                {
+                    var playerUserControl = new PlayerUserControl(p.Name, (int)p.ShirtNumber)
+                    {
+                        MaxHeight = 140,
+                        MaxWidth = 120
+                    };
+                    switch (p.Position)
+                    {
+                        case Position.Defender:
+                            PnlHomeTeamDefender.Children.Add(playerUserControl);
+                            break;
+                        case Position.Forward:
+                            PnlHomeTeamForward.Children.Add(playerUserControl);
+                            break;
+                        case Position.Goalie:
+                            PnlHomeTeamGoalie.Children.Add(playerUserControl);
+                            break;
+                        case Position.Midfield:
+                            PnlHomeTeamMidfield.Children.Add(playerUserControl);
+                            break;
+                        default:
+                            return;
+                    }
+                });
             }
             catch (Exception ex) when (ex is IOException || ex is JsonReaderException || ex is ArgumentNullException)
             {

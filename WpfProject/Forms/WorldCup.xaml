@@ -11,18 +11,25 @@
     <Grid>
         <!--Columns and rows definition-->
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="3*"/>
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="3*" />
         </Grid.RowDefinitions>
 
         <!--Home team ComboBox-->
         <StackPanel 
             Grid.Row="0"
             Grid.Column="0"
+            Grid.ColumnSpan="4"
             Margin="20 0"
             VerticalAlignment="Center">
             <ComboBox 
@@ -33,11 +40,62 @@
         <!--Away team ComboBox-->
         <StackPanel 
             Grid.Row="0"
-            Grid.Column="1"
+            Grid.Column="4"
+            Grid.ColumnSpan="4"
             Margin="20 0"
             VerticalAlignment="Center">
             <ComboBox x:Name="CbAwayTeam"
                       SelectionChanged="CbAwayTeam_OnSelectionChanged"/>
         </StackPanel>
+
+        <!--Starting eleven background image-->
+        <StackPanel
+            x:Name="PnlBackgroundImage"
+            Grid.Row="1"
+            Grid.Column="0"
+            Grid.ColumnSpan="8">
+            <StackPanel.Background>
+                <ImageBrush 
+                    ImageSource="/ImageSource/football_pitch.gif" />
+            </StackPanel.Background>
+        </StackPanel>
+
+        <!--=========== HOME TEAM STARTING ELEVEN =========== -->
+        <StackPanel
+            x:Name="PnlHomeTeamGoalie"
+            Grid.Row="1"
+            Grid.Column="0"
+            VerticalAlignment="Center"/>
+        <StackPanel
+            x:Name="PnlHomeTeamDefender"
+            Grid.Row="1"
+            Grid.Column="1"/>
+        <StackPanel
+            x:Name="PnlHomeTeamMidfield"
+            Grid.Row="1"
+            Grid.Column="2"/>
+        <StackPanel
+            x:Name="PnlHomeTeamForward"
+            Grid.Row="1"
+            Grid.Column="3"/>
+
+        <!--=========== AWAY TEAM STARTING ELEVEN =========== -->
+        <StackPanel
+            x:Name="PnlAwayTeamGoalie"
+            Grid.Row="1"
+            Grid.Column="7"
+            VerticalAlignment="Center"/>
+        <StackPanel
+            x:Name="PnlAwayTeamDefender"
+            Grid.Row="1"
+            Grid.Column="6"/>
+        <StackPanel
+            x:Name="PnlAwayTeamMidfield"
+            Grid.Row="1"
+            Grid.Column="5"/>
+        <StackPanel
+            x:Name="PnlAwayTeamForward"
+            Grid.Row="1"
+            Grid.Column="4"/>
     </Grid>
 </Window>

@@ -58,6 +58,8 @@ namespace WpfProject.Forms
         private void CbHomeTeam_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             HomeTeam = (sender as ComboBox)?.SelectedItem as Team;
+            var textBLock = new TextBlock { Text = HomeTeam?.ToString() };
+            PnlHomeTeamDefender.Children.Add(textBLock);
         }
 
         private void CbAwayTeam_OnSelectionChanged(object sender, SelectionChangedEventArgs e)

@@ -7,6 +7,7 @@ using DataAccessLayer.Utils;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 using System.Linq;
@@ -25,7 +26,7 @@ namespace WpfProject.Forms
         private readonly IRepository _repository = RepositoryFactory.GetRepository();
 
         public Team HomeTeam { get; private set; }
-        public Team AwayTeam { get; private set; }
+        public MatchTeam AwayTeam { get; private set; }
 
         #endregion
 
@@ -58,14 +59,14 @@ namespace WpfProject.Forms
         private void WorldCup_OnActivated(object sender, EventArgs e)
         {
             LoadComboBoxWithTeamsAsync(CbHomeTeam);
-            LoadComboBoxWithTeamsAsync(CbAwayTeam);
             SetCulture();
         }
 
         private void CbHomeTeam_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             HomeTeam = (sender as ComboBox)?.SelectedItem as Team;
-            LoadPanelWithPlayersAsync(HomeTeam);
+            LoadPanelWithPlayersAsync(HomeTeam, false);
+            LoadComboBoxWithOpponentsAsync(CbAwayTeam, HomeTeam);
 
             PnlHomeTeamGoalie.Children.Clear();
             PnlHomeTeamDefender.Children.Clear();
@@ -75,35 +76,45 @@ namespace WpfProject.Forms
 
         private void CbAwayTeam_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            AwayTeam = (sender as ComboBox)?.SelectedItem as Team;
+            AwayTeam = (sender as ComboBox)?.SelectedItem as MatchTeam;
+            LoadPanelWithPlayersAsync(AwayTeam, true);
+
+            PnlAwayTeamGoalie.Children.Clear();
+            PnlAwayTeamDefender.Children.Clear();
+            PnlAwayTeamMidfield.Children.Clear();
+            PnlAwayTeamForward.Children.Clear();
         }
 
         #endregion
 
         #region Helper functions
 
-        private async void LoadComboBoxWithTeamsAsync(ItemsControl comboBox)
+        private async void LoadComboBoxWithTeamsAsync(ItemsControl control)
         {
-            comboBox.Items.Clear();
+            control.Items.Clear();
             try
             {
                 var teamGender = _repository.GetTeamGender();
                 var endpoint = EndpointBuilder.GetTeamsEndpoint(teamGender);
 
                 var teams = await _api.GetDataAsync<IList<Team>>(endpoint);
-                teams.ToList().ForEach(t => comboBox.Items.Add(t));
+                teams.ToList().ForEach(t => control.Items.Add(t));
             }
             catch (Exception ex) when (ex is IOException || ex is JsonReaderException || ex is ArgumentNullException)
             {
+                Debug.WriteLine(ex.StackTrace);
                 MessageBox.Show("Could not retrieve data", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
-        private async void LoadPanelWithPlayersAsync(dynamic team)
+        private async void LoadPanelWithPlayersAsync(dynamic team, bool awayTeam)
         {
             try
             {
-                var country = team is Team t ? t.Country : team as string;
+                Panel panel;
+                var country = awayTeam
+                    ? (team as MatchTeam)?.Country
+                    : team is Team t ? t.Country : team as string;
 
                 // get API data
                 var teamGender = _repository.GetTeamGender();
@@ -125,21 +136,45 @@ namespace WpfProject.Forms
                     switch (p.Position)
                     {
                         case Position.Defender:
-                            PnlHomeTeamDefender.Children.Add(playerUserControl);
+                            panel = awayTeam ? PnlAwayTeamDefender : PnlHomeTeamDefender;
+                            panel.Children.Add(playerUserControl);
                             break;
                         case Position.Forward:
-                            PnlHomeTeamForward.Children.Add(playerUserControl);
+                            panel = awayTeam ? PnlAwayTeamForward : PnlHomeTeamForward;
+                            panel.Children.Add(playerUserControl);
                             break;
                         case Position.Goalie:
-                            PnlHomeTeamGoalie.Children.Add(playerUserControl);
+                            panel = awayTeam ? PnlAwayTeamGoalie : PnlHomeTeamGoalie;
+                            panel.Children.Add(playerUserControl);
                             break;
                         case Position.Midfield:
-                            PnlHomeTeamMidfield.Children.Add(playerUserControl);
+                            panel = awayTeam ? PnlAwayTeamMidfield : PnlHomeTeamMidfield;
+                            panel.Children.Add(playerUserControl);
                             break;
                         default:
                             return;
                     }
                 });
+            }
+            catch (Exception ex) when (ex is IOException || ex is JsonReaderException || ex is ArgumentNullException)
+            {
+                MessageBox.Show("Could not retrieve data", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private async void LoadComboBoxWithOpponentsAsync(ItemsControl control, Team homeTeam)
+        {
+            try
+            {
+                control.Items.Clear();
+
+                // get API data
+                var teamGender = _repository.GetTeamGender();
+                var endpoint = EndpointBuilder.GetMatchesEndpoint(teamGender);
+                var matches = await _api.GetDataAsync<IList<Match>>(endpoint);
+
+                var matchesPlayed = matches.Where(m => m.HomeMatchTeam.Country == homeTeam.Country).ToList();
+                matchesPlayed.ToList().ForEach(m => control.Items.Add(m.AwayMatchTeam));
             }
             catch (Exception ex) when (ex is IOException || ex is JsonReaderException || ex is ArgumentNullException)
             {

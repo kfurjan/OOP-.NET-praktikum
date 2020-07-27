@@ -18,7 +18,7 @@ namespace DataAccessLayer.Models.Matches
 
         public override string ToString()
         {
-            return $"{Country} ({Code})";
+            return $"{Country.ToUpper()} ({Code.ToUpper()})";
         }
     }
 }

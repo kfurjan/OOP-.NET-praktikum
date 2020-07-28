@@ -7,7 +7,6 @@ using DataAccessLayer.Utils;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 using System.Linq;
@@ -102,7 +101,6 @@ namespace WpfProject.Forms
             }
             catch (Exception ex) when (ex is IOException || ex is JsonReaderException || ex is ArgumentNullException)
             {
-                Debug.WriteLine(ex.StackTrace);
                 MessageBox.Show("Could not retrieve data", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
@@ -173,7 +171,7 @@ namespace WpfProject.Forms
                 var endpoint = EndpointBuilder.GetMatchesEndpoint(teamGender);
                 var matches = await _api.GetDataAsync<IList<Match>>(endpoint);
 
-                var matchesPlayed = matches.Where(m => m.HomeMatchTeam.Country == homeTeam.Country).ToList();
+                var matchesPlayed = matches.Where(m => m.HomeMatchTeam.Country == homeTeam.Country);
                 matchesPlayed.ToList().ForEach(m => control.Items.Add(m.AwayMatchTeam));
             }
             catch (Exception ex) when (ex is IOException || ex is JsonReaderException || ex is ArgumentNullException)
@@ -183,5 +181,15 @@ namespace WpfProject.Forms
         }
 
         #endregion
+
+        private void BtnHomeTeamInformation_OnClick(object sender, RoutedEventArgs e)
+        {
+            new TeamInformation().ShowDialog();
+        }
+
+        private void BtnAwayTeamInformation_OnClick(object sender, RoutedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

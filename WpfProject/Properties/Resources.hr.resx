@@ -123,6 +123,9 @@
   <data name="btnSettingsSave" xml:space="preserve">
     <value>Potvrdi</value>
   </data>
+  <data name="btnTeamInformation" xml:space="preserve">
+    <value>Statistika tima</value>
+  </data>
   <data name="croatian" xml:space="preserve">
     <value>Hrvatski</value>
   </data>
@@ -150,8 +153,35 @@
   <data name="small" xml:space="preserve">
     <value>Mala veličina</value>
   </data>
+  <data name="teamInformationTitle" xml:space="preserve">
+    <value>Statistika tima</value>
+  </data>
   <data name="tournamentType" xml:space="preserve">
     <value>Vrsta prvenstva</value>
+  </data>
+  <data name="txtFifaCode" xml:space="preserve">
+    <value>Fifa kod: </value>
+  </data>
+  <data name="txtGoalsReceived" xml:space="preserve">
+    <value>Primljeni golovi: </value>
+  </data>
+  <data name="txtGoalsScored" xml:space="preserve">
+    <value>Zabijeni golovi: </value>
+  </data>
+  <data name="txtMatchesDraw" xml:space="preserve">
+    <value>Neriješene utakmice: </value>
+  </data>
+  <data name="txtMatchesLost" xml:space="preserve">
+    <value>Izgubljene utakmice: </value>
+  </data>
+  <data name="txtMatchesPlayed" xml:space="preserve">
+    <value>Odigrane utakmice: </value>
+  </data>
+  <data name="txtMatchesWon" xml:space="preserve">
+    <value>Dobivene utakmice: </value>
+  </data>
+  <data name="txtTeamName" xml:space="preserve">
+    <value>Ime: </value>
   </data>
   <data name="worldCupTitle" xml:space="preserve">
     <value>Svjetsko prvenstvo</value>

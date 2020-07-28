@@ -1,0 +1,95 @@
+﻿<Window x:Class="WpfProject.Forms.TeamInformation"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfProject.Forms"
+        xmlns:properties="clr-namespace:WpfProject.Properties"
+        mc:Ignorable="d"
+        Title="{x:Static properties:Resources.teamInformationTitle}" Height="450" Width="800"
+        DataContext="{Binding RelativeSource={RelativeSource Self}}">
+    <Window.Resources>
+        <Style TargetType="{x:Type TextBlock}">
+            <Setter Property="Margin" Value="50 0 0 0" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="FontSize" Value="18" />
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <!--Columns and rows definition-->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+        </Grid.RowDefinitions>
+
+        <TextBlock 
+            x:Name="TxtName"
+            Grid.Row="0"
+            Grid.Column="0">
+            <Run Text="{x:Static properties:Resources.txtTeamName}" />
+            <Run Text="{Binding TeamName}" />
+        </TextBlock>
+
+        <TextBlock 
+            x:Name="TxtFifaCode"
+            Grid.Row="0"
+            Grid.Column="1">
+            <Run Text="{x:Static properties:Resources.txtFifaCode}" />
+            <Run Text="{Binding FifaCode}" />
+        </TextBlock>
+
+        <TextBlock 
+            x:Name="TxtMatchesPlayed"
+            Grid.Row="1"
+            Grid.Column="0">
+            <Run Text="{x:Static properties:Resources.txtMatchesPlayed}" />
+            <Run Text="{Binding MatchesPlayed}" />
+        </TextBlock>
+
+        <TextBlock 
+            x:Name="TxtMatchesWon"
+            Grid.Row="1"
+            Grid.Column="1">
+            <Run Text="{x:Static properties:Resources.txtMatchesWon}" />
+            <Run Text="{Binding MatchesWon}" />
+        </TextBlock>
+
+        <TextBlock 
+            x:Name="TxtMatchesLost"
+            Grid.Row="2"
+            Grid.Column="0">
+            <Run Text="{x:Static properties:Resources.txtMatchesLost}" />
+            <Run Text="{Binding MatchesLost}" />
+        </TextBlock>
+
+        <TextBlock 
+            x:Name="TxtMatchesDraw"
+            Grid.Row="2"
+            Grid.Column="1">
+            <Run Text="{x:Static properties:Resources.txtMatchesDraw}" />
+            <Run Text="{Binding MatchesDraw}" />
+        </TextBlock>
+
+        <TextBlock 
+            x:Name="TxtGoalsScored"
+            Grid.Row="3"
+            Grid.Column="0">
+            <Run Text="{x:Static properties:Resources.txtGoalsScored}" />
+            <Run Text="{Binding GoalsScored}" />
+        </TextBlock>
+
+        <TextBlock 
+            x:Name="TxtGoalsReceived"
+            Grid.Row="3"
+            Grid.Column="1">
+            <Run Text="{x:Static properties:Resources.txtGoalsReceived}" />
+            <Run Text="{Binding GoalsReceived}" />
+        </TextBlock>
+    </Grid>
+</Window>

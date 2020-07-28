@@ -14,6 +14,12 @@
             <Setter Property="Orientation" Value="Vertical" />
             <Setter Property="VerticalAlignment" Value="Center" />
         </Style>
+
+        <Style TargetType="{x:Type Button}">
+            <Setter Property="Margin" Value="0 15 0 0" />
+            <Setter Property="Width" Value="125" />
+        </Style>
+
         <Style x:Key="ComboBoxStyle" TargetType="{x:Type Panel}">
             <Setter Property="Margin" Value="20 0 20 0" />
             <Setter Property="VerticalAlignment" Value="Center" />
@@ -37,7 +43,7 @@
             <RowDefinition Height="5*" />
         </Grid.RowDefinitions>
 
-        <!--Home team ComboBox-->
+        <!--Home team -->
         <StackPanel 
             Grid.Row="0"
             Grid.Column="0"
@@ -46,16 +52,25 @@
             <ComboBox 
                 x:Name="CbHomeTeam"
                 SelectionChanged="CbHomeTeam_OnSelectionChanged"/>
+            <Button 
+                x:Name="BtnHomeTeamInformation" 
+                Content="{x:Static properties:Resources.btnTeamInformation}"
+                Click="BtnHomeTeamInformation_OnClick"/>
         </StackPanel>
 
-        <!--Away team ComboBox-->
+        <!--Away team -->
         <StackPanel 
             Grid.Row="0"
             Grid.Column="4"
             Grid.ColumnSpan="4"
             Style="{StaticResource ResourceKey=ComboBoxStyle}">
-            <ComboBox x:Name="CbAwayTeam"
-                      SelectionChanged="CbAwayTeam_OnSelectionChanged"/>
+            <ComboBox 
+                x:Name="CbAwayTeam"
+                SelectionChanged="CbAwayTeam_OnSelectionChanged"/>
+            <Button 
+                x:Name="BtnAwayTeamInformation" 
+                Content="{x:Static properties:Resources.btnTeamInformation}"
+                Click="BtnAwayTeamInformation_OnClick"/>
         </StackPanel>
 
         <!--Starting eleven background image-->

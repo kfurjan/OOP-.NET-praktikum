@@ -79,6 +79,15 @@ namespace WpfProject.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Team information.
+        /// </summary>
+        public static string btnTeamInformation {
+            get {
+                return ResourceManager.GetString("btnTeamInformation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Croatian.
         /// </summary>
         public static string croatian {
@@ -160,11 +169,92 @@ namespace WpfProject.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Team information.
+        /// </summary>
+        public static string teamInformationTitle {
+            get {
+                return ResourceManager.GetString("teamInformationTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Tournament type.
         /// </summary>
         public static string tournamentType {
             get {
                 return ResourceManager.GetString("tournamentType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fifa code: .
+        /// </summary>
+        public static string txtFifaCode {
+            get {
+                return ResourceManager.GetString("txtFifaCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Goals received: .
+        /// </summary>
+        public static string txtGoalsReceived {
+            get {
+                return ResourceManager.GetString("txtGoalsReceived", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Goals scored: .
+        /// </summary>
+        public static string txtGoalsScored {
+            get {
+                return ResourceManager.GetString("txtGoalsScored", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Drawn matches: .
+        /// </summary>
+        public static string txtMatchesDraw {
+            get {
+                return ResourceManager.GetString("txtMatchesDraw", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Matches lost: .
+        /// </summary>
+        public static string txtMatchesLost {
+            get {
+                return ResourceManager.GetString("txtMatchesLost", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Matches played: .
+        /// </summary>
+        public static string txtMatchesPlayed {
+            get {
+                return ResourceManager.GetString("txtMatchesPlayed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Matches won: .
+        /// </summary>
+        public static string txtMatchesWon {
+            get {
+                return ResourceManager.GetString("txtMatchesWon", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name: .
+        /// </summary>
+        public static string txtTeamName {
+            get {
+                return ResourceManager.GetString("txtTeamName", resourceCulture);
             }
         }
         

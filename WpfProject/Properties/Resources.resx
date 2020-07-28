@@ -123,6 +123,9 @@
   <data name="btnSettingsSave" xml:space="preserve">
     <value>Submit</value>
   </data>
+  <data name="btnTeamInformation" xml:space="preserve">
+    <value>Team information</value>
+  </data>
   <data name="croatian" xml:space="preserve">
     <value>Croatian</value>
   </data>
@@ -150,9 +153,35 @@
   <data name="small" xml:space="preserve">
     <value>Small</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="teamInformationTitle" xml:space="preserve">
+    <value>Team information</value>
+  </data>
   <data name="tournamentType" xml:space="preserve">
     <value>Tournament type</value>
+  </data>
+  <data name="txtFifaCode" xml:space="preserve">
+    <value>Fifa code: </value>
+  </data>
+  <data name="txtGoalsReceived" xml:space="preserve">
+    <value>Goals received: </value>
+  </data>
+  <data name="txtGoalsScored" xml:space="preserve">
+    <value>Goals scored: </value>
+  </data>
+  <data name="txtMatchesDraw" xml:space="preserve">
+    <value>Drawn matches: </value>
+  </data>
+  <data name="txtMatchesLost" xml:space="preserve">
+    <value>Matches lost: </value>
+  </data>
+  <data name="txtMatchesPlayed" xml:space="preserve">
+    <value>Matches played: </value>
+  </data>
+  <data name="txtMatchesWon" xml:space="preserve">
+    <value>Matches won: </value>
+  </data>
+  <data name="txtTeamName" xml:space="preserve">
+    <value>Name: </value>
   </data>
   <data name="worldCupTitle" xml:space="preserve">
     <value>World cup</value>

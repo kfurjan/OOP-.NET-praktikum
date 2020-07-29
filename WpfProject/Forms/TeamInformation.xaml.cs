@@ -16,8 +16,18 @@ namespace WpfProject.Forms
         public string GoalsScored { get; set; }
         public string GoalsReceived { get; set; }
 
-        public TeamInformation()
+        public TeamInformation(
+            string teamName, string fifaCode, string matchesPlayed, string matchesWon,
+            string matchesLost, string matchesDraw, string goalsScored, string goalsReceived)
         {
+            TeamName = teamName;
+            FifaCode = fifaCode;
+            MatchesPlayed = matchesPlayed;
+            MatchesWon = matchesWon;
+            MatchesLost = matchesLost;
+            MatchesDraw = matchesDraw;
+            GoalsScored = goalsScored;
+            GoalsReceived = goalsReceived;
             InitializeComponent();
         }
     }

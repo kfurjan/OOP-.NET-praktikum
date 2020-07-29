@@ -15,14 +15,10 @@
             };
         }
 
-        public static string GetTeamsEndpoint(string gender)
-        {
-            return $@"{GetTeamGender(gender)}/teams";
-        }
+        public static string GetTeamsEndpoint(string gender) => $@"{GetTeamGender(gender)}/teams";
 
-        public static string GetMatchesEndpoint(string gender)
-        {
-            return $@"{GetTeamGender(gender)}/matches";
-        }
+        public static string GetTeamResultsEndpoint(string gender) => $@"{GetTeamsEndpoint(gender)}/results";
+
+        public static string GetMatchesEndpoint(string gender) => $@"{GetTeamGender(gender)}/matches";
     }
 }

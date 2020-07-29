@@ -180,16 +180,38 @@ namespace WpfProject.Forms
             }
         }
 
+        private async void GetTeamsResultsAsync(dynamic team)
+        {
+            try
+            {
+                if (team is null) { return; }
+
+                var teamGender = _repository.GetTeamGender();
+                var endpoint = EndpointBuilder.GetTeamResultsEndpoint(teamGender);
+                var allTeamResults = await _api.GetDataAsync<IList<TeamStats>>(endpoint);
+                var teamResult = allTeamResults.FirstOrDefault(tr => tr.Country == team.Country);
+
+                new TeamInformation(
+                    teamResult?.Country,
+                    teamResult?.FifaCode,
+                    teamResult?.GamesPlayed.ToString(),
+                    teamResult?.Wins.ToString(),
+                    teamResult?.Losses.ToString(),
+                    teamResult?.Draws.ToString(),
+                    teamResult?.GoalsFor.ToString(),
+                    teamResult?.GoalsAgainst.ToString()
+                    ).ShowDialog();
+            }
+            catch (Exception ex) when (ex is IOException || ex is JsonReaderException || ex is ArgumentNullException)
+            {
+                MessageBox.Show("Could not retrieve data", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
         #endregion
 
-        private void BtnHomeTeamInformation_OnClick(object sender, RoutedEventArgs e)
-        {
-            new TeamInformation().ShowDialog();
-        }
+        private void BtnHomeTeamInformation_OnClick(object sender, RoutedEventArgs e) => GetTeamsResultsAsync(CbHomeTeam.SelectionBoxItem as Team);
 
-        private void BtnAwayTeamInformation_OnClick(object sender, RoutedEventArgs e)
-        {
-            throw new NotImplementedException();
-        }
+        private void BtnAwayTeamInformation_OnClick(object sender, RoutedEventArgs e) => GetTeamsResultsAsync(CbAwayTeam.SelectionBoxItem as MatchTeam);
     }
 }

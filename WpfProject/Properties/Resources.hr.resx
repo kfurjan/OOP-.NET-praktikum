@@ -147,6 +147,9 @@
   <data name="medium" xml:space="preserve">
     <value>Srednja velićina</value>
   </data>
+  <data name="playerInformationTitle" xml:space="preserve">
+    <value>Informacije o igraču</value>
+  </data>
   <data name="settingsTitle" xml:space="preserve">
     <value>Postavke</value>
   </data>
@@ -158,6 +161,9 @@
   </data>
   <data name="tournamentType" xml:space="preserve">
     <value>Vrsta prvenstva</value>
+  </data>
+  <data name="txtCaptain" xml:space="preserve">
+    <value>Kapetan: </value>
   </data>
   <data name="txtFifaCode" xml:space="preserve">
     <value>Fifa kod: </value>
@@ -180,8 +186,20 @@
   <data name="txtMatchesWon" xml:space="preserve">
     <value>Dobivene utakmice: </value>
   </data>
+  <data name="txtPlayerName" xml:space="preserve">
+    <value>Ime: </value>
+  </data>
+  <data name="txtPosition" xml:space="preserve">
+    <value>Pozicija: </value>
+  </data>
+  <data name="txtShirtNumber" xml:space="preserve">
+    <value>Broj: </value>
+  </data>
   <data name="txtTeamName" xml:space="preserve">
     <value>Ime: </value>
+  </data>
+  <data name="txtYellowCards" xml:space="preserve">
+    <value>Žuti kartoni: </value>
   </data>
   <data name="worldCupTitle" xml:space="preserve">
     <value>Svjetsko prvenstvo</value>

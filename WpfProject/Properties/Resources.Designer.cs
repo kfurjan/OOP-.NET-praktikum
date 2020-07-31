@@ -151,6 +151,15 @@ namespace WpfProject.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Player information.
+        /// </summary>
+        public static string playerInformationTitle {
+            get {
+                return ResourceManager.GetString("playerInformationTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Settings.
         /// </summary>
         public static string settingsTitle {
@@ -183,6 +192,15 @@ namespace WpfProject.Properties {
         public static string tournamentType {
             get {
                 return ResourceManager.GetString("tournamentType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Captain: .
+        /// </summary>
+        public static string txtCaptain {
+            get {
+                return ResourceManager.GetString("txtCaptain", resourceCulture);
             }
         }
         
@@ -252,9 +270,45 @@ namespace WpfProject.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Name: .
         /// </summary>
+        public static string txtPlayerName {
+            get {
+                return ResourceManager.GetString("txtPlayerName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Position: .
+        /// </summary>
+        public static string txtPosition {
+            get {
+                return ResourceManager.GetString("txtPosition", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Shirt number: .
+        /// </summary>
+        public static string txtShirtNumber {
+            get {
+                return ResourceManager.GetString("txtShirtNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name: .
+        /// </summary>
         public static string txtTeamName {
             get {
                 return ResourceManager.GetString("txtTeamName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Yellow cards: .
+        /// </summary>
+        public static string txtYellowCards {
+            get {
+                return ResourceManager.GetString("txtYellowCards", resourceCulture);
             }
         }
         

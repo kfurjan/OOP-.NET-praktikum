@@ -15,26 +15,31 @@
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
 
-        <StackPanel
-            x:Name="PnlPlayerUserControl"
+        <Button
             Grid.Row="0"
-            Grid.Column="0">
-            <StackPanel.Resources>
-                <Style TargetType="{x:Type Label}">
-                    <Setter Property="HorizontalAlignment" Value="Center" />
-                </Style>
-            </StackPanel.Resources>
+            Grid.Column="0"
+            BorderThickness="0"
+            x:Name="BtnUserControl"
+            Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" >
+            <StackPanel
+                x:Name="PnlPlayerUserControl">
+                <StackPanel.Resources>
+                    <Style TargetType="{x:Type Label}">
+                        <Setter Property="HorizontalAlignment" Value="Center" />
+                    </Style>
+                </StackPanel.Resources>
 
-            <Label 
-                x:Name="LblPlayerName"
-                Content="{Binding PlayerName}" />
-            <Image 
-                HorizontalAlignment="Center"
-                Margin="20 0"
-                Source="{Binding PlayerImagePath}" />
-            <Label
-                x:Name="LblShirtNumber"
-                Content="{Binding ShirtNumber}" />
-        </StackPanel>
+                <Label 
+                    x:Name="LblPlayerName"
+                    Content="{Binding PlayerName}" />
+                <Image 
+                    HorizontalAlignment="Center"
+                    Margin="20 0"
+                    Source="{Binding PlayerImagePath}" />
+                <Label
+                    x:Name="LblShirtNumber"
+                    Content="{Binding ShirtNumber}" />
+            </StackPanel>
+        </Button>
     </Grid>
 </UserControl>

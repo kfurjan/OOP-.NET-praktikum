@@ -60,12 +60,19 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Forms\PlayerInformation.xaml.cs">
+      <DependentUpon>PlayerInformation.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Forms\TeamInformation.xaml.cs">
       <DependentUpon>TeamInformation.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControls\PlayerUserControl.xaml.cs">
       <DependentUpon>PlayerUserControl.xaml</DependentUpon>
     </Compile>
+    <Page Include="Forms\PlayerInformation.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Forms\Settings.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

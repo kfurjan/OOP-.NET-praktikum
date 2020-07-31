@@ -147,6 +147,9 @@
   <data name="medium" xml:space="preserve">
     <value>Medium</value>
   </data>
+  <data name="playerInformationTitle" xml:space="preserve">
+    <value>Player information</value>
+  </data>
   <data name="settingsTitle" xml:space="preserve">
     <value>Settings</value>
   </data>
@@ -158,6 +161,9 @@
   </data>
   <data name="tournamentType" xml:space="preserve">
     <value>Tournament type</value>
+  </data>
+  <data name="txtCaptain" xml:space="preserve">
+    <value>Captain: </value>
   </data>
   <data name="txtFifaCode" xml:space="preserve">
     <value>Fifa code: </value>
@@ -180,8 +186,20 @@
   <data name="txtMatchesWon" xml:space="preserve">
     <value>Matches won: </value>
   </data>
+  <data name="txtPlayerName" xml:space="preserve">
+    <value>Name: </value>
+  </data>
+  <data name="txtPosition" xml:space="preserve">
+    <value>Position: </value>
+  </data>
+  <data name="txtShirtNumber" xml:space="preserve">
+    <value>Shirt number: </value>
+  </data>
   <data name="txtTeamName" xml:space="preserve">
     <value>Name: </value>
+  </data>
+  <data name="txtYellowCards" xml:space="preserve">
+    <value>Yellow cards: </value>
   </data>
   <data name="worldCupTitle" xml:space="preserve">
     <value>World cup</value>

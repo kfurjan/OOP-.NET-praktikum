@@ -84,6 +84,10 @@ namespace WpfProject.Forms
             PnlAwayTeamForward.Children.Clear();
         }
 
+        private void BtnHomeTeamInformation_OnClick(object sender, RoutedEventArgs e) => GetTeamsResultsAsync(CbHomeTeam.SelectionBoxItem as Team);
+
+        private void BtnAwayTeamInformation_OnClick(object sender, RoutedEventArgs e) => GetTeamsResultsAsync(CbAwayTeam.SelectionBoxItem as MatchTeam);
+
         #endregion
 
         #region Helper functions
@@ -129,8 +133,11 @@ namespace WpfProject.Forms
                     var playerUserControl = new PlayerUserControl(p.Name, (int)p.ShirtNumber)
                     {
                         MaxHeight = 140,
-                        MaxWidth = 120
+                        MaxWidth = 120,
+                        BtnUserControl = { ClickMode = ClickMode.Press }
                     };
+                    playerUserControl.BtnUserControl.Click += OnUserControlClick;
+
                     switch (p.Position)
                     {
                         case Position.Defender:
@@ -199,8 +206,8 @@ namespace WpfProject.Forms
                     teamResult?.Losses.ToString(),
                     teamResult?.Draws.ToString(),
                     teamResult?.GoalsFor.ToString(),
-                    teamResult?.GoalsAgainst.ToString()
-                    ).ShowDialog();
+                    teamResult?.GoalsAgainst.ToString())
+                    .ShowDialog();
             }
             catch (Exception ex) when (ex is IOException || ex is JsonReaderException || ex is ArgumentNullException)
             {
@@ -208,10 +215,31 @@ namespace WpfProject.Forms
             }
         }
 
+        private async void OnUserControlClick(object sender, RoutedEventArgs e)
+        {
+            if (!(CbHomeTeam.SelectionBoxItem is Team homeTeam) ||
+                !(CbAwayTeam.SelectionBoxItem is MatchTeam awayTeam)) { return; }
+
+            // get API data
+            var teamGender = _repository.GetTeamGender();
+            var endpoint = EndpointBuilder.GetMatchesEndpoint(teamGender);
+            var matches = await _api.GetDataAsync<IList<Match>>(endpoint);
+
+            // get match data with selected teams
+            var selectedMatch = matches.FirstOrDefault(m =>
+                m.HomeTeamCountry == homeTeam.Country &&
+                m.AwayTeamCountry == awayTeam.Country);
+
+            new PlayerInformation(
+                "Player name",
+                "10",
+                "Forward",
+                "No",
+                "3",
+                "1")
+                .ShowDialog();
+        }
+
         #endregion
-
-        private void BtnHomeTeamInformation_OnClick(object sender, RoutedEventArgs e) => GetTeamsResultsAsync(CbHomeTeam.SelectionBoxItem as Team);
-
-        private void BtnAwayTeamInformation_OnClick(object sender, RoutedEventArgs e) => GetTeamsResultsAsync(CbAwayTeam.SelectionBoxItem as MatchTeam);
     }
 }

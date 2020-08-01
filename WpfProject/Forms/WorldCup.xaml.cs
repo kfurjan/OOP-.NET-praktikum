@@ -55,10 +55,10 @@ namespace WpfProject.Forms
 
         #region Event handlers
 
-        private void WorldCup_OnActivated(object sender, EventArgs e)
+        private void WorldCup_OnLoaded(object sender, RoutedEventArgs e)
         {
             LoadComboBoxWithTeamsAsync(CbHomeTeam);
-            SetCulture();
+            // SetCulture();
         }
 
         private void CbHomeTeam_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -217,27 +217,67 @@ namespace WpfProject.Forms
 
         private async void OnUserControlClick(object sender, RoutedEventArgs e)
         {
-            if (!(CbHomeTeam.SelectionBoxItem is Team homeTeam) ||
-                !(CbAwayTeam.SelectionBoxItem is MatchTeam awayTeam)) { return; }
+            try
+            {
+                if (!(CbHomeTeam.SelectionBoxItem is Team homeTeam) ||
+            !(CbAwayTeam.SelectionBoxItem is MatchTeam awayTeam)) { return; }
 
-            // get API data
-            var teamGender = _repository.GetTeamGender();
-            var endpoint = EndpointBuilder.GetMatchesEndpoint(teamGender);
-            var matches = await _api.GetDataAsync<IList<Match>>(endpoint);
+                // get API data
+                var teamGender = _repository.GetTeamGender();
+                var endpoint = EndpointBuilder.GetMatchesEndpoint(teamGender);
+                var matches = await _api.GetDataAsync<IList<Match>>(endpoint);
 
-            // get match data with selected teams
-            var selectedMatch = matches.FirstOrDefault(m =>
-                m.HomeTeamCountry == homeTeam.Country &&
-                m.AwayTeamCountry == awayTeam.Country);
+                // get match data with selected teams
+                var selectedMatch = matches.FirstOrDefault(m =>
+                    m.HomeTeamCountry == homeTeam.Country &&
+                    m.AwayTeamCountry == awayTeam.Country);
 
-            new PlayerInformation(
-                "Player name",
-                "10",
-                "Forward",
-                "No",
-                "3",
-                "1")
-                .ShowDialog();
+                // get all data needed for selected player
+                var userControlButton = sender as Button;
+                var userControlPanel = userControlButton?.Content as StackPanel;
+                var playerName = (userControlPanel?.Children[0] as Label)?.Content.ToString();
+
+                var playerInformation =
+                    selectedMatch?.HomeTeamStatistics.StartingEleven
+                        .Union(selectedMatch.AwayTeamStatistics.StartingEleven)
+                        .FirstOrDefault(p => p.Name == playerName);
+
+                int goalsScored = 0, yellowCards = 0;
+                selectedMatch?.HomeTeamEvents
+                    .Union(selectedMatch?.AwayTeamEvents)
+                    .Where(ev => ev.Player == playerName)
+                    .ToList().ForEach(ev =>
+                    {
+                        switch (ev.TypeOfEvent)
+                        {
+                            case TypeOfEvent.Goal:
+                                goalsScored++;
+                                break;
+                            case TypeOfEvent.GoalOwn:
+                                goalsScored++;
+                                break;
+                            case TypeOfEvent.YellowCard:
+                                yellowCards++;
+                                break;
+                            case TypeOfEvent.YellowCardSecond:
+                                yellowCards++;
+                                break;
+                        }
+                    });
+
+                new PlayerInformation(
+                    playerName,
+                    playerInformation?.ShirtNumber.ToString(),
+                    playerInformation?.Position.ToString(),
+                    playerInformation?.Captain.ToString().FirstCharToUpper(),
+                    goalsScored.ToString(),
+                    yellowCards.ToString())
+                    .ShowDialog();
+            }
+            catch
+            {
+                MessageBox.Show("Could not retrieve data", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         #endregion

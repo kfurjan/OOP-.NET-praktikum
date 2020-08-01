@@ -6,8 +6,8 @@
         xmlns:local="clr-namespace:WpfProject.Forms"
         xmlns:properties="clr-namespace:WpfProject.Properties"
         mc:Ignorable="d"
-        Activated="WorldCup_OnActivated"
         Title="{x:Static properties:Resources.worldCupTitle}"
+        Loaded="WorldCup_OnLoaded"
         Height="600" Width="800">
     <Window.Resources>
         <Style TargetType="{x:Type WrapPanel}">

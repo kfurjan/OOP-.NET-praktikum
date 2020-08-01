@@ -83,6 +83,7 @@
     <Compile Include="Repository\IRepository.cs" />
     <Compile Include="Repository\RepositoryFactory.cs" />
     <Compile Include="Utils\EndpointBuilder.cs" />
+    <Compile Include="Utils\StringExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

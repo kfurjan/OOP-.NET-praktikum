@@ -39,13 +39,26 @@
             <ColumnDefinition Width="1*" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
+            <RowDefinition Height="0.2*" />
             <RowDefinition Height="1*" />
             <RowDefinition Height="5*" />
         </Grid.RowDefinitions>
+    
+        <!--Menu item-->
+        <DockPanel
+            Grid.Row="0"
+            Grid.Column="0">
+            <Menu DockPanel.Dock="Top" 
+                  Margin="0 0 45 0">
+                <MenuItem 
+                    Header="Settings"
+                    Click="MenuItem_OnClick" />
+            </Menu>
+        </DockPanel>
 
         <!--Home team -->
         <StackPanel 
-            Grid.Row="0"
+            Grid.Row="1"
             Grid.Column="0"
             Grid.ColumnSpan="4"
             Style="{StaticResource ResourceKey=ComboBoxStyle}">
@@ -60,7 +73,7 @@
 
         <!--Away team -->
         <StackPanel 
-            Grid.Row="0"
+            Grid.Row="1"
             Grid.Column="4"
             Grid.ColumnSpan="4"
             Style="{StaticResource ResourceKey=ComboBoxStyle}">
@@ -76,7 +89,7 @@
         <!--Starting eleven background image-->
         <StackPanel
             x:Name="PnlBackgroundImage"
-            Grid.Row="1"
+            Grid.Row="2"
             Grid.Column="0"
             Grid.ColumnSpan="8">
             <StackPanel.Background>
@@ -88,37 +101,37 @@
         <!--=========== HOME TEAM STARTING ELEVEN =========== -->
         <WrapPanel
             x:Name="PnlHomeTeamGoalie"
-            Grid.Row="1"
+            Grid.Row="2"
             Grid.Column="0"/>
         <WrapPanel
             x:Name="PnlHomeTeamDefender"
-            Grid.Row="1"
+            Grid.Row="2"
             Grid.Column="1"/>
         <WrapPanel
             x:Name="PnlHomeTeamMidfield"
-            Grid.Row="1"
+            Grid.Row="2"
             Grid.Column="2"/>
         <WrapPanel
             x:Name="PnlHomeTeamForward"
-            Grid.Row="1"
+            Grid.Row="2"
             Grid.Column="3"/>
 
         <!--=========== AWAY TEAM STARTING ELEVEN =========== -->
         <WrapPanel
             x:Name="PnlAwayTeamGoalie"
-            Grid.Row="1"
+            Grid.Row="2"
             Grid.Column="7"/>
         <WrapPanel
             x:Name="PnlAwayTeamDefender"
-            Grid.Row="1"
+            Grid.Row="2"
             Grid.Column="6"/>
         <WrapPanel
             x:Name="PnlAwayTeamMidfield"
-            Grid.Row="1"
+            Grid.Row="2"
             Grid.Column="5"/>
         <WrapPanel
             x:Name="PnlAwayTeamForward"
-            Grid.Row="1"
+            Grid.Row="2"
             Grid.Column="4"/>
     </Grid>
 </Window>

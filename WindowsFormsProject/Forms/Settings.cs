@@ -4,6 +4,7 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
+using static System.Windows.Forms.Application;
 
 namespace WindowsFormsProject.Forms
 {
@@ -37,7 +38,7 @@ namespace WindowsFormsProject.Forms
                 MessageBox.Show(Resources.Resources.unexpectedErrorOccured);
             }
 
-            if (Application.OpenForms.Count > 1)
+            if (OpenForms.Count > 1)
             {
                 Close();
                 return;

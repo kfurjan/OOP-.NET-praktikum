@@ -58,7 +58,7 @@ namespace WpfProject.Forms
         private void WorldCup_OnLoaded(object sender, RoutedEventArgs e)
         {
             LoadComboBoxWithTeamsAsync(CbHomeTeam);
-            // SetCulture();
+            SetCulture();
         }
 
         private void CbHomeTeam_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -87,6 +87,13 @@ namespace WpfProject.Forms
         private void BtnHomeTeamInformation_OnClick(object sender, RoutedEventArgs e) => GetTeamsResultsAsync(CbHomeTeam.SelectionBoxItem as Team);
 
         private void BtnAwayTeamInformation_OnClick(object sender, RoutedEventArgs e) => GetTeamsResultsAsync(CbAwayTeam.SelectionBoxItem as MatchTeam);
+
+        private void MenuItem_OnClick(object sender, RoutedEventArgs e)
+        {
+            Hide();
+            new Settings().ShowDialog();
+            Close();
+        }
 
         #endregion
 

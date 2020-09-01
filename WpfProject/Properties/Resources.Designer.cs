@@ -162,6 +162,15 @@ namespace WpfProject.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Settings.
         /// </summary>
+        public static string settingsFormTitle {
+            get {
+                return ResourceManager.GetString("settingsFormTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Settings.
+        /// </summary>
         public static string settingsTitle {
             get {
                 return ResourceManager.GetString("settingsTitle", resourceCulture);

@@ -150,6 +150,9 @@
   <data name="playerInformationTitle" xml:space="preserve">
     <value>Player information</value>
   </data>
+  <data name="settingsFormTitle" xml:space="preserve">
+    <value>Settings</value>
+  </data>
   <data name="settingsTitle" xml:space="preserve">
     <value>Settings</value>
   </data>

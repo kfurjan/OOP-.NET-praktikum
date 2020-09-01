@@ -150,6 +150,9 @@
   <data name="playerInformationTitle" xml:space="preserve">
     <value>Informacije o igraču</value>
   </data>
+  <data name="settingsFormTitle" xml:space="preserve">
+    <value>Postavke</value>
+  </data>
   <data name="settingsTitle" xml:space="preserve">
     <value>Postavke</value>
   </data>

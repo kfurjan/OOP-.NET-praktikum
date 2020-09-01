@@ -16,6 +16,19 @@
             <Setter Property="FontSize" Value="18" />
         </Style>
     </Window.Resources>
+
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="Window.Loaded">
+            <BeginStoryboard>
+                <Storyboard>
+                    <DoubleAnimation Storyboard.TargetProperty="(Window.Opacity)"
+                                     From="0.0" To="1.0" Duration="0:0:.3"
+                                     AutoReverse="False"/>
+                </Storyboard>
+            </BeginStoryboard>
+        </EventTrigger>
+    </Window.Triggers>
+
     <Grid>
         <!--Columns and rows definition-->
         <Grid.ColumnDefinitions>

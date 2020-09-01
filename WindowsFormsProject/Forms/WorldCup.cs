@@ -217,7 +217,11 @@ namespace WindowsFormsProject.Forms
             contextMenuStrip.Items.Add(loadImageItem);
 
             var favoritePlayerItem = new ToolStripMenuItem { Text = Resources.Resources.favoritePlayerItem, Name = "favoritePlayerItem" };
-            favoritePlayerItem.Click += (s, e) => flpFavoritePlayers.Controls.Add(puc);
+            favoritePlayerItem.Click += (s, e) =>
+            {
+                puc.StarVisible = true;
+                flpFavoritePlayers.Controls.Add(puc);
+            };
             contextMenuStrip.Items.Add(favoritePlayerItem);
         }
 

@@ -7,6 +7,7 @@ using DataAccessLayer.Utils;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Globalization;
 using System.IO;
 using System.Linq;
@@ -17,7 +18,7 @@ using WpfProject.UserControls;
 
 namespace WpfProject.Forms
 {
-    public partial class WorldCup : Window
+    public partial class WorldCup
     {
         #region Variable declaration
 
@@ -49,6 +50,7 @@ namespace WpfProject.Forms
         {
             SetCulture();
             InitializeComponent();
+            SetWindowSize();
         }
 
         #endregion
@@ -120,6 +122,9 @@ namespace WpfProject.Forms
         {
             try
             {
+                LoadingSpinner.Visibility = Visibility.Visible;
+                LoadingSpinner.Spin = true;
+
                 Panel panel;
                 var country = awayTeam
                     ? (team as MatchTeam)?.Country
@@ -166,6 +171,9 @@ namespace WpfProject.Forms
                         default:
                             return;
                     }
+
+                    LoadingSpinner.Visibility = Visibility.Hidden;
+                    LoadingSpinner.Spin = false;
                 });
             }
             catch (Exception ex) when (ex is IOException || ex is JsonReaderException || ex is ArgumentNullException)
@@ -278,8 +286,7 @@ namespace WpfProject.Forms
                     playerInformation?.Position.ToString(),
                     playerInformation?.Captain.ToString().FirstCharToUpper(),
                     goalsScored.ToString(),
-                    yellowCards.ToString())
-                    .ShowDialog();
+                    yellowCards.ToString()).ShowDialog();
             }
             catch
             {
@@ -287,6 +294,33 @@ namespace WpfProject.Forms
             }
         }
 
+        private void SetWindowSize()
+        {
+            switch (_repository.GetAppSizeSelected().ToLowerInvariant())
+            {
+                case "small":
+                    Width = 800;
+                    Height = 600;
+                    break;
+                case "medium":
+                    Width = 1024;
+                    Height = 768;
+                    break;
+                case "fullscreen":
+                    WindowState = WindowState.Maximized;
+                    break;
+            }
+        }
+
         #endregion
+
+        private void WorldCup_OnClosing(object sender, CancelEventArgs e)
+        {
+            var confirmResult = MessageBox.Show(
+                "Confirm closing application", 
+                "Close application",
+                MessageBoxButton.OKCancel, MessageBoxImage.Question);
+            if (confirmResult != MessageBoxResult.OK) e.Cancel = true;
+        }
     }
 }

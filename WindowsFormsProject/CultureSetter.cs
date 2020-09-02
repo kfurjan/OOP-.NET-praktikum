@@ -23,7 +23,6 @@ namespace WindowsFormsProject
                     {
                         var childText = resource.GetString($"{child.Name}.Text", culture);
                         child.Text = childText ?? child.Text;
-
                     }
                 }
 

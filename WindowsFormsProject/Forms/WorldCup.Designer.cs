@@ -49,6 +49,12 @@
             this.contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.loadImagesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.favoritePlyaerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ppdGoals = new System.Windows.Forms.PrintPreviewDialog();
+            this.pdGoals = new System.Drawing.Printing.PrintDocument();
+            this.pdCards = new System.Drawing.Printing.PrintDocument();
+            this.ppdCards = new System.Windows.Forms.PrintPreviewDialog();
+            this.pdAttendances = new System.Drawing.Printing.PrintDocument();
+            this.ppdAttendances = new System.Windows.Forms.PrintPreviewDialog();
             this.menuStripWorldCup.SuspendLayout();
             this.tabControl.SuspendLayout();
             this.tabPagePlayers.SuspendLayout();
@@ -129,6 +135,7 @@
             resources.ApplyResources(this.btnTabGoalsPrint, "btnTabGoalsPrint");
             this.btnTabGoalsPrint.Name = "btnTabGoalsPrint";
             this.btnTabGoalsPrint.UseVisualStyleBackColor = true;
+            this.btnTabGoalsPrint.Click += new System.EventHandler(this.btnTabGoalsPrint_Click);
             // 
             // flpRankedByGoals
             // 
@@ -150,6 +157,7 @@
             resources.ApplyResources(this.btnTabCardPrint, "btnTabCardPrint");
             this.btnTabCardPrint.Name = "btnTabCardPrint";
             this.btnTabCardPrint.UseVisualStyleBackColor = true;
+            this.btnTabCardPrint.Click += new System.EventHandler(this.btnTabCardPrint_Click);
             // 
             // flpRankByYellowCards
             // 
@@ -171,6 +179,7 @@
             resources.ApplyResources(this.btnTabAttendancesPrint, "btnTabAttendancesPrint");
             this.btnTabAttendancesPrint.Name = "btnTabAttendancesPrint";
             this.btnTabAttendancesPrint.UseVisualStyleBackColor = true;
+            this.btnTabAttendancesPrint.Click += new System.EventHandler(this.btnTabAttendancesPrint_Click);
             // 
             // flpRankByAttendances
             // 
@@ -196,6 +205,33 @@
             // 
             this.favoritePlyaerToolStripMenuItem.Name = "favoritePlyaerToolStripMenuItem";
             resources.ApplyResources(this.favoritePlyaerToolStripMenuItem, "favoritePlyaerToolStripMenuItem");
+            // 
+            // ppdGoals
+            // 
+            resources.ApplyResources(this.ppdGoals, "ppdGoals");
+            this.ppdGoals.Name = "printPreviewDialog";
+            // 
+            // pdGoals
+            // 
+            this.pdGoals.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.pdGoals_PrintPage);
+            // 
+            // pdCards
+            // 
+            this.pdCards.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.pdCards_PrintPage);
+            // 
+            // ppdCards
+            // 
+            resources.ApplyResources(this.ppdCards, "ppdCards");
+            this.ppdCards.Name = "ppdCards";
+            // 
+            // pdAttendances
+            // 
+            this.pdAttendances.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.pdAttendances_PrintPage);
+            // 
+            // ppdAttendances
+            // 
+            resources.ApplyResources(this.ppdAttendances, "ppdAttendances");
+            this.ppdAttendances.Name = "ppdAttendances";
             // 
             // WorldCup
             // 
@@ -242,5 +278,11 @@
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip;
         private System.Windows.Forms.ToolStripMenuItem loadImagesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem favoritePlyaerToolStripMenuItem;
+        private System.Windows.Forms.PrintPreviewDialog ppdGoals;
+        private System.Drawing.Printing.PrintDocument pdGoals;
+        private System.Drawing.Printing.PrintDocument pdCards;
+        private System.Windows.Forms.PrintPreviewDialog ppdCards;
+        private System.Drawing.Printing.PrintDocument pdAttendances;
+        private System.Windows.Forms.PrintPreviewDialog ppdAttendances;
     }
 }

@@ -9,6 +9,7 @@ using Syncfusion.WinForms.Core.Utils;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Printing;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
@@ -20,6 +21,7 @@ namespace WindowsFormsProject.Forms
     {
         #region Variable declaration
 
+        private int _controlCounter = 0;
         private bool _formFirstTimeShown = true;
 
         private readonly OpenFileDialog _openFileDialog = new OpenFileDialog();
@@ -172,6 +174,114 @@ namespace WindowsFormsProject.Forms
                 flpRankByYellowCards.Controls.Add(playerUserControl);
                 LoadPictureIfPreviouslySelected(playerUserControl);
             });
+        }
+
+        private void btnTabGoalsPrint_Click(object sender, EventArgs e)
+        {
+            _controlCounter = 0;
+            ppdGoals.Document = pdGoals;
+            ppdGoals.ShowDialog();
+        }
+
+        private void pdGoals_PrintPage(object sender, PrintPageEventArgs e)
+        {
+            var y = 25;
+            const int x = 275;
+            const int yIncrement = 150;
+
+            for (var i = _controlCounter; i < flpRankedByGoals.Controls.Count; i++)
+            {
+                var control = flpRankedByGoals.Controls[i];
+                var rectangle = new Rectangle(0, 0, control.Width, control.Height);
+                var bitmap = new Bitmap(control.Width, control.Height);
+
+                if (_controlCounter % 7 != 0 || _controlCounter == 0)
+                {
+                    control.DrawToBitmap(bitmap, rectangle);
+                    e.Graphics.DrawImage(bitmap, new Point(x, y));
+
+                    y += yIncrement;
+                    _controlCounter++;
+                }
+                else
+                {
+                    _controlCounter++;
+                    e.HasMorePages = true;
+                    return;
+                }
+            }
+        }
+
+        private void btnTabCardPrint_Click(object sender, EventArgs e)
+        {
+            _controlCounter = 0;
+            ppdCards.Document = pdCards;
+            ppdCards.ShowDialog();
+        }
+
+        private void pdCards_PrintPage(object sender, PrintPageEventArgs e)
+        {
+            var y = 25;
+            const int x = 275;
+            const int yIncrement = 150;
+
+            for (var i = _controlCounter; i < flpRankByYellowCards.Controls.Count; i++)
+            {
+                var control = flpRankByYellowCards.Controls[i];
+                var rectangle = new Rectangle(0, 0, control.Width, control.Height);
+                var bitmap = new Bitmap(control.Width, control.Height);
+
+                if (_controlCounter % 7 != 0 || _controlCounter == 0)
+                {
+                    control.DrawToBitmap(bitmap, rectangle);
+                    e.Graphics.DrawImage(bitmap, new Point(x, y));
+
+                    y += yIncrement;
+                    _controlCounter++;
+                }
+                else
+                {
+                    _controlCounter++;
+                    e.HasMorePages = true;
+                    return;
+                }
+            }
+        }
+
+        private void btnTabAttendancesPrint_Click(object sender, EventArgs e)
+        {
+            _controlCounter = 0;
+            ppdAttendances.Document = pdAttendances;
+            ppdAttendances.ShowDialog();
+        }
+
+        private void pdAttendances_PrintPage(object sender, PrintPageEventArgs e)
+        {
+            var y = 25;
+            const int x = 275;
+            const int yIncrement = 150;
+
+            for (var i = _controlCounter; i < flpRankByAttendances.Controls.Count; i++)
+            {
+                var control = flpRankByAttendances.Controls[i];
+                var rectangle = new Rectangle(0, 0, control.Width, control.Height);
+                var bitmap = new Bitmap(control.Width, control.Height);
+
+                if (_controlCounter % 7 != 0 || _controlCounter == 0)
+                {
+                    control.DrawToBitmap(bitmap, rectangle);
+                    e.Graphics.DrawImage(bitmap, new Point(x, y));
+
+                    y += yIncrement;
+                    _controlCounter++;
+                }
+                else
+                {
+                    _controlCounter++;
+                    e.HasMorePages = true;
+                    return;
+                }
+            }
         }
 
         #endregion

@@ -88,6 +88,24 @@ namespace WindowsFormsProject.Forms
             InitializeCulture();
         }
 
+        private void LoadFavoritePlayers()
+        {
+            try
+            {
+                _repository.GetFavoritePlayers().ToList().ForEach(c =>
+                    {
+                        var userControl = Controls.Find(c.Trim(), true).FirstOrDefault();
+                        if (userControl != null && userControl is PlayerUserControl puc)
+                        {
+                            puc.StarVisible = true;
+                            flpAllPlayers.Controls.Remove(puc);
+                            flpFavoritePlayers.Controls.Add(puc);
+                        }
+                    });
+            }
+            catch { /* return if not possible */ }
+        }
+
         private void cbTeams_SelectionChangeCommitted(object sender, EventArgs e)
         {
             try
@@ -116,8 +134,11 @@ namespace WindowsFormsProject.Forms
 
         private void flpFavoritePlayers_DragDrop(object sender, DragEventArgs e)
         {
+            if (flpFavoritePlayers.Controls.Count >= 3) { return; }
+
             var controlName = e.Data.GetData(typeof(string)) as string;
             var userControl = Controls.Find(controlName, true).FirstOrDefault();
+
             if (userControl != null && ((PlayerUserControl)userControl).IsSelected)
             {
                 userControl.Parent.Controls.Remove(userControl);
@@ -125,10 +146,17 @@ namespace WindowsFormsProject.Forms
                 ((PlayerUserControl)userControl).IsSelected = false;
                 ((PlayerUserControl)userControl).StarVisible = true;
             }
+
+            var controlNames = flpFavoritePlayers.Controls.Cast<PlayerUserControl>()
+                .Select(c => c.Name);
+
+            _repository.SaveFavoritePlayers(controlNames);
         }
 
         private void flpFavoritePlayers_DragEnter(object sender, DragEventArgs e)
         {
+            if (flpFavoritePlayers.Controls.Count >= 3) { return; }
+
             var controlName = e.Data.GetData(typeof(string)) as string;
             var userControl = Controls.Find(controlName, true).FirstOrDefault();
             if (userControl != null && ((PlayerUserControl)userControl).IsSelected)
@@ -329,9 +357,17 @@ namespace WindowsFormsProject.Forms
             var favoritePlayerItem = new ToolStripMenuItem { Text = Resources.Resources.favoritePlayerItem, Name = "favoritePlayerItem" };
             favoritePlayerItem.Click += (s, e) =>
             {
+                if (flpFavoritePlayers.Controls.Count >= 3) { return; }
                 puc.StarVisible = true;
+                puc.IsSelected = false;
                 flpFavoritePlayers.Controls.Add(puc);
+
+                var controlNames = flpFavoritePlayers.Controls.Cast<PlayerUserControl>()
+                    .Select(c => c.Name);
+
+                _repository.SaveFavoritePlayers(controlNames);
             };
+
             contextMenuStrip.Items.Add(favoritePlayerItem);
         }
 
@@ -344,7 +380,13 @@ namespace WindowsFormsProject.Forms
             {
                 puc.StarVisible = false;
                 flpAllPlayers.Controls.Add(puc);
+
+                var controlNames = flpFavoritePlayers.Controls.Cast<PlayerUserControl>()
+                    .Select(c => c.Name);
+
+                _repository.SaveFavoritePlayers(controlNames);
             };
+
             contextMenuStrip.Items.Add(favoritePlayerItem);
         }
 
@@ -366,10 +408,7 @@ namespace WindowsFormsProject.Forms
             }
         }
 
-        private static void MakeControlsDraggable(IEnumerable<Control> controls)
-        {
-            controls.ToList().ForEach(c => c.DoDragDrop(c.Name, DragDropEffects.Move));
-        }
+        private static void MakeControlsDraggable(IEnumerable<Control> controls) => controls.ToList().ForEach(c => c.DoDragDrop(c.Name, DragDropEffects.Move));
 
         private async void LoadComboBoxWithTeamsAsync()
         {
@@ -473,6 +512,7 @@ namespace WindowsFormsProject.Forms
                             AwayTeam = m.AwayTeamCountry
                         });
                     });
+                LoadFavoritePlayers();
 
                 busyIndicator.Hide();
             }

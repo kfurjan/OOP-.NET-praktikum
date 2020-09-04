@@ -317,7 +317,7 @@ namespace WpfProject.Forms
         private void WorldCup_OnClosing(object sender, CancelEventArgs e)
         {
             var confirmResult = MessageBox.Show(
-                "Confirm closing application", 
+                "Confirm closing application",
                 "Close application",
                 MessageBoxButton.OKCancel, MessageBoxImage.Question);
             if (confirmResult != MessageBoxResult.OK) e.Cancel = true;

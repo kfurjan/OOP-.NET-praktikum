@@ -1,5 +1,6 @@
 ﻿using DataAccessLayer.Repository;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
@@ -12,10 +13,12 @@ namespace DataAccessLayer.Filesystem
         private const string Settings = @"settings.txt";
         private const string Pictures = @"pictures.txt";
         private const string WpfAppSize = @"wpf_app_size.txt";
+        private const string FavoritePlayers = @"favorite_players.txt";
 
         private static readonly string SettingsPath = $@"{Folder}/{Settings}";
         private static readonly string PicturesPath = $@"{Folder}/{Pictures}";
         private static readonly string WpfAppSizePath = $@"{Folder}/{WpfAppSize}";
+        private static readonly string FavoritePlayersPath = $@"{Folder}/{FavoritePlayers}";
 
         public void SaveSettings(string tournamentType, string language)
         {
@@ -67,6 +70,23 @@ namespace DataAccessLayer.Filesystem
         public string GetSelectedLanguage() => LoadAllSettings().Split('|')[1].Trim();
         public string GetSelectedTeam() => LoadAllSettings().Split('|')[2].Trim();
         public string GetAppSizeSelected() => File.ReadAllText(WpfAppSizePath);
+        public void SaveFavoritePlayers(IEnumerable<string> controlNames)
+        {
+            if (!Directory.Exists(Folder)) { Directory.CreateDirectory(Folder); }
+            if (File.Exists(FavoritePlayersPath)) { File.Delete(FavoritePlayersPath); }
+
+            File.AppendAllLines(FavoritePlayersPath, controlNames);
+        }
+
+        public IEnumerable<string> GetFavoritePlayers()
+        {
+            try
+            {
+                if (!File.Exists(FavoritePlayersPath)) { File.Create(FavoritePlayersPath); }
+                return File.ReadLines(FavoritePlayersPath);
+            }
+            catch { return new List<string>(); }
+        }
 
         public bool PictureExists(string controlName)
         {

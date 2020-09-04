@@ -1,4 +1,6 @@
-﻿namespace DataAccessLayer.Repository
+﻿using System.Collections.Generic;
+
+namespace DataAccessLayer.Repository
 {
     public interface IRepository
     {
@@ -17,5 +19,8 @@
         string GetSelectedLanguage();
         string GetSelectedTeam();
         string GetAppSizeSelected();
+
+        void SaveFavoritePlayers(IEnumerable<string> controlNames);
+        IEnumerable<string> GetFavoritePlayers();
     }
 }

@@ -65,7 +65,8 @@
             Panel.ZIndex="1">
             <fa:ImageAwesome
                 x:Name="LoadingSpinner"
-                Icon="CircleOutlineNotch" 
+                Icon="CircleOutlineNotch"
+                Margin="0 10 0 0"
                 Visibility="Hidden" 
                 Spin="False" 
                 SpinDuration="2" 

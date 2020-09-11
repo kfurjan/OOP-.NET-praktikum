@@ -97,6 +97,16 @@ namespace WpfProject.Forms
             Close();
         }
 
+        private void WorldCup_OnClosing(object sender, CancelEventArgs e)
+        {
+            var confirmResult = MessageBox.Show(
+                "Confirm closing application",
+                "Close application",
+                MessageBoxButton.OKCancel, MessageBoxImage.Question);
+
+            if (confirmResult != MessageBoxResult.OK) e.Cancel = true;
+        }
+
         #endregion
 
         #region Helper functions
@@ -309,18 +319,13 @@ namespace WpfProject.Forms
                 case "fullscreen":
                     WindowState = WindowState.Maximized;
                     break;
+                default:
+                    Width = 800;
+                    Height = 600;
+                    break;
             }
         }
 
         #endregion
-
-        private void WorldCup_OnClosing(object sender, CancelEventArgs e)
-        {
-            var confirmResult = MessageBox.Show(
-                "Confirm closing application",
-                "Close application",
-                MessageBoxButton.OKCancel, MessageBoxImage.Question);
-            if (confirmResult != MessageBoxResult.OK) e.Cancel = true;
-        }
     }
 }

@@ -7,8 +7,10 @@ using System.Linq;
 namespace DataAccessLayer.Filesystem
 {
     internal class FileRepository : IRepository
-
     {
+        private const string DefaultGender = @"female";
+        private const string DefaultLanguage = @"EN";
+
         private const string Folder = @"../../../assets";
         private const string Settings = @"settings.txt";
         private const string Pictures = @"pictures.txt";
@@ -59,17 +61,26 @@ namespace DataAccessLayer.Filesystem
             {
                 foreach (var line in File.ReadAllLines(PicturesPath))
                 {
-                    if (line.Split('|')[0] == controlName) { return line.Split('|')[1]; }
+                    if (line.Split('|').ElementAtOrDefault(0) == controlName) { return line.Split('|')[1]; }
                 }
 
                 return string.Empty;
             }
             catch { return string.Empty; }
         }
-        public string GetTeamGender() => LoadAllSettings().Split('|')[0].Trim();
-        public string GetSelectedLanguage() => LoadAllSettings().Split('|')[1].Trim();
-        public string GetSelectedTeam() => LoadAllSettings().Split('|')[2].Trim();
-        public string GetAppSizeSelected() => File.ReadAllText(WpfAppSizePath);
+        public string GetTeamGender() => LoadAllSettings().Split('|').ElementAtOrDefault(0)?.Trim() ?? DefaultGender;
+        public string GetSelectedLanguage() => LoadAllSettings().Split('|').ElementAtOrDefault(1)?.Trim() ?? DefaultLanguage;
+        public string GetSelectedTeam() => LoadAllSettings().Split('|').ElementAtOrDefault(2)?.Trim() ?? string.Empty;
+
+        public string GetAppSizeSelected()
+        {
+            try
+            {
+                if (!File.Exists(WpfAppSizePath)) { File.Create(WpfAppSizePath); }
+                return File.ReadAllText(WpfAppSizePath);
+            }
+            catch { return string.Empty; }
+        }
         public void SaveFavoritePlayers(IEnumerable<string> controlNames)
         {
             if (!Directory.Exists(Folder)) { Directory.CreateDirectory(Folder); }
@@ -95,7 +106,7 @@ namespace DataAccessLayer.Filesystem
                 if (!File.Exists(PicturesPath)) { File.Create(PicturesPath); }
 
                 return File.ReadAllLines(PicturesPath)
-                    .Any(line => line.Split('|')[0].ToString() == controlName);
+                    .Any(line => line.Split('|').ElementAtOrDefault(0)?.ToString() == controlName);
             }
             catch { return false; }
         }
